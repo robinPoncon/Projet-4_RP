@@ -62,28 +62,6 @@ class Post
 	{
 		echo $this->title . " - " . $this->content . " - " . $this->author;
 	}
-
-
-
-	public function showPost()
-	{
-		// Requete SQL SELECT
-	}
-
-	public function addPost(Post $post)
-	{
-		// Requete SQL INSERT INTO
-	}
-
-	public function updatePost(Post $post)
-	{
-		// Requete SQL UPDATE
-	}
-
-	public function deletePost($id)
-	{
-		// REQUETE SQL DELETE
-	}
 		
 }
 
