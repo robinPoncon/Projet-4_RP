@@ -1,8 +1,7 @@
 <?php
 
-require 'model/PostManager.class.php';
-require "model/CommentManager.class.php";
-
+require "app/Autoloader.php";
+Autoloader::register();
 
 function listPosts()
 {
