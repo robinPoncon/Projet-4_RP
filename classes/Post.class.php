@@ -1,17 +1,12 @@
 <?php
-	
-class Post
+
+require "classes/Entity.class.php";
+
+class Post extends Entity
 {
 	private $title;
 	private $content;
 	private $author;
-
-	public function __construct($title, $content, $author)
-	{
-		$this->setTitle($title);
-		$this->setContent($content);
-		$this->setAuthor($author);
-	}
 
 	// Les getters
 

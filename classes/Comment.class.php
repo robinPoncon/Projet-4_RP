@@ -1,15 +1,9 @@
 <?php
 
-class Comment
+class Comment extends Entity
 {
 	private $author;
 	private $content;
-
-	public function __construct($author, $content)
-	{
-		$this->setAuthor($author);
-		$this->setContent($content);
-	}
 
 	// Les getters
 
