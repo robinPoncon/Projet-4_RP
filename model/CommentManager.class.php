@@ -1,5 +1,7 @@
 <?php
 
+//namespace RobinP\model;
+
 class CommentManager extends Manager
 {
     public function getComments($postId)

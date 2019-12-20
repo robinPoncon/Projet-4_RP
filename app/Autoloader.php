@@ -1,5 +1,9 @@
 <?php
 
+//use \RobinP\model\CommentManager;
+//use \RobinP\model\PostManager;
+//use \RobinP\model\Manager;
+
 	class Autoloader
 	{
 		/*
@@ -26,10 +30,12 @@
 			{
 				require "model/" . $class_name . ".class.php";
 			}
+
 			else if (file_exists("classes/" . $class_name . ".class.php"))
 			{
 				require "classes/" . $class_name . ".class.php";
 			}
+
 			else
 			{
 				throw new Exception("Aucune classe trouvée sous ce nom de fichier, vérifier le nom de la classe");

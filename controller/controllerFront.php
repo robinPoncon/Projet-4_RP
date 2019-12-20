@@ -3,8 +3,8 @@
 require "app/Autoloader.php";
 Autoloader::register();
 
-$test = new Post(['title' => 'test', 'content' => 'youpi', 'author' => 'rob']);
-$test->test();
+//$test = new Post(['title' => 'test', 'content' => 'youpi', 'author' => 'rob']);
+//$test->test();
 
 function listPosts()
 {

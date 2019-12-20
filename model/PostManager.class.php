@@ -1,5 +1,7 @@
 <?php
 
+//namespace RobinP\model;
+
 require "model/Manager.class.php";
 
 class PostManager extends Manager
