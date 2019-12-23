@@ -26,19 +26,17 @@
 
 		static function autoload($class_name)
 		{
-			if (file_exists("model/" . $class_name . ".class.php"))
-			{
-				require "model/" . $class_name . ".class.php";
-			}
+			$class_name = str_replace('\\', '/', $class_name);
+			$class_name = str_replace('RobinP/', '', $class_name);
 
-			else if (file_exists("classes/" . $class_name . ".class.php"))
+			if (file_exists($class_name . ".class.php"))
 			{
-				require "classes/" . $class_name . ".class.php";
+				require $class_name . ".class.php";
 			}
 
 			else
 			{
-				throw new Exception("Aucune classe trouvée sous ce nom de fichier, vérifier le nom de la classe");
+				throw new Exception("Aucune classe trouvée sous ce nom de fichier : $class_name, vérifier le nom de la classe");
 			}
 		}
 	}

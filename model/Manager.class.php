@@ -1,6 +1,6 @@
 <?php
 
-//namespace RobinP\model;
+namespace RobinP\model;
 
 Class Manager
 {

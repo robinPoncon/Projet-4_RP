@@ -1,5 +1,8 @@
 <?php
 
+namespace RobinP\classes;
+use \RobinP\classes\Entity;
+
 class Comment extends Entity
 {
 	private $author;

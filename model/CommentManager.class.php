@@ -1,6 +1,8 @@
 <?php
 
-//namespace RobinP\model;
+namespace RobinP\model;
+
+use \RobinP\model\Manager;
 
 class CommentManager extends Manager
 {

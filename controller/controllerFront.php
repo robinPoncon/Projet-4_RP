@@ -1,10 +1,12 @@
 <?php
 
-require "app/Autoloader.php";
-Autoloader::register();
+use \RobinP\classes\Post;
 
-//$test = new Post(['title' => 'test', 'content' => 'youpi', 'author' => 'rob']);
-//$test->test();
+$test = new Post(['title' => 'test', 'content' => 'youpi', 'author' => 'rob']);
+$test->test();
+
+use \RobinP\model\PostManager;
+use \RobinP\model\CommentManager;
 
 function listPosts()
 {

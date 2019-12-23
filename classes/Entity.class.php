@@ -1,4 +1,6 @@
 <?php
+	
+namespace RobinP\classes;
 
 class Entity
 {
@@ -21,7 +23,7 @@ class Entity
 			{
 				// Si c'est le cas, on appelle le setter.
 
-				$this->method($value);
+				$this->$method($value);
 			}
 		}
 	}

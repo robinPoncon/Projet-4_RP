@@ -1,6 +1,9 @@
 <?php
 
-require "classes/Entity.class.php";
+namespace RobinP\classes;
+use \RobinP\classes\Entity;
+
+//require "classes/Entity.class.php";
 
 class Post extends Entity
 {
