@@ -7,11 +7,17 @@ use \RobinP\classes\Entity;
 
 class Post extends Entity
 {
+	private $id;
 	private $title;
 	private $content;
 	private $author;
 
 	// Les getters
+
+	public function getId()
+	{
+		return $this->id;
+	}
 
 	public function getTitle()
 	{
@@ -30,6 +36,16 @@ class Post extends Entity
 
 
 	// Les setters
+
+	public function setId($id)
+	{
+		$id = (int) $id;
+		
+		if($id > 0)
+		{
+			return $this->id = $id;
+		}
+	}
 
 	public function setTitle($title)
 	{
