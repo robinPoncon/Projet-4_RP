@@ -11,6 +11,7 @@ class Post extends Entity
 	private $title;
 	private $content;
 	private $author;
+	private $creation_date;
 
 	// Les getters
 
@@ -32,6 +33,11 @@ class Post extends Entity
 	public function getAuthor()
 	{
 		return $this->author;
+	}
+
+	public function getCreationDate()
+	{
+		return $this->creation_date;
 	}
 
 
@@ -69,6 +75,11 @@ class Post extends Entity
 		{
 			return $this->author = $author;
 		}
+	}
+
+	public function setCreationDate($creation_date)
+	{
+		return $this->creation_date = $creation_date;
 	}
 
 
