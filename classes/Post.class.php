@@ -4,12 +4,12 @@ namespace RobinP\classes;
 use \RobinP\classes\Entity;
 use \DateTime;
 
-function validateDate($date, $format = 'Y-m-d H:i:s')
+/*function validateDate($date, $format = 'Y-m-d H:i:s')
 	{
     	$d = DateTime::createFromFormat($format, $date);
     	return $d && $d->format($format) == $date;
 	}
-
+*/
 class Post extends Entity
 {
 	private $id;
@@ -84,7 +84,7 @@ class Post extends Entity
 
 	public function setCreationDate($creation_date)
 	{
-		if (validateDate($creation_date) === false)
+		/*if (validateDate($creation_date) === false)
 		{
   			echo "test";
 		}
@@ -93,6 +93,9 @@ class Post extends Entity
 		{
 			return $this->creation_date = $creation_date;
 		}
+		*/
+
+		return $this->creation_date = $creation_date;
 
 	}
 

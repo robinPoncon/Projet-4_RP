@@ -5,37 +5,80 @@ use \RobinP\classes\Entity;
 
 class Comment extends Entity
 {
+	private $id;
+	private $post_id;
 	private $author;
-	private $content;
+	private $comment;
+	private $comment_date;
 
 	// Les getters
+
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function getPostId()
+	{
+		return $this->post_id;
+	}
 
 	public function getAuthor()
 	{
 		return $this->author;
 	}
 
-	public function getContent()
+	public function getComment()
 	{
-		return $this->content;
+		return $this->comment;
+	}
+
+	public function getCommentDate()
+	{
+		return $this->comment_date;
 	}
 
 	// Les setters
+
+	public function setId($id)
+	{
+		$id = (int) $id;
+
+		if ($id > 0)
+		{
+			return $this->id = $id;
+		}
+	}
+
+	public function setPostId($post_id)
+	{
+		$post_id = (int) $post_id;
+
+		if ($post_id > 0)
+		{
+			return $this->post_id = $post_id;
+		}
+	}
 
 	public function setAuthor($author)
 	{
 		if (is_string($author))
 		{
-			$this->author = $author;
+			return $this->author = $author;
 		}
 	}
 
-	public function setContent($content)
+	public function setComment($comment)
 	{
-		if (is_string($content))
+		if (is_string($comment))
 		{
-			$this->content = $content;
+			return $this->comment = $comment;
 		}
+	}
+
+	public function setCommentDate($comment_date)
+	{
+		return $this->comment_date = $comment_date;
 	}
 }
 

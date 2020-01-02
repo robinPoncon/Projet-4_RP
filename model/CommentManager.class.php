@@ -3,14 +3,22 @@
 namespace RobinP\model;
 
 use \RobinP\model\Manager;
+use \RobinP\classes\Comment;
 
 class CommentManager extends Manager
 {
     public function getComments($postId)
     {
-        $comments = $this->db->prepare('SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
-        $comments->execute(array($postId));
+        $comments = [];
 
+        $req = $this->db->prepare("SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS comment_date FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC");
+        $req->bindValue(":post_id", $postId);
+        $req->execute();
+
+        while ($data = $req->fetch()) 
+        {
+            $comments[] = new Comment($data);
+        }
         return $comments;
     }
 

@@ -7,7 +7,8 @@
 
 <?php
 //var_dump($posts);
-foreach ($posts as $post) {
+foreach ($posts as $post) 
+{
     
 ?>
     <div class="news">
@@ -24,7 +25,9 @@ foreach ($posts as $post) {
     </div>
 <?php
 }
+
 $posts->closeCursor();
+
 ?>
 <?php $content = ob_get_clean(); ?>
 

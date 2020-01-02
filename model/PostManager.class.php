@@ -19,14 +19,14 @@ class PostManager extends Manager
 		return $posts;
 	}
 
-	public function getPost(Post $post)
+	public function getPost($id)
 	{
 		$req = $this->db->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts WHERE id = :id");
-		$req->bindValue(":id", $post->getId());
+		$req->bindValue(":id", $id);
 		$req->execute();
-		$post = $req->fetch();
+		$data = $req->fetch();
 
-		return $post;
+		return new Post($data);
 	}
 
 	public function deletePost(Post $post)

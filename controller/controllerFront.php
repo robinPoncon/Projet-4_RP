@@ -1,10 +1,5 @@
 <?php
 
-use \RobinP\classes\Post;
-
-$test = new Post(['title' => 'test', 'content' => 'youpi', 'author' => 'rob']);
-$test->test();
-
 use \RobinP\model\PostManager;
 use \RobinP\model\CommentManager;
 
@@ -21,8 +16,8 @@ function post()
 	$postManager = new PostManager();
 	$commentManager = new CommentManager();
 
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postManager->getPost($_GET["id"]);
+    $comments = $commentManager->getComments($_GET["id"]);
 
     require 'view/frontend/postView.php';
 }
