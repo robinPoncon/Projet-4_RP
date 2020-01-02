@@ -17,7 +17,6 @@ class Entity
 
 			$method = "set" . str_replace('_', '', ucwords($key, "_"));
 
-			var_dump($method);
 			// On vérifie si la méthode existe.
 
 			if (method_exists($this, $method))

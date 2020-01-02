@@ -2,8 +2,13 @@
 
 namespace RobinP\classes;
 use \RobinP\classes\Entity;
+use \DateTime;
 
-//require "classes/Entity.class.php";
+function validateDate($date, $format = 'Y-m-d H:i:s')
+	{
+    	$d = DateTime::createFromFormat($format, $date);
+    	return $d && $d->format($format) == $date;
+	}
 
 class Post extends Entity
 {
@@ -79,7 +84,16 @@ class Post extends Entity
 
 	public function setCreationDate($creation_date)
 	{
-		return $this->creation_date = $creation_date;
+		if (validateDate($creation_date) === false)
+		{
+  			echo "test";
+		}
+
+		else
+		{
+			return $this->creation_date = $creation_date;
+		}
+
 	}
 
 
