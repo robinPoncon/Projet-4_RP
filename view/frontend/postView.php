@@ -20,14 +20,15 @@
 
     <h2>Commentaires</h2>
 
-    <form action="index.php?action=addComment&amp;id=<?= $post->getId(); ?>" method="post">
+    <form action="?action=addComment" method="post">
+        <input type="hidden" name="addComment[id]" value="<?= $post->getId(); ?>">
         <div>
             <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="author" />
+            <input type="text" id="author" name="addComment[author]" />
         </div>
         <div>
             <label for="comment">Commentaire</label><br />
-            <textarea id="comment" name="comment"></textarea>
+            <textarea id="comment" name="addComment[comment]"></textarea>
         </div>
         <div>
             <input type="submit" />

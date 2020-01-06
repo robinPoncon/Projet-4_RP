@@ -7,12 +7,31 @@ require('controller/controllerFront.php');
 
 try
 {
+	var_dump($_SERVER);
 	if (isset($_GET['action'])) {
 	    if ($_GET['action'] == 'listPosts') {
 	        listPosts();
 	    }
 	    elseif ($_GET['action'] == 'post') {
-	        if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+	    	if (isset($_POST["addComment"]))
+	        {
+	        	
+	        	$comment = $_POST["addComment"];
+	        	if (isset($comment['id']) && $comment['id'] > 0) {
+	            	if (!empty($comment['author']) && !empty($comment['comment'])) {
+
+	                	addComment($comment['id'], $comment['author'], $comment['comment']);
+	            	}
+	            	else {
+	                	throw new Exception('Tous les champs ne sont pas remplis !');
+	            	}
+	        	}
+	        	else {
+	            	throw new Exception('Aucun identifiant de billet envoyé');
+	        	}
+	        }
+	        elseif (isset($_GET['id']) && $_GET['id'] > 0) {
 	            post();
 	        }
 	        else {
@@ -20,16 +39,26 @@ try
 	        }
 	    }
 	    elseif ($_GET['action'] == 'addComment') {
-	        if (isset($_GET['id']) && $_GET['id'] > 0) {
-	            if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-	                addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-	            }
+	        if (isset($_POST["addComment"]))
+	        {
+	        	
+	        	$comment = $_POST["addComment"];
+	        	if (isset($comment['id']) && $comment['id'] > 0) {
+	            	if (!empty($comment['author']) && !empty($comment['comment'])) {
+
+	                	addComment($comment['id'], $comment['author'], $comment['comment']);
+	            	}
 	            else {
 	                throw new Exception('Tous les champs ne sont pas remplis !');
 	            }
 	        }
 	        else {
 	            throw new Exception('Aucun identifiant de billet envoyé');
+	        }
+	    }
+	        else
+	        {
+	        	throw new Exception("Formulaire mal remplis");
 	        }
 	    }
 	}
