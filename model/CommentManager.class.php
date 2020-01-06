@@ -4,6 +4,7 @@ namespace RobinP\model;
 
 use \RobinP\model\Manager;
 use \RobinP\classes\Comment;
+use \PDO;
 
 class CommentManager extends Manager
 {
@@ -12,7 +13,7 @@ class CommentManager extends Manager
         $comments = [];
 
         $req = $this->db->prepare("SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS comment_date FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC");
-        $req->bindValue(":post_id", $postId);
+        $req->bindValue(":post_id", $postId, PDO::PARAM_INT);
         $req->execute();
 
         while ($data = $req->fetch()) 
@@ -22,19 +23,29 @@ class CommentManager extends Manager
         return $comments;
     }
 
-    public function postComment($postId, $author, $comment)
+    public function addComment(Comment $comment)
     {
-        $comments = $this->db->prepare('INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
+        $req = $this->db->prepare("INSERT INTO comment(post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())");
 
-        return $affectedLines;
+        $req->bindValue(":post_id", $comment->getPostId(), PDO::PARAM_INT);
+        $req->bindValue(":author", $comment->getAuthor(), PDO::PARAM_STR);
+        $req->bindValue(":comment", $comment->getComment(), PDO::PARAM_STR);
+
+        $req->execute();
     }
 
-    public function updateComment($comment, $id)
-    {
-        $comments = $this->db->prepare("UPDATE comments SET comment = ? WHERE id = ?");
-        $updateComment = $comments->execute(array($comment, $id));
+    public function updateComment(Comment $comment)
+    {   
+        $req = $this->db->prepare("UPDATE comments SET comment = :comment WHERE id = :id");
 
-        return $updateComment;
-    } 
+        $req->bindValue(":comment", $comment->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(":id", $comment->getId(), PDO::PARAM_INT);
+
+        $req->execute();
+    }
+
+    public function deleteComment(Comment $comment)
+    {
+        $this->db->exec("DELETE FROM comments WHERE id = " . $comment->getId());
+    }
 }

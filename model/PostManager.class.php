@@ -4,6 +4,7 @@ namespace RobinP\model;
 
 use \RobinP\model\Manager;
 use \RobinP\classes\Post;
+use \PDO;
 
 class PostManager extends Manager
 {	
@@ -22,38 +23,38 @@ class PostManager extends Manager
 	public function getPost($id)
 	{
 		$req = $this->db->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts WHERE id = :id");
-		$req->bindValue(":id", $id);
+		$req->bindValue(":id", $id, PDO::PARAM_INT);
 		$req->execute();
 		$data = $req->fetch();
 
 		return new Post($data);
 	}
 
-	public function deletePost(Post $post)
+	public function addPost(Post $post)
 	{
-		$this->db->exec("DELETE FROM posts WHERE id = " . $post->id());
+		$req = $this->db->prepare("INSERT INTO posts(title, content, creation_date, author) VALUES(:title, :content, NOW(), :author)");
+
+		$req->bindValue(":title", $post->getTitle(), PDO::PARAM_STR);
+		$req->bindValue(":content", $post->getContent(), PDO::PARAM_STR);
+		$req->bindValue(":author", $post->getAuthor(), PDO::PARAM_STR);
+
+		$req->execute();
 	}
 
 	public function updatePost(Post $post)
 	{	
 		$req = $this->db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :id");
 
-		$req->bindValue(":title", $post->getTitle());
-		$req->bindValue(":content", $post->getContent());
-		$req->bindValue(":id", $post->getId());
+		$req->bindValue(":title", $post->getTitle(), PDO::PARAM_STR);
+		$req->bindValue(":content", $post->getContent(), PDO::PARAM_STR);
+		$req->bindValue(":id", $post->getId(), PDO::PARAM_INT);
 
 		$req->execute();
 	}
 
-	public function addPost(Post $post)
+	public function deletePost(Post $post)
 	{
-		$req = $this->db->prepare("INSERT INTO posts(title, content, creation_date, author) VALUES(:title, :content, NOW(), :author)");
-
-		$req->bindValue(":title", $post->getTitle());
-		$req->bindValue(":content", $post->getContent());
-		$req->bindValue(":author", $post->getAuthor());
-
-		$req->execute();
+		$this->db->exec("DELETE FROM posts WHERE id = " . $post->getId());
 	}
 }
 

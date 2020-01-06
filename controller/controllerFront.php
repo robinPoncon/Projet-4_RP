@@ -2,6 +2,7 @@
 
 use \RobinP\model\PostManager;
 use \RobinP\model\CommentManager;
+use \RobinP\classes\Comment;
 
 function listPosts()
 {
@@ -26,12 +27,10 @@ function addComment($postId, $author, $comment)
 {
 	$commentManager = new CommentManager();
 
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $newCom = new Comment(["post_id" => $postId, "author" => $author, "comment" => $comment]);
+    $affectedLines = $commentManager->addComment($newCom);
 
-    if ($affectedLines === false) {
-        throw new Exception("Impossible d'ajouter le commentaire !");
-    }
-    else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
+    var_dump($newCom);
+
+    header('Location: index.php?action=post&id=' . $postId);
+} 
