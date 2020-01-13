@@ -12,7 +12,7 @@ class CommentManager extends Manager
     {
         $comments = [];
 
-        $req = $this->db->prepare("SELECT id, post_id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS comment_date FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC");
+        $req = $this->db->prepare("SELECT id, post_id, author, comment, comment_date FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC");
         $req->bindValue(":post_id", $postId, PDO::PARAM_INT);
         $req->execute();
 
@@ -25,13 +25,14 @@ class CommentManager extends Manager
 
     public function addComment(Comment $comment)
     {
-        $req = $this->db->prepare("INSERT INTO comment(post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())");
+
+        $req = $this->db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())");
 
         $req->bindValue(":post_id", $comment->getPostId(), PDO::PARAM_INT);
         $req->bindValue(":author", $comment->getAuthor(), PDO::PARAM_STR);
         $req->bindValue(":comment", $comment->getComment(), PDO::PARAM_STR);
 
-        $req->execute();
+        return $req->execute();
     }
 
     public function updateComment(Comment $comment)

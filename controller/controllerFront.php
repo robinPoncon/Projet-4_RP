@@ -25,12 +25,11 @@ function post()
 
 function addComment($postId, $author, $comment)
 {
+
 	$commentManager = new CommentManager();
 
     $newCom = new Comment(["post_id" => $postId, "author" => $author, "comment" => $comment]);
     $affectedLines = $commentManager->addComment($newCom);
-
-    var_dump($newCom);
 
     header('Location: index.php?action=post&id=' . $postId);
 } 

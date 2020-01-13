@@ -7,7 +7,7 @@ require('controller/controllerFront.php');
 
 try
 {
-	var_dump($_SERVER);
+	
 	if (isset($_GET['action'])) {
 	    if ($_GET['action'] == 'listPosts') {
 	        listPosts();
@@ -38,19 +38,25 @@ try
 	            throw new Exception('Aucun identifiant de billet envoyé');
 	        }
 	    }
-	    elseif ($_GET['action'] == 'addComment') {
+	    elseif (isset($_POST)) {
+
+	    	
 	        if (isset($_POST["addComment"]))
 	        {
 	        	
 	        	$comment = $_POST["addComment"];
-	        	if (isset($comment['id']) && $comment['id'] > 0) {
-	            	if (!empty($comment['author']) && !empty($comment['comment'])) {
 
-	                	addComment($comment['id'], $comment['author'], $comment['comment']);
-	            	}
+	        	if (isset($comment['id']) && $comment['id'] > 0) {
+	        		
+	        		
+	            	if (!empty($comment['author']) && !empty($comment['content'])) {
+
+	            		addComment($comment['id'], $comment['author'], $comment['content']);
+	                	
+	            	} 
 	            else {
 	                throw new Exception('Tous les champs ne sont pas remplis !');
-	            }
+	            } 
 	        }
 	        else {
 	            throw new Exception('Aucun identifiant de billet envoyé');
