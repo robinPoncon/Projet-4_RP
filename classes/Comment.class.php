@@ -36,7 +36,7 @@ class Comment extends Entity
 	public function getCommentDate()
 	{
 		$time = strtotime($this->comment_date);
-		$myFormatForView = date("m/d/y g:i A", $time);
+		$myFormatForView = date("d/m/Y à H:i:s", $time);
 		return $myFormatForView;
 	}
 

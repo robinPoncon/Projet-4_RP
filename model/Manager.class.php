@@ -12,7 +12,7 @@ Class Manager
 	}
 
 	protected function dbConnect()
-	{
+	{	
 		$this->db = new \PDO("mysql:host=localhost;dbname=Projet-4;charset=utf8", "root", "root");
 		return $this->db;
 	}
