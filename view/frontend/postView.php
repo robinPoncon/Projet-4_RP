@@ -20,22 +20,18 @@
 
     <h2>Commentaires</h2>
 
-    <form action="/Projet-4_RP/index.php?action=addComment" method="post">
+    <form action="index.php?action=addComment" method="post">
         <input type="hidden" name="addComment[id]" value="<?= $post->getId(); ?>">
-            <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="addComment[author]" />
-            <label for="content">Commentaire</label><br />
-            <textarea id="content" name="addComment[content]"></textarea>
-        <?php 
-
-        /*<div>
+        <div class="form-group">
+            <label for="author">Auteur</label><br/>
+            <input class="form-control" type="text" id="author" name="addComment[author]"/>
         </div>
-        <div>
-            
+        <div class="form-group">
+            <label for="comment">Commentaire</label><br/>
+            <textarea class="form-control" id="comment" name="addComment[comment]"></textarea>
         </div>
-        <div>
-        </div> */ ?>
-        <button type="submit" formmethod="post" formaction="/Projet-4_RP/index.php?action=addComment">Submit</button> 
+        
+        <button type="submit">Submit</button> 
     </form>
 
     <?php
