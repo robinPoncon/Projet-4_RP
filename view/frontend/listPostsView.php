@@ -2,25 +2,23 @@
 
 <?php ob_start(); ?>
 
-<header>
+<header class="d-flex justify-content-between">
     <h1>Jean Forteroche</h1>
 
-    <form action="index.php?action=admin" method="post">
+    <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>
-            <label for="user"> Utilisateur </label>
-            <input type="text" id="user" name="user">
+            <input class="connect" type="text" id="user" name="user" placeholder="Utilisateur">
         </div>
         <div>
-            <label for="password"> Mot de passe </label>
-            <input type="password" name="password">
+            <input class="connect" type="password" name="password" placeholder="Mot de passe">
         </div>
         <div>
-            <input type="submit" value="Connexion">
+            <input class="connect" type="submit" value="Connexion">
         </div>
     </form>
 </header>
 
-<h2>Billet simple pour l'Alaska</h1>
+<h2 class="position-absolute">Billet simple pour l'Alaska</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">
 
 
