@@ -1,7 +1,8 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
+<h1>Billet simple pour l'Alaska</h1>
+<img id="img-alaska" src="view/img/alaska.jpg">
 <p>Derniers billets du blog :</p>
 
 
