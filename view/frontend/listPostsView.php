@@ -1,9 +1,28 @@
 <?php $title = 'Mon blog'; ?>
 
 <?php ob_start(); ?>
-<h1>Billet simple pour l'Alaska</h1>
+
+<header>
+    <h1>Jean Forteroche</h1>
+
+    <form action="index.php?action=admin" method="post">
+        <div>
+            <label for="user"> Utilisateur </label>
+            <input type="text" id="user" name="user">
+        </div>
+        <div>
+            <label for="password"> Mot de passe </label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <input type="submit" value="Connexion">
+        </div>
+    </form>
+</header>
+
+<h2>Billet simple pour l'Alaska</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">
-<p>Derniers billets du blog :</p>
+
 
 
 <?php
