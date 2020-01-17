@@ -1,3 +1,8 @@
+body
+{
+	background-color: #57a9de !important;
+}
+
 #img-alaska
 {
 	width: 100%;
@@ -8,6 +13,22 @@
 .connect
 {
 	margin-right: 20px;
+	border-radius: 8px;
+	border: 2px #25568D solid;
+	background-color: white;
+	color: black;
+}
+
+#connexion:hover
+{
+	background-color: #57a9de;
+	color: white;
+}
+
+h1
+{
+	color: white;
+	margin-left: 10px;
 }
 
 h2
@@ -19,7 +40,74 @@ h2
 	padding: 20px;
 	border-radius: 20px;
 	color: white;
-	background-image: linear-gradient(to right, #57a9de, #25568D);
+	background-image: linear-gradient(#57a9de, #25568D);
 	border: 4px #DADDE2 solid; 
+}
+
+.news
+{
+	text-align: justify;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 18px;
+	border: 5px #25568D solid;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background-color: white;
+}
+
+#content
+{
+	padding-left: 5%;
+	padding-right: 5%;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+h3
+{
+	background-color: #25568D;
+	text-align: center;
+	color: white;
+	padding: 10px;
+}
+
+header
+{
+	background-image: linear-gradient(#25568D, #57a9de);
+}
+
+#icone
+{
+	width: 75px;
+	height: 50px;
+	border-radius: 20px;
+	top: -50px;
+	left: 500px;
+	position: relative;
+	background-color: #25568D;
+}
+
+#triangle
+{
+	width: 0px;
+	height: 0px;
+	border-top: 25px solid transparent;
+	border-bottom: 25px solid transparent;
+	border-left: 25px #25568D solid;
+	position: absolute;
+	top: 24px;
+	left: 15px;
+}
+
+#trait1
+{
+	width: 45px;
+	border-top: 2px white solid;
+	border-bottom: 2px white solid;
+	border-radius: 10px;
+	position: absolute;
+	top: 14px;
+	left: 14px;
 }
 

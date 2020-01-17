@@ -1,4 +1,4 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = "Billet simple pour l'Alaska"; ?>
 
 <?php ob_start(); ?>
 
@@ -7,13 +7,13 @@
 
     <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>
-            <input class="connect" type="text" id="user" name="user" placeholder="Utilisateur">
+            <input class="connect" type="text" id="user" name="user" placeholder=" Utilisateur">
         </div>
         <div>
-            <input class="connect" type="password" name="password" placeholder="Mot de passe">
+            <input class="connect" type="password" name="password" placeholder=" Mot de passe">
         </div>
         <div>
-            <input class="connect" type="submit" value="Connexion">
+            <input id="connexion" class="connect" type="submit" value="Connexion">
         </div>
     </form>
 </header>
@@ -32,14 +32,22 @@ foreach ($posts as $post)
     <div class="news">
         <h3>
             <?= htmlspecialchars($post->getTitle()) ?>
-            <em>le <?= $post->getCreationDate() ?></em>
+            <em> - Le <?= $post->getCreationDate() ?></em>
         </h3>
         
-        <p>
+        <p id="content">
             <?= nl2br(htmlspecialchars($post->getContent())) ?>
-            <br />
+        </p>
+        <p>
             <em><a href="index.php?action=post&amp;id= <?= $post->getId() ?>">Commentaires</a></em>
         </p>
+
+        <div id="icone">
+            <p id="trait1"></p>
+            <p id="trait2"></p>
+            <p id="trait3"></p>
+            <p id="triangle"></p>
+        </div>
     </div>
 <?php
 }
