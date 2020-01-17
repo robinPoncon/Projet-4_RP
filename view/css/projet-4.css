@@ -83,9 +83,26 @@ header
 	height: 50px;
 	border-radius: 20px;
 	top: -50px;
-	left: 500px;
-	position: relative;
+	left: 100px;
 	background-color: #25568D;
+	margin-top: 100px;
+	margin-bottom: 25px;
+}
+
+#icone:hover > #triangle
+{
+	border-left: 25px #57a9de solid;
+}
+
+#icone:hover
+{
+	background-color: #57a9de;
+}
+
+#icone:hover > #trait1, #icone:hover > #trait2, #icone:hover > #trait3
+{
+	border-top: 2px #25568D solid;
+	border-bottom: 2px #25568D solid;
 }
 
 #triangle
@@ -95,19 +112,45 @@ header
 	border-top: 25px solid transparent;
 	border-bottom: 25px solid transparent;
 	border-left: 25px #25568D solid;
-	position: absolute;
 	top: 24px;
 	left: 15px;
+	z-index: 1;
 }
 
 #trait1
+{
+	width: 35px;
+	border-top: 2px white solid;
+	border-bottom: 2px white solid;
+	border-radius: 10px;
+	position: absolute;
+	top: 14px;
+	left: 16px;
+	z-index: 2;
+}
+
+#trait2
 {
 	width: 45px;
 	border-top: 2px white solid;
 	border-bottom: 2px white solid;
 	border-radius: 10px;
 	position: absolute;
-	top: 14px;
-	left: 14px;
+	top: 24px;
+	left: 16px;
+	z-index: 2;
 }
+
+#trait3
+{
+	width: 25px;
+	border-top: 2px white solid;
+	border-bottom: 2px white solid;
+	border-radius: 10px;
+	position: absolute;
+	top: 34px;
+	left: 16px;
+	z-index: 2;
+}
+
 

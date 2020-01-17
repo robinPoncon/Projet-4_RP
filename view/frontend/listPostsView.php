@@ -38,15 +38,16 @@ foreach ($posts as $post)
         <p id="content">
             <?= nl2br(htmlspecialchars($post->getContent())) ?>
         </p>
-        <p>
-            <em><a href="index.php?action=post&amp;id= <?= $post->getId() ?>">Commentaires</a></em>
-        </p>
 
-        <div id="icone">
-            <p id="trait1"></p>
-            <p id="trait2"></p>
-            <p id="trait3"></p>
-            <p id="triangle"></p>
+        <div>
+            <a class="test" href="index.php?action=post&amp;id= <?= $post->getId() ?>">
+                <div class="position-relative" id="icone">
+                    <p class="position-absolute" id="trait1"></p>
+                    <p class="position-absolute" id="trait2"></p>
+                    <p class="position-absolute" id="trait3"></p>
+                    <p class="position-absolute" id="triangle"></p>
+                </div>
+            </a>
         </div>
     </div>
 <?php
