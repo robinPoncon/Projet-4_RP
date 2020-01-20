@@ -25,21 +25,15 @@ class CommentManager extends Manager
 
     public function addComment(Comment $comment)
     {
-        try
-        {
-            $req = $this->db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())");
+ 
+        $req = $this->db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())");
 
-            $req->bindValue(":post_id", $comment->getPostId(), PDO::PARAM_INT);
-            $req->bindValue(":author", $comment->getAuthor(), PDO::PARAM_STR);
-            $req->bindValue(":comment", $comment->getComment(), PDO::PARAM_STR);
+        $req->bindValue(":post_id", $comment->getPostId(), PDO::PARAM_INT);
+        $req->bindValue(":author", $comment->getAuthor(), PDO::PARAM_STR);
+        $req->bindValue(":comment", $comment->getComment(), PDO::PARAM_STR);
 
-            return $req->execute();
-        }
-
-        catch(PDOException $e)
-        {
-            echo "Erreur SQL : " . $e->getMessage();
-        }
+        return $req->execute();
+        
     }
 
     public function updateComment(Comment $comment)

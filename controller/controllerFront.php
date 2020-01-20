@@ -29,7 +29,16 @@ function addComment($postId, $author, $comment)
 	$commentManager = new CommentManager();
 
     $newCom = new Comment(["post_id" => $postId, "author" => $author, "comment" => $comment]);
-    $affectedLines = $commentManager->addComment($newCom);
+    try
+    {
+        $affectedLines = $commentManager->addComment($newCom);
+    }
+
+        catch(Exception $e)
+        {
+            throw new Exception("Erreur SQL : " . $e->getMessage(), 1);
+              
+        }
 
     header('Location: index.php?action=post&id=' . $postId);
 } 

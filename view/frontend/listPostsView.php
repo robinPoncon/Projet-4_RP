@@ -24,7 +24,6 @@
 
 
 <?php
-//var_dump($posts);
 foreach ($posts as $post) 
 {
     
@@ -39,7 +38,7 @@ foreach ($posts as $post)
             <?= nl2br(htmlspecialchars($post->getContent())) ?>
         </p>
 
-        <div>
+        <div class="iconeComment">
             <a class="test" href="index.php?action=post&amp;id= <?= $post->getId() ?>">
                 <div class="position-relative" id="icone">
                     <p class="position-absolute" id="trait1"></p>
