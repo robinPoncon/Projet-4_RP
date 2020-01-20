@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 <header class="d-flex justify-content-between">
-    <h1>Jean Forteroche</h1>
+    <h1>Billet simple pour l'Alaska</h1>
 
     <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>
@@ -18,7 +18,7 @@
     </form>
 </header>
 
-<h2 class="position-absolute">Billet simple pour l'Alaska</h1>
+<h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">
 
 
@@ -35,7 +35,7 @@ foreach ($posts as $post)
             <em> - Le <?= $post->getCreationDate() ?></em>
         </h3>
         
-        <p id="content">
+        <p class="content">
             <?= nl2br(htmlspecialchars($post->getContent())) ?>
         </p>
 

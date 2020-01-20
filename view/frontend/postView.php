@@ -2,8 +2,21 @@
 
 <?php ob_start(); ?>
 
-	<h1>Mon super blog !</h1>
-	<p><a href="index.php">Retour à la liste des billets</a></p>
+	<header class="d-flex justify-content-between">
+    <h1>Jean Forteroche</h1>
+
+    <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
+        <div>
+            <input class="connect" type="text" id="user" name="user" placeholder=" Utilisateur">
+        </div>
+        <div>
+            <input class="connect" type="password" name="password" placeholder=" Mot de passe">
+        </div>
+        <div>
+            <input id="connexion" class="connect" type="submit" value="Connexion">
+        </div>
+    </form>
+</header>
 
 	<div class="news">
 		
@@ -12,13 +25,15 @@
 			<em>le <?= $post->getCreationDAte() ?></em>
         </h3>
             
-        <p>
+        <p class="content">
             <?= nl2br(htmlspecialchars($post->getContent())) ?>
         </p>
 
     </div>
 
-    <h2>Commentaires</h2>
+    <a href="index.php?action=listPosts"> Retour à l'accueil</a>
+
+    <h4>Ajouter un commentaire</h4>
 
     <form action="index.php?action=addComment" method="post">
         <input type="hidden" name="addComment[id]" value="<?= $post->getId(); ?>">
@@ -37,9 +52,11 @@
     <?php
         foreach ($comments as $comment)
     	{
-    ?>
-            <p><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?></p>
-            <p><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
+    ?>  
+        <div id="commentaire">
+            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?></p>
+            <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
+        </div>
     <?php
         }
     ?>

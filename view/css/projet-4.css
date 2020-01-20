@@ -33,9 +33,9 @@ h1
 
 h2
 {
-	top: 335px;
+	top: 301px;
 	left: 50%;
-	margin-left: -201px;
+	margin-left: -378px;
 	z-index: 1000;
 	padding: 20px;
 	border-radius: 20px;
@@ -56,7 +56,7 @@ h2
 	background-color: white;
 }
 
-#content
+.content
 {
 	padding-left: 5%;
 	padding-right: 5%;
@@ -153,4 +153,44 @@ header
 	z-index: 2;
 }
 
+#commentaire
+{
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	background-color: white;
+}
+
+h4
+{
+	background-color: #25568D;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 50px !important;
+	border-radius: 10px;
+}
+
+#titleComment
+{
+	background-color: #25568D;
+	text-align: center;
+	color: white;
+	padding: 10px;
+}
+
+#contentComment
+{
+	text-align: center;
+}
+
+a
+{
+	color: white;
+}
 
