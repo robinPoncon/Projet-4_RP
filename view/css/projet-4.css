@@ -29,6 +29,7 @@ h1
 {
 	color: white;
 	margin-left: 10px;
+	font-family: dancing_script_otregular, arial, sans-sérif;
 }
 
 h2
@@ -54,6 +55,12 @@ h2
 	margin-top: 50px;
 	margin-bottom: 50px;
 	background-color: white;
+}
+
+.news p 
+{
+	font-family: dancing_script_otregular, sans-sérif;
+	font-size: 1.5em;
 }
 
 .content
@@ -171,10 +178,6 @@ h4
 	text-align: center;
 	color: white;
 	padding: 10px;
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 50px !important;
-	border-radius: 10px;
 }
 
 #titleComment
@@ -195,8 +198,68 @@ a
 	color: white;
 }
 
+a h1:hover
+{
+	font-weight: bold;
+}
+
 .iconeComment
 {
 	display: inline;
 }
+
+#ajouterComment
+{
+	width: 50%;
+	margin: auto;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	margin-bottom: 50px;
+	background-color: #25568D;
+}
+
+#envoyer
+{
+	background-color: white;
+	border: 2px white solid;
+	color: #25568D;
+	width: 30% !important;
+}
+
+#envoyer:hover
+{
+	background-color: #25568D;
+	color: white;
+}
+
+.form-control
+{
+	width: 90% !important;
+	margin: auto !important;
+}
+
+
+@font-face {
+    font-family: 'dancing_script_otregular';
+    src: url('../font/dancingscript-regular-webfont.eot');
+    src: url('../font/dancingscript-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/dancingscript-regular-webfont.woff2') format('woff2'),
+         url('../font/dancingscript-regular-webfont.woff') format('woff'),
+         url('../font/dancingscript-regular-webfont.ttf') format('truetype'),
+         url('../font/dancingscript-regular-webfont.svg#dancing_script_otregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+
+
+
+
+
+
+
 

@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 	<header class="d-flex justify-content-between">
-    <h1>Jean Forteroche</h1>
+    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
 
     <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>
@@ -31,23 +31,23 @@
 
     </div>
 
-    <a href="index.php?action=listPosts"> Retour à l'accueil</a>
-
-    <h4>Ajouter un commentaire</h4>
-
-    <form action="index.php?action=addComment" method="post">
-        <input type="hidden" name="addComment[id]" value="<?= $post->getId(); ?>">
-        <div class="form-group">
-            <label for="author">Auteur</label><br/>
-            <input class="form-control" type="text" id="author" name="addComment[author]"/>
-        </div>
-        <div class="form-group">
-            <label for="comment">Commentaire</label><br/>
-            <textarea class="form-control" id="comment" name="addComment[comment]"></textarea>
-        </div>
+    <div id="ajouterComment">
         
-        <button type="submit">Submit</button> 
-    </form>
+        <h4>Ajouter un commentaire</h4>
+
+        <form action="index.php?action=addComment" method="post">
+            <input type="hidden" name="addComment[id]" value="<?= $post->getId(); ?>">
+            <div class="form-group">
+                <input class="form-control" type="text" id="author" name="addComment[author]" placeholder="Pseudo"/>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="comment" name="addComment[comment]" placeholder="Votre commentaire"></textarea>
+            </div>
+            
+            <button class="form-control" id="envoyer" type="submit">Envoyer</button> 
+            
+        </form>
+    </div>
 
     <?php
         foreach ($comments as $comment)
