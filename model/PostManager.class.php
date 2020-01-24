@@ -12,7 +12,10 @@ class PostManager extends Manager
 	{
 		$posts = [];
 
-		$req = $this->db->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
+		$datefr = $this->db->query("SET lc_time_names = 'fr_FR'");
+		$datefr->execute();
+
+		$req = $this->db->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d %M %Y à %Hh%imin%ss') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 5");
 		while ($data = $req->fetch())
 		{
 			$posts[] = new Post($data);

@@ -35,7 +35,7 @@ foreach ($posts as $post)
         </h3>
         
         <p class="content">
-            <?= nl2br(htmlspecialchars($post->getContent())) ?>
+            <?= substr(htmlspecialchars($post->getContent()), 0, 450) . " ... " . "<a id='contentArticle' href=" . "index.php?action=post&amp;id=" . $post->getId() . "> Lire la suite </a>" ?>
         </p>
 
         <div class="iconeComment">

@@ -96,7 +96,7 @@ header
 	top: -50px;
 	left: 100px;
 	background-color: #25568D;
-	margin-top: 100px;
+	margin-top: 50px;
 	margin-bottom: 25px;
 	display: inline-block;
 }
@@ -241,6 +241,22 @@ a h1:hover
 	width: 90% !important;
 	margin: auto !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @font-face {
