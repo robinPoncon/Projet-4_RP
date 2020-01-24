@@ -36,13 +36,14 @@ h2
 {
 	top: 301px;
 	left: 50%;
-	margin-left: -378px;
+	margin-left: -314px;
 	z-index: 1000;
 	padding: 20px;
 	border-radius: 20px;
 	color: white;
 	background-image: linear-gradient(#57a9de, #25568D);
 	border: 4px #DADDE2 solid; 
+	font-family: dancing_script_otregular, sans-sérif;
 }
 
 .news
@@ -59,8 +60,9 @@ h2
 
 .news p 
 {
-	font-family: dancing_script_otregular, sans-sérif;
-	font-size: 1.5em;
+	font-family: latoregular, sans-sérif;
+	font-size: 1.2em;
+	font-style: italic;
 }
 
 .content
@@ -77,6 +79,8 @@ h3
 	text-align: center;
 	color: white;
 	padding: 10px;
+	font-family: dancing_script_otregular, sans-sérif;
+	font-weight: bold !important;
 }
 
 header
@@ -163,8 +167,8 @@ header
 
 #commentaire
 {
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-left: 10%;
+	margin-right: 10%;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border: 5px #25568D solid;
@@ -247,6 +251,18 @@ a h1:hover
          url('../font/dancingscript-regular-webfont.woff') format('woff'),
          url('../font/dancingscript-regular-webfont.ttf') format('truetype'),
          url('../font/dancingscript-regular-webfont.svg#dancing_script_otregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latoregular';
+    src: url('../font/lato-regular-webfont.eot');
+    src: url('../font/lato-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/lato-regular-webfont.woff2') format('woff2'),
+         url('../font/lato-regular-webfont.woff') format('woff'),
+         url('../font/lato-regular-webfont.ttf') format('truetype'),
+         url('../font/lato-regular-webfont.svg#latoregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
