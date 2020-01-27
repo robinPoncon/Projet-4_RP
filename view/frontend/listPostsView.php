@@ -5,9 +5,9 @@
 <header class="d-flex justify-content-between">
     <h1>Billet simple pour l'Alaska</h1>
 
-    <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
+    <!-- <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>
-            <input class="connect" type="text" id="user" name="user" placeholder=" Utilisateur">
+            <input class="connect" type="text" id="user" name="pseudo" placeholder=" Utilisateur">
         </div>
         <div>
             <input class="connect" type="password" name="password" placeholder=" Mot de passe">
@@ -16,11 +16,26 @@
             <input id="connexion" class="connect" type="submit" value="Connexion">
         </div>
     </form>
+-->
 </header>
 
 <h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">
 
+<form action="index.php?action=addAdmin" method="post" class="d-flex align-items-center">
+        <div>
+            <input class="connect" type="text" id="user" name="addAdmin[pseudo]" placeholder=" Utilisateur">
+        </div>
+        <div>
+            <input class="connect" type="password" name="addAdmin[password]" placeholder=" Mot de passe">
+        </div>
+        <div>
+            <input type="text" name="addAdmin[email]" placeholder=" Email">
+        </div>
+        <div>
+            <input id="connexion" class="connect" type="submit" value="Connexion">
+        </div>
+</form>
 
 
 <?php

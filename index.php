@@ -24,7 +24,7 @@ try
 	    }
 	    elseif (isset($_POST)) {
 
-	        if (isset($_POST["addComment"]))
+	        /*if (isset($_POST["addComment"]))
 	        {
 	        	$comment = $_POST["addComment"];
 
@@ -47,6 +47,22 @@ try
 	        else
 	        {
 	        	throw new Exception("Formulaire mal remplis");
+	        }*/
+
+	        if (isset($_POST["addAdmin"]))
+	        {
+	        	$admin = $_POST["addAdmin"];
+
+	        	
+	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]) && !empty($admin["email"]))
+	        	{
+	        		addAdmin($admin["pseudo"], password_hash($admin['password'], PASSWORD_DEFAULT), $admin["email"]);
+	        	}
+	        	else 
+	            {
+	                throw new Exception('Tous les champs ne sont pas remplis !');
+	           	} 
+	        	
 	        }
 	    }
 	}

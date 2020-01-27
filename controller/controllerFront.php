@@ -3,6 +3,8 @@
 use \RobinP\model\PostManager;
 use \RobinP\model\CommentManager;
 use \RobinP\classes\Comment;
+use \RobinP\model\AdminManager;
+use \RobinP\classes\Admin;
 
 function listPosts()
 {
@@ -29,16 +31,17 @@ function addComment($postId, $author, $comment)
 	$commentManager = new CommentManager();
 
     $newCom = new Comment(["post_id" => $postId, "author" => $author, "comment" => $comment]);
-    try
-    {
-        $affectedLines = $commentManager->addComment($newCom);
-    }
-
-        catch(Exception $e)
-        {
-            throw new Exception("Erreur SQL : " . $e->getMessage(), 1);
-              
-        }
-
+    
+    $commentManager->addComment($newCom);
+    
     header('Location: index.php?action=post&id=' . $postId);
 } 
+
+function addAdmin($pseudo, $password, $email)
+{
+    $adminManager = new AdminManager();
+
+    $newAdmin = new Admin(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
+
+    $adminManager->addAdmin($newAdmin);
+}
