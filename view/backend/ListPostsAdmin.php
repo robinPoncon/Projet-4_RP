@@ -2,22 +2,7 @@
 
 <?php ob_start(); ?>
 
-<header class="d-flex justify-content-between">
-    <h1>Billet simple pour l'Alaska</h1>
-
-    <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
-        <div>
-            <input class="connect" type="text" id="user" name="admin[pseudo]" placeholder=" Utilisateur">
-        </div>
-        <div>
-            <input class="connect" type="password" name="admin[password]" placeholder=" Mot de passe">
-        </div>
-        <div>
-            <input id="connexion" class="connect" type="submit" value="Connexion">
-        </div>
-    </form>
-
-</header>
+<p> Test compte ADMIN</p>
 
 <h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">
@@ -56,4 +41,4 @@ foreach ($posts as $post)
 ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template-page.php'); ?>
+<?php require('view/frontend/template-page.php'); ?>

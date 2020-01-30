@@ -49,7 +49,7 @@ try
 	        	throw new Exception("Formulaire mal remplis");
 	        }*/
 
-	        if (isset($_POST["addAdmin"]))
+	        /*if (isset($_POST["addAdmin"]))
 	        {
 	        	$admin = $_POST["addAdmin"];
 
@@ -63,10 +63,26 @@ try
 	                throw new Exception('Tous les champs ne sont pas remplis !');
 	           	} 
 	        	
+	        } */
+
+	        if (isset($_POST["admin"]))
+	        {
+	        	$admin = $_POST["admin"];
+
+	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]))
+	        	{
+
+	        		adminConnect($admin["pseudo"], $admin["password"]);
+	        		
+
+
+	        	}
 	        }
+
 	    }
 	}
-	else {
+	else 
+	{
 	    listPosts();
 	}
 }

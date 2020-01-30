@@ -12,6 +12,7 @@ function listPosts()
     $posts = $postManager->getPosts();
 
     require 'view/frontend/listPostsView.php';
+    
 }
 
 function post()
@@ -44,4 +45,26 @@ function addAdmin($pseudo, $password, $email)
     $newAdmin = new Admin(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
 
     $adminManager->addAdmin($newAdmin);
+}
+
+function adminConnect($pseudo, $password)
+{
+    $adminManager = new AdminManager();
+    
+    $admin = $adminManager->getAdmin($pseudo);
+
+    $isPasswordCorrect = password_verify($password, $admin->getPassword());
+
+    //var_dump($admin->getPassword());
+
+    if ($isPasswordCorrect)
+    {
+        require "view/backend/ListPostsAdmin.php";
+    }
+
+    else
+    {
+        throw new Exception("Mauvais login ou mot de passe", 1);
+        
+    }
 }

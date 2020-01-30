@@ -51,14 +51,17 @@ class Admin extends Entity
 	public function setPassword($password)
 	{
 		
-			return $this->password = $password;
+		return $this->password = $password;
+		
 		
 	}
 
 	public function setEmail($email)
 	{
-		
+		if (is_string($email))
+		{
 			return $this->email = $email;
+		}
 		
 	}
 }
