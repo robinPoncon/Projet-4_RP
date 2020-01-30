@@ -2,7 +2,12 @@
 
 <?php ob_start(); ?>
 
-<p> Test compte ADMIN</p>
+<header class="d-flex justify-content-between">
+    <h1>Billet simple pour l'Alaska</h1>
+
+    <p>Bienvenue Admin</p>
+
+</header>
 
 <h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">

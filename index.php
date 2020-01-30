@@ -72,7 +72,7 @@ try
 	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]))
 	        	{
 
-	        		adminConnect($admin["pseudo"], $admin["password"]);
+	        		adminConnectAccueil($admin["pseudo"], $admin["password"]);
 	        		
 
 

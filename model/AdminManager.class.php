@@ -8,10 +8,9 @@ use \PDO;
 
 class AdminManager extends Manager
 {
-	public function getAdmin($pseudo)
+	public function getAdmin()
 	{
-		$req = $this->db->prepare("SELECT id, pseudo, password, email FROM admin WHERE pseudo = :pseudo");
-		$req->bindValue(":pseudo", $pseudo, PDO::PARAM_STR);
+		$req = $this->db->prepare("SELECT id, pseudo, password, email FROM admin");
 		$req->execute();
 		$data = $req->fetch();
 

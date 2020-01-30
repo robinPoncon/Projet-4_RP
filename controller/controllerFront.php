@@ -47,19 +47,22 @@ function addAdmin($pseudo, $password, $email)
     $adminManager->addAdmin($newAdmin);
 }
 
-function adminConnect($pseudo, $password)
+function adminConnectAccueil($pseudo, $password)
 {
     $adminManager = new AdminManager();
     
-    $admin = $adminManager->getAdmin($pseudo);
+    $admin = $adminManager->getAdmin();
 
     $isPasswordCorrect = password_verify($password, $admin->getPassword());
 
-    //var_dump($admin->getPassword());
+    //var_dump($admin);
 
-    if ($isPasswordCorrect)
+    if ($isPasswordCorrect && $pseudo === $admin->getPseudo())
     {
+        $postManager = new PostManager();
+        $posts = $postManager->getPosts();
         require "view/backend/ListPostsAdmin.php";
+        
     }
 
     else
