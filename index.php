@@ -9,12 +9,15 @@ try
 {
 	
 	if (isset($_GET['action'])) {
-	    if ($_GET['action'] == 'listPosts') {
+	    if ($_GET['action'] == 'listPosts') 
+	    {
 	        listPosts();
 	    }
-	    elseif ($_GET['action'] == 'post') {
+	    elseif ($_GET['action'] == 'post') 
+	    {
 
-	    	if (isset($_GET['id']) && $_GET['id'] > 0) {
+	    	if (isset($_GET['id']) && $_GET['id'] > 0) 
+	    	{
 	            post();
 	        }
 	        else 
@@ -22,18 +25,22 @@ try
 	            throw new Exception('Aucun identifiant de billet envoyé');
 	        }
 	    }
-	    elseif (isset($_POST)) {
 
-	        /*if (isset($_POST["addComment"]))
+	    elseif (isset($_POST)) 
+	    {
+
+	        if (isset($_POST["addComment"]))
 	        {
 	        	$comment = $_POST["addComment"];
 
-	        	if (isset($comment['id']) && $comment['id'] > 0) {
+	        	if (isset($comment['id']) && $comment['id'] > 0) 
+	        	{
 	        		
-	            	if (!empty($comment['author']) && !empty($comment['comment'])) {
-
+	            	if (!empty($comment['author']) && !empty($comment['comment'])) 
+	            	{
 	            		addComment($comment['id'], $comment['author'], $comment['comment']);
 	            	} 
+
 	            	else 
 	            	{
 	                	throw new Exception('Tous les champs ne sont pas remplis !');
@@ -44,39 +51,20 @@ try
 	            	throw new Exception('Aucun identifiant de billet envoyé');
 	        	}
 	    	}
-	        else
-	        {
-	        	throw new Exception("Formulaire mal remplis");
-	        }*/
 
-	        /*if (isset($_POST["addAdmin"]))
-	        {
-	        	$admin = $_POST["addAdmin"];
-
-	        	
-	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]) && !empty($admin["email"]))
-	        	{
-	        		addAdmin($admin["pseudo"], password_hash($admin['password'], PASSWORD_DEFAULT), $admin["email"]);
-	        	}
-	        	else 
-	            {
-	                throw new Exception('Tous les champs ne sont pas remplis !');
-	           	} 
-	        	
-	        } */
-
-	        if (isset($_POST["admin"]))
+	        elseif (isset($_POST["admin"]))
 	        {
 	        	$admin = $_POST["admin"];
 
 	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]))
 	        	{
-
 	        		adminConnectAccueil($admin["pseudo"], $admin["password"]);
-	        		
-
-
 	        	}
+	        }
+
+	        else
+	        {
+	        	throw new Exception("Donnée formulaire non attendue");
 	        }
 
 	    }

@@ -61,8 +61,7 @@ function adminConnectAccueil($pseudo, $password)
     {
         $postManager = new PostManager();
         $posts = $postManager->getPosts();
-        require "view/backend/ListPostsAdmin.php";
-        
+        require "view/backend/ListPostsAdmin.php"; 
     }
 
     else
