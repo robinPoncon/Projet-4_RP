@@ -26,10 +26,33 @@ try
 	        }
 	    }
 
+	    elseif ($_GET['action'] == "Compte")
+	    {
+	    	espaceCompte();
+	    }
+
+	    elseif ($_GET["action"] == "Deconnexion")
+	    {
+	    	adminDeconnect();
+	    }
+
 	    elseif (isset($_POST)) 
 	    {
+	    	if (isset($_POST["admin"]))
+	        {
+	        	$admin = $_POST["admin"];
 
-	        if (isset($_POST["addComment"]))
+	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]))
+	        	{
+	        		adminConnectAccueil($admin["pseudo"], $admin["password"]);
+	        	}
+	        	else
+	        	{
+	        		throw new Exception("Mauvais login ou mot de passe");
+	        	}
+	        }
+
+	        elseif (isset($_POST["addComment"]))
 	        {
 	        	$comment = $_POST["addComment"];
 
@@ -51,16 +74,6 @@ try
 	            	throw new Exception('Aucun identifiant de billet envoyé');
 	        	}
 	    	}
-
-	        elseif (isset($_POST["admin"]))
-	        {
-	        	$admin = $_POST["admin"];
-
-	        	if (!empty($admin["pseudo"]) && !empty($admin["password"]))
-	        	{
-	        		adminConnectAccueil($admin["pseudo"], $admin["password"]);
-	        	}
-	        }
 
 	        else
 	        {

@@ -59,6 +59,9 @@ function adminConnectAccueil($pseudo, $password)
 
     if ($isPasswordCorrect && $pseudo === $admin->getPseudo())
     {
+        session_start();
+        $_SESSION['pseudo'] = $admin->getPseudo();
+
         $postManager = new PostManager();
         $posts = $postManager->getPosts();
         require "view/backend/ListPostsAdmin.php"; 
@@ -70,3 +73,22 @@ function adminConnectAccueil($pseudo, $password)
         
     }
 }
+
+function espaceCompte()
+{
+    require "view/backend/monCompte.php";
+}
+
+function adminDeconnect()
+{
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+
+    listPosts();
+}
+
+
+
+
+

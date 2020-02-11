@@ -1,6 +1,11 @@
-<?php $title = "Billet simple pour l'Alaska"; ?>
+<?php 
 
-<?php ob_start(); ?>
+    $title = "Billet simple pour l'Alaska";
+    
+    session_start();
+
+    ob_start(); 
+?>  
 
 <header class="d-flex justify-content-between">
     <h1>Billet simple pour l'Alaska</h1>
@@ -38,7 +43,7 @@ foreach ($posts as $post)
         </p>
 
         <div class="iconeComment">
-            <a class="test" href="index.php?action=post&amp;id= <?= $post->getId() ?>">
+            <a class="test" href="index.php?action=post&amp;id=<?= $post->getId() ?>">
                 <div class="position-relative" id="icone">
                     <p class="position-absolute" id="trait1"></p>
                     <p class="position-absolute" id="trait2"></p>

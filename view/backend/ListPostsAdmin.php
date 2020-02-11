@@ -1,12 +1,14 @@
-<?php $title = "Billet simple pour l'Alaska"; ?>
-
-<?php ob_start(); ?>
+<?php $title = "Billet simple pour l'Alaska";
+    ob_start(); 
+?>
 
 <header class="d-flex justify-content-between">
     <h1>Billet simple pour l'Alaska</h1>
-
-    <p>Bienvenue Admin</p>
-
+    <div id="admin" class="d-flex align-items-center">
+        <p>Bienvenue <?= ucfirst($_SESSION["pseudo"]) . " !" ?></p>
+        <a href="index.php?action=Compte"> Mon compte </a>
+        <a href="index.php?action=Deconnexion"> Deconnexion </a>
+    </div>
 </header>
 
 <h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
@@ -28,7 +30,7 @@ foreach ($posts as $post)
         </p>
 
         <div class="iconeComment">
-            <a class="test" href="index.php?action=post&amp;id= <?= $post->getId() ?>">
+            <a class="test" href="index.php?action=post&amp;id=<?= $post->getId() ?>">
                 <div class="position-relative" id="icone">
                     <p class="position-absolute" id="trait1"></p>
                     <p class="position-absolute" id="trait2"></p>

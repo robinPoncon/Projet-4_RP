@@ -1,6 +1,7 @@
-<?php $title = htmlspecialchars($post->getTitle()); ?>
+<?php $title = htmlspecialchars($post->getTitle());
 
-<?php ob_start(); ?>
+    ob_start(); 
+?>
 
 	<header class="d-flex justify-content-between">
     <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
@@ -54,7 +55,7 @@
     	{
     ?>  
         <div id="commentaire">
-            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?></p>
+            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> <a href="#"><button id="signaler"> Signaler </button></a> </p>
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
         </div>
     <?php
