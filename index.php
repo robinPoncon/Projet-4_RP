@@ -52,6 +52,20 @@ try
 	        	}
 	        }
 
+	        elseif (isset($_POST["changeMDP"]))
+	        {
+	        	$changeMDP = $_POST["changeMDP"];
+
+	        	if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
+	        	{
+	        		$test = changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
+	        	}
+	        	else
+	        	{
+	        		throw new Exception(" test Vérifier les mots de passe saisis");	
+	        	}
+	        }
+
 	        elseif (isset($_POST["addComment"]))
 	        {
 	        	$comment = $_POST["addComment"];

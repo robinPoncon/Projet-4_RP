@@ -88,6 +88,28 @@ function adminDeconnect()
     listPosts();
 }
 
+function changePassword($actualPassword, $newPassword, $verifNewPassword)
+{
+    $adminManager = new AdminManager();
+
+    $admin = $adminManager->getAdmin();
+
+    $newMDPAdmin = new Admin(["password" => password_hash($newPassword, PASSWORD_DEFAULT)]);
+
+    $isPasswordCorrect = password_verify($actualPassword, $admin->getPassword());
+
+    if ($isPasswordCorrect && $newPassword === $verifNewPassword)
+    {
+        $adminManager->updateMDPAdmin($newMDPAdmin);
+
+        listPosts();
+    }
+    else
+    {
+        throw new Exception("Erreur ! Vérifier les mots de passe saisis");
+    }
+}
+
 
 
 

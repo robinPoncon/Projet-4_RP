@@ -29,4 +29,13 @@ class AdminManager extends Manager
         return $req->execute();
         
     }
+
+    public function updateMDPAdmin(Admin $admin)
+	{	
+		$req = $this->db->prepare("UPDATE admin SET password = :password WHERE id = 1");
+
+		$req->bindValue(":password", $admin->getPassword(), PDO::PARAM_STR);
+
+		$req->execute();
+	}
 }
