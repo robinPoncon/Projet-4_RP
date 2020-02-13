@@ -4,14 +4,14 @@
 ?>
 
 	<header class="d-flex justify-content-between">
-    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
+    <a href="index.php?action=admin" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
 
     <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>
-            <input class="connect" type="text" id="user" name="user" placeholder=" Utilisateur">
+            <input class="connect" type="text" id="user" name="admin[pseudo]" placeholder=" Utilisateur">
         </div>
         <div>
-            <input class="connect" type="password" name="password" placeholder=" Mot de passe">
+            <input class="connect" type="password" name="admin[password]" placeholder=" Mot de passe">
         </div>
         <div>
             <input id="connexion" class="connect" type="submit" value="Connexion">

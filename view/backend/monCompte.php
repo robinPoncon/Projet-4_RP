@@ -6,7 +6,7 @@
 ?>
 
 <header class="d-flex justify-content-between">
-    <h1>Billet simple pour l'Alaska</h1>
+    <a href="index.php?action=admin" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
     <div id="admin" class="d-flex align-items-center">
         <p>Bienvenue <?= ucfirst($_SESSION["pseudo"]) . " !" ?></p>
         <a href="index.php?action=Deconnexion"> Deconnexion </a>
