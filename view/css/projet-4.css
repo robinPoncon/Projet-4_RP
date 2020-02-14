@@ -283,7 +283,7 @@ a h1:hover
 	margin-top: -14px;
 }
 
-#changeMDP
+#changeMDP, #changePseudo, #changeEmail
 {
 	padding-left: 20px;
 	padding-top: 20px;

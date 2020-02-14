@@ -1,10 +1,12 @@
 <?php $title = htmlspecialchars($post->getTitle());
+    
+    session_start();
 
     ob_start(); 
 ?>
 
 	<header class="d-flex justify-content-between">
-    <a href="index.php?action=admin" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
+    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
 
     <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
         <div>

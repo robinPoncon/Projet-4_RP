@@ -1,42 +1,8 @@
 <?php
 
 use \RobinP\model\PostManager;
-use \RobinP\model\CommentManager;
-use \RobinP\classes\Comment;
 use \RobinP\model\AdminManager;
 use \RobinP\classes\Admin;
-
-function listPosts()
-{
-	$postManager = new PostManager();
-    $posts = $postManager->getPosts();
-
-    require 'view/frontend/listPostsView.php';
-    
-}
-
-function post()
-{
-	$postManager = new PostManager();
-	$commentManager = new CommentManager();
-
-    $post = $postManager->getPost($_GET["id"]);
-    $comments = $commentManager->getComments($_GET["id"]);
-
-    require 'view/frontend/postView.php';
-}
-
-function addComment($postId, $author, $comment)
-{
-
-	$commentManager = new CommentManager();
-
-    $newCom = new Comment(["post_id" => $postId, "author" => $author, "comment" => $comment]);
-    
-    $commentManager->addComment($newCom);
-    
-    header('Location: index.php?action=post&id=' . $postId);
-} 
 
 function addAdmin($pseudo, $password, $email)
 {
@@ -45,6 +11,11 @@ function addAdmin($pseudo, $password, $email)
     $newAdmin = new Admin(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
 
     $adminManager->addAdmin($newAdmin);
+}
+
+function test()
+{
+	require "view/backend/ListPostsAdmin.php";
 }
 
 function adminConnectAccueil($pseudo, $password)
@@ -94,7 +65,7 @@ function changePassword($actualPassword, $newPassword, $verifNewPassword)
 
     $admin = $adminManager->getAdmin();
 
-    $newMDPAdmin = new Admin(["password" => password_hash($newPassword, PASSWORD_DEFAULT)]);
+    $newMDPAdmin = new Admin(["pseudo" => $admin->getPseudo(), "password" => password_hash($newPassword, PASSWORD_DEFAULT), "email" => $admin->getEmail()]);
 
     $isPasswordCorrect = password_verify($actualPassword, $admin->getPassword());
 
@@ -110,7 +81,22 @@ function changePassword($actualPassword, $newPassword, $verifNewPassword)
     }
 }
 
+function changePseudo($actualPseudo, $newPseudo, $verifNewPseudo)
+{
+    $adminManager = new AdminManager();
 
+    $admin = $adminManager->getAdmin();
 
+    $newPseudoAdmin = new Admin(["pseudo" => $newPseudo, "password" => $admin->getPassword(), "email" => $admin->getEmail()]);
 
+    if ($admin->getPseudo() === $actualPseudo && $newPseudo === $verifNewPseudo)
+    {
+        $adminManager->updateMDPAdmin($newPseudoAdmin);
 
+        listPosts();
+    }
+    else
+    {
+        throw new Exception("Erreur ! Vérifier les mots de passe saisis");
+    }
+}
