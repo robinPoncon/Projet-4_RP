@@ -3,7 +3,7 @@
 namespace RobinP\classes;
 use \RobinP\classes\Entity;
 
-class Admin extends Entity
+class User extends Entity
 {
 	private $id;
 	private $pseudo;

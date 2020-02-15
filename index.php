@@ -42,18 +42,18 @@ try
 
 		    elseif ($_GET["action"] == "Deconnexion")
 		    {
-		    	adminDeconnect();
+		    	userDeconnect();
 		    }
 
 		    elseif (isset($_POST)) 
 		    {
-		    	if (isset($_POST["admin"]))
+		    	if (isset($_POST["user"]))
 		        {
-		        	$admin = $_POST["admin"];
+		        	$user = $_POST["user"];
 
-		        	if (!empty($admin["pseudo"]) && !empty($admin["password"]))
+		        	if (!empty($user["pseudo"]) && !empty($user["password"]))
 		        	{
-		        		adminConnectAccueil($admin["pseudo"], $admin["password"]);
+		        		userConnectAccueil($user["pseudo"], $user["password"]);
 		        	}
 		        	else
 		        	{
@@ -71,7 +71,7 @@ try
 		        	}
 		        	else
 		        	{
-		        		throw new Exception(" test Vérifier les mots de passe saisis");	
+		        		throw new Exception("Vérifier les mots de passe saisis");	
 		        	}
 		        }
 
@@ -85,7 +85,21 @@ try
 		        	}
 		        	else
 		        	{
-		        		throw new Exception(" test Vérifier les pseudos saisis");	
+		        		throw new Exception("Vérifier les pseudos saisis");	
+		        	}
+		        }
+
+		        elseif (isset($_POST["changeEmail"]))
+		        {
+		        	$changeEmail = $_POST["changeEmail"];
+
+		        	if (!empty($changeEmail["actuelEmail"]) && !empty($changeEmail["newEmail"]) && !empty($changeEmail["verifNewEmail"])) 
+		        	{
+		        		changeEmail($changeEmail["actuelEmail"], $changeEmail["newEmail"], $changeEmail["verifNewEmail"]);
+		        	}
+		        	else
+		        	{
+		        		throw new Exception("Vérifier les emails saisis");	
 		        	}
 		        }
 

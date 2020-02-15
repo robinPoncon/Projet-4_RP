@@ -10,12 +10,12 @@
 <header class="d-flex justify-content-between">
     <h1>Billet simple pour l'Alaska</h1>
 
-    <form action="index.php?action=admin" method="post" class="d-flex align-items-center">
+    <form action="index.php?action=user" method="post" class="d-flex align-items-center">
         <div>
-            <input class="connect" type="text" id="user" name="admin[pseudo]" placeholder=" Utilisateur">
+            <input class="connect" type="text" id="user" name="user[pseudo]" placeholder=" Utilisateur">
         </div>
         <div>
-            <input class="connect" type="password" name="admin[password]" placeholder=" Mot de passe">
+            <input class="connect" type="password" name="user[password]" placeholder=" Mot de passe">
         </div>
         <div>
             <input id="connexion" class="connect" type="submit" value="Connexion">

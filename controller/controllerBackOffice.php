@@ -1,16 +1,16 @@
 <?php
 
 use \RobinP\model\PostManager;
-use \RobinP\model\AdminManager;
-use \RobinP\classes\Admin;
+use \RobinP\model\UserManager;
+use \RobinP\classes\User;
 
-function addAdmin($pseudo, $password, $email)
+function addUser($pseudo, $password, $email)
 {
-    $adminManager = new AdminManager();
+    $userManager = new UserManager();
 
-    $newAdmin = new Admin(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
+    $newUser = new User(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
 
-    $adminManager->addAdmin($newAdmin);
+    $userManager->addUser($newUser);
 }
 
 function test()
@@ -18,20 +18,20 @@ function test()
 	require "view/backend/ListPostsAdmin.php";
 }
 
-function adminConnectAccueil($pseudo, $password)
+function UserConnectAccueil($pseudo, $password)
 {
-    $adminManager = new AdminManager();
+    $userManager = new UserManager();
     
-    $admin = $adminManager->getAdmin();
+    $user = $userManager->getUser();
 
-    $isPasswordCorrect = password_verify($password, $admin->getPassword());
+    $isPasswordCorrect = password_verify($password, $user->getPassword());
 
     //var_dump($admin);
 
-    if ($isPasswordCorrect && $pseudo === $admin->getPseudo())
+    if ($isPasswordCorrect && $pseudo === $user->getPseudo())
     {
         session_start();
-        $_SESSION['pseudo'] = $admin->getPseudo();
+        $_SESSION['pseudo'] = $user->getPseudo();
 
         $postManager = new PostManager();
         $posts = $postManager->getPosts();
@@ -50,7 +50,7 @@ function espaceCompte()
     require "view/backend/monCompte.php";
 }
 
-function adminDeconnect()
+function userDeconnect()
 {
     session_start();
     $_SESSION = array();
@@ -61,17 +61,17 @@ function adminDeconnect()
 
 function changePassword($actualPassword, $newPassword, $verifNewPassword)
 {
-    $adminManager = new AdminManager();
+    $userManager = new UserManager();
 
-    $admin = $adminManager->getAdmin();
+    $user = $userManager->getUser();
 
-    $newMDPAdmin = new Admin(["pseudo" => $admin->getPseudo(), "password" => password_hash($newPassword, PASSWORD_DEFAULT), "email" => $admin->getEmail()]);
+    $newMDPUser = new User(["pseudo" => $user->getPseudo(), "password" => password_hash($newPassword, PASSWORD_DEFAULT), "email" => $user->getEmail()]);
 
-    $isPasswordCorrect = password_verify($actualPassword, $admin->getPassword());
+    $isPasswordCorrect = password_verify($actualPassword, $user->getPassword());
 
     if ($isPasswordCorrect && $newPassword === $verifNewPassword)
     {
-        $adminManager->updateMDPAdmin($newMDPAdmin);
+        $userManager->updateInfoUser($newMDPUser);
 
         listPosts();
     }
@@ -83,20 +83,40 @@ function changePassword($actualPassword, $newPassword, $verifNewPassword)
 
 function changePseudo($actualPseudo, $newPseudo, $verifNewPseudo)
 {
-    $adminManager = new AdminManager();
+    $userManager = new UserManager();
 
-    $admin = $adminManager->getAdmin();
+    $user = $userManager->getUser();
 
-    $newPseudoAdmin = new Admin(["pseudo" => $newPseudo, "password" => $admin->getPassword(), "email" => $admin->getEmail()]);
+    $newPseudoUser = new User(["pseudo" => $newPseudo, "password" => $user->getPassword(), "email" => $user->getEmail()]);
 
-    if ($admin->getPseudo() === $actualPseudo && $newPseudo === $verifNewPseudo)
+    if ($user->getPseudo() === $actualPseudo && $newPseudo === $verifNewPseudo)
     {
-        $adminManager->updateMDPAdmin($newPseudoAdmin);
+        $userManager->updateInfoUser($newPseudoUser);
 
         listPosts();
     }
     else
     {
         throw new Exception("Erreur ! Vérifier les mots de passe saisis");
+    }
+}
+
+function changeEmail($actualEmail, $newEmail, $verifNewEmail)
+{
+    $userManager = new UserManager();
+
+    $user = $userManager->getUser();
+
+    $newEmailUser = new User(["pseudo" => $user->getPseudo(), "password" => $user->getPassword(), "email" => $newEmail]);
+
+    if ($user->getEmail() === $actualEmail && $newEmail === $verifNewEmail && preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $newEmail))
+    {
+        $userManager->updateInfoUser($newEmailUser);
+
+        listPosts();
+    }
+    else
+    {
+        throw new Exception("Erreur ! Vérifier les emails saisis");
     }
 }
