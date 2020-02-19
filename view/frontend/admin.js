@@ -38,3 +38,7 @@ $("#modifEmail").click(function(){
 	}
 
 });
+
+tinymce.init({
+      selector: '#mytextarea'
+});

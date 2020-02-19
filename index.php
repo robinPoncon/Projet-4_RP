@@ -1,12 +1,13 @@
 <?php
+session_start();
 
 require_once "app/Autoloader.php";
 Autoloader::register();
 
-require('controller/controllerPost.php');
+use \RobinP\controller\ControllerPost;
 require("controller/controllerComment.php");
 require("controller/controllerBackOffice.php");
-
+//var_dump($_SESSION["pseudo"]);
 try
 {
 	if (isset($_SESSION["pseudo"]))
@@ -20,7 +21,8 @@ try
 		if (isset($_GET['action'])) {
 		    if ($_GET['action'] == 'listPosts') 
 		    {
-		        listPosts();
+		        $listPosts = new ControllerPost();
+		        $listPosts->listPosts();
 		    }
 		    elseif ($_GET['action'] == 'post') 
 		    {
@@ -135,7 +137,8 @@ try
 		}
 		else 
 		{
-		    listPosts();
+		    $listPosts = new ControllerPost();
+		    $listPosts->listPosts();
 		}
 	}
 }

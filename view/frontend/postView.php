@@ -21,7 +21,7 @@
     </form>
 </header>
 
-	<div class="news">
+    <div class="news">
 		
 		<h3>
 			<?= htmlspecialchars($post->getTitle()); ?>

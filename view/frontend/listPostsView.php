@@ -1,8 +1,6 @@
 <?php 
 
     $title = "Billet simple pour l'Alaska";
-    
-    session_start();
 
     ob_start(); 
 ?>  
@@ -28,7 +26,7 @@
 <img id="img-alaska" src="view/img/alaska.jpg">
 
 <?php
-foreach ($posts as $post) 
+foreach ($this->posts as $post) 
 {
     
 ?>

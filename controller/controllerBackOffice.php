@@ -30,7 +30,7 @@ function UserConnectAccueil($pseudo, $password)
 
     if ($isPasswordCorrect && $pseudo === $user->getPseudo())
     {
-        session_start();
+
         $_SESSION['pseudo'] = $user->getPseudo();
 
         $postManager = new PostManager();

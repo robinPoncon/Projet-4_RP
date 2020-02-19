@@ -38,6 +38,6 @@ class UserManager extends Manager
 		$req->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
 		$req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
 
-		$req->execute();
+		return $req->execute();
 	}
 }

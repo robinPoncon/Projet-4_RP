@@ -89,6 +89,10 @@
 		</form>
 
 	</div>
+
+	<div>
+		<textarea id="mytextarea"> Hello World ! </textarea>
+	</div>
 	
 </div>
 
