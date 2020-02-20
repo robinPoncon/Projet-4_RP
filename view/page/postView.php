@@ -1,26 +1,7 @@
 <?php $title = htmlspecialchars($post->getTitle());
-    
-    session_start();
 
     ob_start(); 
 ?>
-
-	<header class="d-flex justify-content-between">
-    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
-
-    <form action="index.php?action=user" method="post" class="d-flex align-items-center">
-        <div>
-            <input class="connect" type="text" id="user" name="user[pseudo]" placeholder=" Utilisateur">
-        </div>
-        <div>
-            <input class="connect" type="password" name="user[password]" placeholder=" Mot de passe">
-        </div>
-        <div>
-            <input id="connexion" class="connect" type="submit" value="Connexion">
-        </div>
-    </form>
-</header>
-
     <div class="news">
 		
 		<h3>
@@ -65,4 +46,4 @@
     ?>
 
 <?php $content = ob_get_clean(); ?>
-<?php require "template-page.php" ?>
+<?php require $_SESSION["header"]; ?>

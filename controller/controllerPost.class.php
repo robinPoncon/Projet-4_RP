@@ -14,7 +14,7 @@ class ControllerPost
 		$this->postManager = new PostManager();
 		$this->posts = $this->postManager->getPosts();	
 
-	    require 'view/frontend/listPostsView.php';
+	    require 'view/page/listPostsView.php';
 	    
 	}
 }

@@ -8,6 +8,14 @@
 	<script src="https://cdn.tiny.cloud/1/sxq7wlppdsn7uq2723od67ynsomvawaa8ezwg78ylypihzoj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
+	<header class="d-flex justify-content-between">
+	    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
+	    <div id="admin" class="d-flex align-items-center">
+	        <p>Bienvenue <?= ucfirst($_SESSION["pseudo"]) . " !" ?></p>
+	        <a href="index.php?action=Compte"> Mon compte </a>
+	        <a href="index.php?action=Deconnexion"> Deconnexion </a>
+	    </div>
+	</header>
 	<?= $content ?>
 </body>
 </html>

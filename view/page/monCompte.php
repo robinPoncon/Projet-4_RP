@@ -1,17 +1,7 @@
 <?php $title = "Billet simple pour l'Alaska";
 
-	session_start();
-
 	ob_start(); 
 ?>
-
-<header class="d-flex justify-content-between">
-    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
-    <div id="admin" class="d-flex align-items-center">
-        <p>Bienvenue <?= ucfirst($_SESSION["pseudo"]) . " !" ?></p>
-        <a href="index.php?action=Deconnexion"> Deconnexion </a>
-    </div>
-</header>
 
 <div id="perso">
 
@@ -97,8 +87,8 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="view/frontend/admin.js"></script>
+<script src="view/page/admin.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('view/frontend/template-page.php'); ?>
+<?php require $_SESSION["header"]; ?>

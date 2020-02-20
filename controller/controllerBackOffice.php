@@ -3,6 +3,7 @@
 use \RobinP\model\PostManager;
 use \RobinP\model\UserManager;
 use \RobinP\classes\User;
+use \RobinP\controller\ControllerPost;
 
 function addUser($pseudo, $password, $email)
 {
@@ -11,11 +12,6 @@ function addUser($pseudo, $password, $email)
     $newUser = new User(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
 
     $userManager->addUser($newUser);
-}
-
-function test()
-{
-	require "view/backend/ListPostsAdmin.php";
 }
 
 function UserConnectAccueil($pseudo, $password)
@@ -32,10 +28,10 @@ function UserConnectAccueil($pseudo, $password)
     {
 
         $_SESSION['pseudo'] = $user->getPseudo();
+        $_SESSION["header"] = "template-page-back.php";
+        $listPosts = new ControllerPost();
+		$listPosts->listPosts();
 
-        $postManager = new PostManager();
-        $posts = $postManager->getPosts();
-        require "view/backend/ListPostsAdmin.php"; 
     }
 
     else
@@ -47,16 +43,17 @@ function UserConnectAccueil($pseudo, $password)
 
 function espaceCompte()
 {
-    require "view/backend/monCompte.php";
+    require "view/page/monCompte.php";
 }
 
 function userDeconnect()
 {
-    session_start();
+	
     $_SESSION = array();
     session_destroy();
-
-    listPosts();
+    $_SESSION["header"] = "template-page-front.php";
+    $listPosts = new ControllerPost();
+	$listPosts->listPosts();
 }
 
 function changePassword($actualPassword, $newPassword, $verifNewPassword)

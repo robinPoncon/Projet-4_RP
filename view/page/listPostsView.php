@@ -1,22 +1,15 @@
-<?php $title = "Billet simple pour l'Alaska";
+<?php 
+
+    $title = "Billet simple pour l'Alaska";
 
     ob_start(); 
-?>
-
-<header class="d-flex justify-content-between">
-    <h1>Billet simple pour l'Alaska</h1>
-    <div id="admin" class="d-flex align-items-center">
-        <p>Bienvenue <?= ucfirst($_SESSION["pseudo"]) . " !" ?></p>
-        <a href="index.php?action=Compte"> Mon compte </a>
-        <a href="index.php?action=Deconnexion"> Deconnexion </a>
-    </div>
-</header>
+?>  
 
 <h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
 <img id="img-alaska" src="view/img/alaska.jpg">
 
 <?php
-foreach ($posts as $post) 
+foreach ($this->posts as $post) 
 {
     
 ?>
@@ -49,4 +42,4 @@ foreach ($posts as $post)
 ?>
 <?php $content = ob_get_clean(); ?>
 
-<?php require('view/frontend/template-page.php'); ?>
+<?php require $_SESSION["header"]; ?>
