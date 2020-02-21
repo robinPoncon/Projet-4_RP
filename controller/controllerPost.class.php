@@ -6,13 +6,13 @@ use \RobinP\model\PostManager;
 
 class ControllerPost
 {
-	private $posts;
 	private $postManager;
+	private $posts;
 
 	public function listPosts()
 	{
 		$this->postManager = new PostManager();
-		$this->posts = $this->postManager->getPosts();	
+		$this->posts = $this->postManager->getPosts();
 
 	    require 'view/page/listPostsView.php';
 	    

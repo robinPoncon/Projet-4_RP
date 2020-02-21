@@ -1,16 +1,16 @@
-<?php $title = htmlspecialchars($post->getTitle());
+<?php $title = htmlspecialchars($this->post->getTitle());
 
     ob_start(); 
 ?>
     <div class="news">
 		
 		<h3>
-			<?= htmlspecialchars($post->getTitle()); ?>
-			<em>le <?= $post->getCreationDAte() ?></em>
+			<?= htmlspecialchars($this->post->getTitle()); ?>
+			<em>le <?= $this->post->getCreationDAte() ?></em>
         </h3>
             
         <p class="content">
-            <?= nl2br(htmlspecialchars($post->getContent())) ?>
+            <?= nl2br(htmlspecialchars($this->post->getContent())) ?>
         </p>
 
     </div>
@@ -20,7 +20,7 @@
         <h4>Ajouter un commentaire</h4>
 
         <form action="index.php?action=addComment" method="post">
-            <input type="hidden" name="addComment[id]" value="<?= $post->getId(); ?>">
+            <input type="hidden" name="addComment[id]" value="<?= $this->post->getId(); ?>">
             <div class="form-group">
                 <input class="form-control" type="text" id="author" name="addComment[author]" placeholder="Pseudo"/>
             </div>
@@ -34,7 +34,7 @@
     </div>
 
     <?php
-        foreach ($comments as $comment)
+        foreach ($this->comments as $comment)
     	{
     ?>  
         <div id="commentaire">
