@@ -45,56 +45,56 @@ try
 				$deconnect = new ControllerUser();
 		    	$deconnect->userDeconnect();
 			}
+
+			elseif (isset($_POST)) 
+			{
+				if (isset($_POST["changeMDP"]))
+				{
+				    $changeMDP = $_POST["changeMDP"];
+
+				    if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
+				    {
+				    	$modifPass = new ControllerUser();
+				        $modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
+				    }
+				    else
+				    {
+				       	throw new Exception("Vérifier les mots de passe saisis");	
+				    }
+				}
+
+				elseif (isset($_POST["changePseudo"]))
+				{
+				    $changePseudo = $_POST["changePseudo"];
+
+				    if (!empty($changePseudo["actuelPseudo"]) && !empty($changePseudo["newPseudo"]) && !empty($changePseudo["verifNewPseudo"])) 
+				    {	
+				    	$modifPseudo = new ControllerUser();
+				        $modifPseudo->changePseudo($changePseudo["actuelPseudo"], $changePseudo["newPseudo"], $changePseudo["verifNewPseudo"]);
+				   	}
+				    else
+				    {
+				        throw new Exception("Vérifier les pseudos saisis");	
+				    }
+				}
+
+				elseif (isset($_POST["changeEmail"]))
+				{
+				    $changeEmail = $_POST["changeEmail"];
+
+				    if (!empty($changeEmail["actuelEmail"]) && !empty($changeEmail["newEmail"]) && !empty($changeEmail["verifNewEmail"])) 
+				    {
+				    	$modifMail = new ControllerUser();
+				        $modifMail->changeEmail($changeEmail["actuelEmail"], $changeEmail["newEmail"], $changeEmail["verifNewEmail"]);
+				    }
+				    else
+				    {
+				        throw new Exception("Vérifier les emails saisis");	
+				    }
+				}
+			}
 		}
 		
-		elseif (isset($_POST)) 
-		{
-			if (isset($_POST["changeMDP"]))
-			{
-			    $changeMDP = $_POST["changeMDP"];
-
-			    if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
-			    {
-			    	$modifPass = new ControllerUser();
-			        $modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
-			    }
-			    else
-			    {
-			       	throw new Exception("Vérifier les mots de passe saisis");	
-			    }
-			}
-
-			elseif (isset($_POST["changePseudo"]))
-			{
-			    $changePseudo = $_POST["changePseudo"];
-
-			    if (!empty($changePseudo["actuelPseudo"]) && !empty($changePseudo["newPseudo"]) && !empty($changePseudo["verifNewPseudo"])) 
-			    {	
-			    	$modifPseudo = new ControllerUser();
-			        $modifPseudo->changePseudo($changePseudo["actuelPseudo"], $changePseudo["newPseudo"], $changePseudo["verifNewPseudo"]);
-			   	}
-			    else
-			    {
-			        throw new Exception("Vérifier les pseudos saisis");	
-			    }
-			}
-
-			elseif (isset($_POST["changeEmail"]))
-			{
-			    $changeEmail = $_POST["changeEmail"];
-
-			    if (!empty($changeEmail["actuelEmail"]) && !empty($changeEmail["newEmail"]) && !empty($changeEmail["verifNewEmail"])) 
-			    {
-			    	$modifMail = new ControllerUser();
-			        $modifMail->changeEmail($changeEmail["actuelEmail"], $changeEmail["newEmail"], $changeEmail["verifNewEmail"]);
-			    }
-			    else
-			    {
-			        throw new Exception("Vérifier les emails saisis");	
-			    }
-			}
-		}
-
 		else
 		{
 			$listPosts = new ControllerPost();

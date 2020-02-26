@@ -37,6 +37,7 @@ class ControllerUser
         if ($this->isPasswordCorrect && $pseudo === $this->user->getPseudo())
         {
             $_SESSION['pseudo'] = $this->user->getPseudo();
+            $_SESSION["id"] = $this->user->getId();
             $_SESSION["header"] = "template-page-back.php";
             $listPosts = new ControllerPost();
             $listPosts->listPosts();
@@ -44,7 +45,9 @@ class ControllerUser
 
         else
         {
-            throw new Exception("Mauvais login ou mot de passe"); 
+            require "view/page/messageErreur.php";
+            throw new \Exception("Mauvais login ou mot de passe"); 
+
         }
     }
 
@@ -68,18 +71,19 @@ class ControllerUser
 
         $this->user = $this->userManager->getUser();
 
-        $this->newPseudoUser = new User(["pseudo" => $newPseudo, "password" => $this->user->getPassword(), "email" => $this->user->getEmail()]);
+        $this->pseudoUser = new User(["id" => $_SESSION["id"], "pseudo" => $newPseudo, "password" => $this->user->getPassword(), "email" => $this->user->getEmail()]);
 
         if ($this->user->getPseudo() === $actualPseudo && $newPseudo === $verifNewPseudo)
         {
-            $this->userManager->updateInfoUser($this->newPseudoUser);
+            $this->userManager->updateInfoUser($this->pseudoUser);
 
+            $_SESSION["pseudo"] = $this->pseudoUser->getPseudo();
             $listPosts = new ControllerPost();
             $listPosts->listPosts();
         }
         else
         {
-            throw new Exception("Erreur ! Vérifier les mots de passe saisis");
+            throw new Exception("Erreur ! Vérifier les pseudos de passe saisis");
         }
     }
 

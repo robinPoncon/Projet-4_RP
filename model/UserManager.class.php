@@ -32,8 +32,9 @@ class UserManager extends Manager
 
     public function updateInfoUser(User $user)
 	{	
-		$req = $this->db->prepare("UPDATE users SET pseudo = :pseudo, password = :password, email = :email WHERE id = 1");
+		$req = $this->db->prepare("UPDATE users SET pseudo = :pseudo, password = :password, email = :email WHERE id = :id");
 
+		$req->bindValue(":id", $user->getId(), PDO::PARAM_INT);
 		$req->bindValue(":pseudo", $user->getPseudo(), PDO::PARAM_STR);
 		$req->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
 		$req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
