@@ -14,11 +14,14 @@ class ControllerComment
 	private $commentManager;
 	private $newCom;
 
-	public function post()
+	public function __construct()
 	{
 		$this->postManager = new PostManager();
 		$this->commentManager = new CommentManager();
+	}
 
+	public function post()
+	{
 	    $this->post = $this->postManager->getPost($_GET["id"]);
 	    $this->comments = $this->commentManager->getComments($_GET["id"]);
 
@@ -27,9 +30,6 @@ class ControllerComment
 
 	public function addComment($postId, $author, $comment)
 	{
-
-		$this->commentManager = new CommentManager();
-
 	    $this->newCom = new Comment(["post_id" => $postId, "author" => $author, "comment" => $comment]);
 	    
 	    $this->commentManager->addComment($this->newCom);

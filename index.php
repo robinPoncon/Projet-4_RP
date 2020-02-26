@@ -8,6 +8,7 @@ use \RobinP\controller\ControllerPost;
 use \RobinP\controller\ControllerComment;
 use \RobinP\controller\ControllerUser;
 //var_dump($_SESSION["pseudo"]);
+$pageError = "view/page/messageErreur.php";
 
 try
 {
@@ -30,7 +31,8 @@ try
 		        }
 		        else 
 		        {
-		            throw new Exception('Aucun identifiant de billet envoyé');
+		            $msg_error = "Erreur : Aucun identifiant de billet envoyé";
+            		require $pageError;
 		        }
 		    }
 
@@ -48,22 +50,7 @@ try
 
 			elseif (isset($_POST)) 
 			{
-				if (isset($_POST["changeMDP"]))
-				{
-				    $changeMDP = $_POST["changeMDP"];
-
-				    if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
-				    {
-				    	$modifPass = new ControllerUser();
-				        $modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
-				    }
-				    else
-				    {
-				       	throw new Exception("Vérifier les mots de passe saisis");	
-				    }
-				}
-
-				elseif (isset($_POST["changePseudo"]))
+				if (isset($_POST["changePseudo"]))
 				{
 				    $changePseudo = $_POST["changePseudo"];
 
@@ -74,7 +61,24 @@ try
 				   	}
 				    else
 				    {
-				        throw new Exception("Vérifier les pseudos saisis");	
+				        $msg_error = "Erreur : Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
+				        require $pageError;
+				    }
+				}
+
+				elseif (isset($_POST["changeMDP"]))
+				{
+				    $changeMDP = $_POST["changeMDP"];
+
+				    if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
+				    {
+				    	$modifPass = new ControllerUser();
+				        $modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
+				    }
+				    else
+				    {
+				       	$msg_error = "Erreur : Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
+				        require $pageError;
 				    }
 				}
 
@@ -89,7 +93,8 @@ try
 				    }
 				    else
 				    {
-				        throw new Exception("Vérifier les emails saisis");	
+				        $msg_error = "Erreur : Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
+				        require $pageError;
 				    }
 				}
 			}
@@ -123,7 +128,8 @@ try
 		        }
 		        else 
 		        {
-		            throw new Exception('Aucun identifiant de billet envoyé');
+		            $msg_error = "Erreur : Aucun identifiant de billet envoyé";
+            		require $pageError;
 		        }
 		    }
 
@@ -141,7 +147,8 @@ try
 		        	}
 		        	else
 		        	{
-		        		throw new Exception("Mauvais login ou mot de passe");
+		        		$msg_error = "Erreur : Login ou mot de passe non remplis. Veuillez réessayer !";
+            			require $pageError;
 		        	}
 		        }
 
@@ -160,7 +167,8 @@ try
 
 		            	else 
 		            	{
-		                	throw new Exception('Tous les champs ne sont pas remplis !');
+		            		$msg_error = "Erreur : Tous les champs ne sont pas remplis";
+            				require $pageError;
 		           		} 
 		        	}
 		        	else 
@@ -171,7 +179,8 @@ try
 
 		        else
 		        {
-		        	throw new Exception("Donnée formulaire non attendue");
+		        	$msg_error = "Donnée formulaire non attendue." . " Retour page d'accueil -> " . "<a href='index.php?action=listPosts'>Accueil</a>";
+            		require $pageError;
 		        }
 
 		    }
