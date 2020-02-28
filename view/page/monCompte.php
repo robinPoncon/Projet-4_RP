@@ -23,7 +23,7 @@
 			</p>
 
 			<p>
-				<input class="d-none" type="submit" value="Envoyer">
+				<input id="buttonMDP" class="d-none" type="submit" value="Envoyer">
 			</p>
 
 		</form>
@@ -48,7 +48,7 @@
 			</p>
 
 			<p>
-				<input class="d-none" type="submit" value="Envoyer">
+				<input id="buttonPseudo" class="d-none" type="submit" value="Envoyer">
 			</p>
 
 		</form>
@@ -69,11 +69,11 @@
 			</p>
 
 			<p>
-				<input class="d-none" type="text" name="changeEmail[verifNewEmail]" placeholder="Valider le nouveau email"> 
+				<input class="d-none" type="text" name="changeEmail[verifNewEmail]" placeholder="Valider le nouvel email"> 
 			</p>
 
 			<p>
-				<input class="d-none" type="submit" value="Envoyer">
+				<input id="buttonEmail" class="d-none" type="submit" value="Envoyer">
 			</p>
 
 		</form>

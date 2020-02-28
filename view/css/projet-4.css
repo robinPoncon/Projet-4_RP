@@ -285,10 +285,47 @@ a h1:hover
 
 #changeMDP, #changePseudo, #changeEmail
 {
-	padding-left: 20px;
 	padding-top: 20px;
+	display: flex;
+	justify-content: center;
 }
 
+#changeMDP input, #changePseudo input, #changeEmail input
+{
+	margin-right: 20px;
+}
+
+#modifMDP, #modifPseudo, #modifEmail
+{
+	background-color: white;
+	border: 4px #25568D solid;
+	border-radius: 20px;
+	width: 300px;
+	margin-left: -150px;
+	position: relative;
+	left: 50%;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#modifMDP:hover, #modifPseudo:hover, #modifEmail:hover
+{
+	background-color: #25568D;
+	color: white;
+}
+
+#buttonMDP, #buttonPseudo, #buttonEmail
+{
+	width: 100% !important;
+}
+
+#buttonMDP:hover, #buttonPseudo:hover, #buttonEmail:hover
+{
+	background-color: #25568D;
+	border: 1px #25568D solid;
+	color: white;
+}
 
 #erreur p
 {
