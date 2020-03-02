@@ -79,15 +79,8 @@
 		</form>
 
 	</div>
-
-	<div>
-		<textarea id="mytextarea"> Hello World ! </textarea>
-	</div>
 	
 </div>
-
-<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-<script src="view/page/admin.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 

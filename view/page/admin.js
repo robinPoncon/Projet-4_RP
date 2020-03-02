@@ -45,6 +45,18 @@ $("#modifEmail").click(function(){
 
 });
 
+$(".buttonUpdate").click(function(){
+
+	if ($(".mytextarea").css("display") === "none")
+	{
+		$(".mytextarea").css("display", "inline-block");
+	}
+	else
+	{
+		$(".mytextarea").css("display", "none");
+	}
+});
+
 tinymce.init({
       selector: '#mytextarea'
 });
