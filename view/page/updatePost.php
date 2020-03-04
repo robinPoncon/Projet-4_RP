@@ -1,9 +1,15 @@
 <?php
 	
-	use \RobinP\controller\ControllerPost; 
-	
-	//$buttonUpdate = "<button id='UpdatePost" . $this->post->getId() . ">Test</button>";
+	$title = "Modifier Article";
 
-	$updatePost = "<div> <textarea class='mytextarea'> Hello World ! </textarea> </div>";
+	ob_start(); 
 
  ?>
+
+ <div> 
+ 	<textarea id='mytextarea'> Hello World ! </textarea> 
+ </div>
+
+<?php $content = ob_get_clean(); ?>
+
+<?php require $_SESSION["header"]; ?>

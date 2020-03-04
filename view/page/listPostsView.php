@@ -3,8 +3,6 @@
     $title = "Billet simple pour l'Alaska";
 
     ob_start(); 
-
-    require "updatePost.php";
 ?>  
 
 <h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
@@ -36,9 +34,8 @@ foreach ($this->posts as $post)
             </a>
         </div>
 
-        <button id="updatePost<?php echo $post->getId()?>"> Modifier </button>
         <?php 
-        //echo $buttonUpdate; 
+            echo $_SESSION["updateButton"];
         ?>
         
     </div>

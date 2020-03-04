@@ -29,8 +29,7 @@ try
 		    }
 		    else 
 		    {
-		        $msg_error = "Erreur : Aucun identifiant de billet envoyé";
-            	require $pageError;
+		        throw new \Exception("Aucun identifiant de billet envoyé");
 		    }
 		}
 
@@ -50,8 +49,7 @@ try
 
 			        else 
 			        {
-			           	$msg_error = "Erreur : Tous les champs ne sont pas remplis";
-	            		require $pageError;
+			           	throw new Exception("Tous les champs ne sont pas remplis");
 			        } 
 			    }
 
@@ -84,6 +82,12 @@ try
 			$deconnect->userDeconnect();
 		}
 
+		elseif ($_GET["action"] == "updatePost")
+		{
+			$viewUpdatePost = new ControllerPost();
+			$viewUpdatePost->viewUpdatePost();
+		}
+
 		elseif (isset($_POST)) 
 		{
 			if (isset($_POST["changePseudo"]))
@@ -97,8 +101,7 @@ try
 				}
 				else
 				{
-					$msg_error = "Erreur : Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
-					require $pageError;
+					throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
 				}
 			}
 
@@ -114,8 +117,7 @@ try
 
 				else
 				{
-					$msg_error = "Erreur : Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
-					require $pageError;
+					throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
 				}
 			}
 
@@ -131,8 +133,7 @@ try
 
 				else
 				{
-					$msg_error = "Erreur : Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
-					require $pageError;
+					throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
 				}
 			}
 		}
@@ -154,8 +155,7 @@ try
 
 			    else
 			    {
-			       	$msg_error = "Erreur : Login ou mot de passe non remplis. Veuillez réessayer !";
-	            	require $pageError;
+			       	throw new \Exception("Login ou mot de passe non remplis. Veuillez réessayer !");
 			    }
 			}
 		}
@@ -164,5 +164,6 @@ try
 
 catch(Exception $e)
 {
-	echo "erreur : " . $e->getMessage();
+	$msg_error = "Erreur : " . $e->getMessage();
+	require "view/page/messageErreur.php";
 }

@@ -339,6 +339,29 @@ a h1:hover
 	margin-top: 20px !important;
 }
 
+.updateButton
+{
+	position: relative;
+	left: 50%;
+	color: white;
+	border: 2px #25568D solid;
+	background-color: #25568D;
+	padding: 15px;
+	border-radius: 30px;
+	top: -90px;
+	margin-left: 280px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.updateButton:hover
+{
+	color: #25568D;
+	background-color: #57a9de;
+	text-decoration: none;
+	border: 2px #57a9de solid;
+}
+
 
 
 

@@ -43,13 +43,13 @@ class ControllerUser
             $_SESSION['pseudo'] = $this->user->getPseudo();
             $_SESSION["id"] = $this->user->getId();
             $_SESSION["header"] = "template-page-back.php";
+            $_SESSION["updateButton"] = '<a class="updateButton" href="index.php?action=updatePost" id="updatePost<?php echo $post->getId()?>"> Modifier </a>';
             $this->listPosts->listPosts();
         }
 
         else
         {
-            $msg_error = "Erreur : Mauvais login ou mot de passe. Veuillez réessayer !";
-            require $this->pageError;
+            throw new \Exception("Login ou mot de passe incorrect, veuillez réessayer");
         }
     }
 
@@ -62,9 +62,13 @@ class ControllerUser
     {
         $_SESSION = array();
         session_destroy();
+        session_start();
         $_SESSION["header"] = "template-page-front.php";
-        $this->listPosts->listPosts();
+        $_SESSION["updateButton"] = "";
+        header("Location: index.php?action=listPosts");
     }
+
+        
 
     public function changePseudo($actualPseudo, $newPseudo, $verifNewPseudo)
     {
@@ -79,8 +83,7 @@ class ControllerUser
         }
         else
         {
-            $msg_error = "Erreur : Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
-            require $this->pageError;
+            throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
         }
     }
 
@@ -98,8 +101,7 @@ class ControllerUser
         }
         else
         {
-            $msg_error = "Erreur : Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
-            require $this->pageError;
+            throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
         }
     }
 
@@ -115,8 +117,7 @@ class ControllerUser
         }
         else
         {
-            $msg_error = "Erreur : Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>";
-            require $this->pageError;
+            throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
         }
     }
 }

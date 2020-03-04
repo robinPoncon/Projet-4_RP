@@ -18,7 +18,12 @@ class ControllerPost
 
 	public function listPosts()
 	{
-	    require 'view/page/listPostsView.php';   
+	    require 'view/page/listPostsView.php'; 
+	}
+
+	public function viewUpdatePost()
+	{
+		require "view/page/updatePost.php";
 	}
 }
 
