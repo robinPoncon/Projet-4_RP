@@ -33,16 +33,16 @@ foreach ($this->posts as $post)
                 </div>
             </a>
         </div>
-
+        <a href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">test</a>
         <?php 
+            $_SESSION["test"] = $post->getId();
+
             echo $_SESSION["updateButton"];
         ?>
         
     </div>
 <?php
 }
-
-//$posts->closeCursor();
 
 ?>
 <?php $content = ob_get_clean(); ?>

@@ -9,6 +9,8 @@ class ControllerPost
 {
 	private $postManager;
 	private $posts;
+	private $post;
+	private $postUpdate;
 
 	public function __construct()
 	{
@@ -23,7 +25,15 @@ class ControllerPost
 
 	public function viewUpdatePost()
 	{
+		$this->post = $this->postManager->getPost($_GET["id"]);
 		require "view/page/updatePost.php";
+	}
+
+	public function updatePost($postId, $title, $content)
+	{
+		$this->postUpdate = new Post(["id" => $postId, "title" => $title, "content" => $content]);
+		$this->post = $this->postManager->updatePost($this->postUpdate);
+		header("Location: index.php?action=viewUpdatePost&id=" . $postId);
 	}
 }
 

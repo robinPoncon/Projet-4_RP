@@ -7,8 +7,13 @@ Autoloader::register();
 use \RobinP\controller\ControllerPost;
 use \RobinP\controller\ControllerComment;
 use \RobinP\controller\ControllerUser;
-//var_dump($_SESSION["pseudo"]);
+
 $pageError = "view/page/messageErreur.php";
+
+if (!isset($_SESSION["updateButton"]))
+{
+	$_SESSION["updateButton"] = "";
+}
 
 try
 {
@@ -82,10 +87,17 @@ try
 			$deconnect->userDeconnect();
 		}
 
-		elseif ($_GET["action"] == "updatePost")
+		elseif ($_GET['action'] == 'viewUpdatePost') 
 		{
-			$viewUpdatePost = new ControllerPost();
-			$viewUpdatePost->viewUpdatePost();
+		    if (isset($_GET['id']) && $_GET['id'] > 0) 
+		    {
+		       	$viewUpdatePost = new ControllerPost();
+		        $viewUpdatePost->viewUpdatePost();
+		    }
+		    else 
+		    {
+		        throw new \Exception("Aucun identifiant de billet envoyé");
+		    }
 		}
 
 		elseif (isset($_POST)) 
@@ -135,6 +147,31 @@ try
 				{
 					throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
 				}
+			}
+
+			elseif (isset($_POST["updatePost"]))
+			{
+				$updatePost = $_POST["updatePost"];
+
+			    if (isset($updatePost['id']) && $updatePost['id'] > 0) 
+			    {
+			        if (!empty($updatePost['title']) && !empty($updatePost['content'])) 
+			        {
+			           	$updatePostUser = new ControllerPost();
+			            $updatePostUser->updatePost($updatePost['id'], $updatePost['title'], $updatePost['content']);
+			            var_dump($updatePost);
+			        } 
+
+			        else 
+			        {
+			           	throw new Exception("Tous les champs ne sont pas remplis");
+			        } 
+			    }
+
+			    else 
+			    {
+			        throw new Exception('Aucun identifiant de billet envoyé');
+			    }
 			}
 		}
 	}

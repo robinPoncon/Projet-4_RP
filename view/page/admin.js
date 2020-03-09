@@ -58,5 +58,17 @@ $(".buttonUpdate").click(function(){
 });
 
 tinymce.init({
-      selector: '#mytextarea'
+    selector: '#mytextarea',
+    height: "400px"
 });
+
+
+
+/*tinymce.init({
+  selector: "#mytextarea",  // change this value according to your HTML
+  plugins: "preview",
+  menubar: "view",
+  toolbar: "preview"
+}); 
+
+tinymce.activeEditor.execCommand('mcePreview'); */

@@ -43,8 +43,11 @@ class ControllerUser
             $_SESSION['pseudo'] = $this->user->getPseudo();
             $_SESSION["id"] = $this->user->getId();
             $_SESSION["header"] = "template-page-back.php";
-            $_SESSION["updateButton"] = '<a class="updateButton" href="index.php?action=updatePost" id="updatePost<?php echo $post->getId()?>"> Modifier </a>';
-            $this->listPosts->listPosts();
+
+            $_SESSION["updateButton"] = "<a class='updateButton' href='index.php?action=viewUpdatePost&amp;id=" . $_SESSION["test"] . "'>Modifier</a>";
+
+
+            header("Location: index.php?action=listPosts");
         }
 
         else
