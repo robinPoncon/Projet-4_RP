@@ -6,7 +6,7 @@
 
  ?>
 
-<h4>article en cours</h4>
+<h4 class="h4Update">Article en cours</h4>
 <div class="news">
 		
 	<h3>
@@ -20,13 +20,18 @@
 
 </div>
 
-<h4>Modification de l'article</h4>
-<div id="wesh">
+<h4 class="h4Update">Modification de l'article</h4>
+<div id="updateDiv">
 	<form action="index.php?action=updatePost" method="post">
 		<input type="hidden" name="updatePost[id]" value="<?= $this->post->getId(); ?>">
-		<input type="text" name="updatePost[title]" value="<?= $this->post->getTitle(); ?>"> 
-		<textarea name="updatePost[content]" id='mytextarea'> <?= $this->post->getContent()?> </textarea>
-		<input type="submit" value="Envoyer"> 
+		<p class="d-flex">
+			<label class="form-control" for="titleUpdate">Titre :</label>
+			<input id="titleUpdate" class="form-control" type="text" name="updatePost[title]" value="<?= $this->post->getTitle(); ?>"> 
+		</p>
+		<p>
+			<textarea class="form-control" name="updatePost[content]" id='mytextarea'> <?= $this->post->getContent()?> </textarea>
+		</p>
+		<input id="validationUpdatePost" class="form-control" type="submit" value="Envoyer"> 
 	</form>
 </div>
 

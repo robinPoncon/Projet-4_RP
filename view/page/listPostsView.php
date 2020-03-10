@@ -33,12 +33,9 @@ foreach ($this->posts as $post)
                 </div>
             </a>
         </div>
-        <a href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">test</a>
-        <?php 
-            $_SESSION["test"] = $post->getId();
-
-            echo $_SESSION["updateButton"];
-        ?>
+        <?php if (isset($_SESSION["pseudo"]) && $_SESSION["pseudo"] == "admin"):  ?>
+        <a class='updateButton' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">modifier</a>
+        <?php endif; ?>
         
     </div>
 <?php

@@ -44,9 +44,6 @@ class ControllerUser
             $_SESSION["id"] = $this->user->getId();
             $_SESSION["header"] = "template-page-back.php";
 
-            $_SESSION["updateButton"] = "<a class='updateButton' href='index.php?action=viewUpdatePost&amp;id=" . $_SESSION["test"] . "'>Modifier</a>";
-
-
             header("Location: index.php?action=listPosts");
         }
 
@@ -67,7 +64,6 @@ class ControllerUser
         session_destroy();
         session_start();
         $_SESSION["header"] = "template-page-front.php";
-        $_SESSION["updateButton"] = "";
         header("Location: index.php?action=listPosts");
     }
 

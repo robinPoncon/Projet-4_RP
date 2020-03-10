@@ -362,11 +362,50 @@ a h1:hover
 	border: 2px #57a9de solid;
 }
 
-#wesh
+#updateDiv
 {
 	width: 80% !important;
 	margin: auto;
 }
+
+#updateDiv label
+{
+	width: 10% !important;
+	margin-right: 20px !important;
+	margin-top: 40px !important;
+	background-color: #25568D;
+	border: 1px #25568D solid;
+	color: white;
+}
+
+#titleUpdate
+{
+	margin-top: 40px !important;
+}
+
+.h4Update
+{
+	width: 80%;
+	border-radius: 20px;
+	margin: auto;
+	margin-top: 100px;
+}
+
+#validationUpdatePost
+{
+	width: 20% !important;
+	margin-bottom: 50px !important;
+	border: 1px white solid;
+}
+
+#validationUpdatePost:hover
+{
+	background-color: #25568D;
+	border: 1px #25568D solid;
+	color: white;
+}
+
+
 
 
 

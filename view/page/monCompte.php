@@ -82,6 +82,32 @@
 	
 </div>
 
+<section>
+
+	<h4>Commentaire à modérer</h4>
+	
+</section>
+
+<div>
+	<h4>Ajouter un nouvel Article</h4>
+
+	<form action="index.php?action=addPost" method="post">
+		<p>
+			<input class="form-control" type="text" name="addPost[title]" placeholder="Titre de l'article">
+		</p>
+		<p>
+			<input class="form-control" type="text" name="addPost[author]" placeholder="Nom de l'auteur">
+		</p>
+		<p>
+			<textarea id="mytextarea" type="text" name="addPost[content]" placeholder="Contenu de l'article"></textarea>
+		</p>
+		<p>
+			<input class="form-control" type="submit" value="Envoyer">
+		</p>
+		
+	</form>
+</div>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require $_SESSION["header"]; ?>
