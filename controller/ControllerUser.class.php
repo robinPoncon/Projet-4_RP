@@ -45,6 +45,11 @@ class ControllerUser
             $_SESSION["header"] = "template-page-back.php";
 
             header("Location: index.php?action=listPosts");
+
+            setcookie('pseudo', $pseudo, time() + 365*24*3600, null, null, false, true);
+            setcookie('mdp', $password, time() + 365*24*3600, null, null, false, true);
+
+            var_dump($_COOKIE["pseudo"]);
         }
 
         else
@@ -62,6 +67,8 @@ class ControllerUser
     {
         $_SESSION = array();
         session_destroy();
+        setcookie("pseudo", "");
+        setcookie("mdp", "");
         session_start();
         $_SESSION["header"] = "template-page-front.php";
         header("Location: index.php?action=listPosts");

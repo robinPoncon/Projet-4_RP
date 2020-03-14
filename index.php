@@ -77,36 +77,42 @@ try
 
 	else
 	{
-		$_SESSION["header"] = "template-page-front.php";
+		if (!isset($_SESSION["header"])) {
+			$_SESSION["header"] = "template-page-front.php";
+		}
+		
 		$listPosts = new ControllerPost();
 		$listPosts->listPosts();
 	}
 		   
 	if (isset($_SESSION["pseudo"]))
 	{
-		if ($_GET['action'] == "Compte")
+		if (isset($_GET['action']))
 		{
-			$compte = new ControllerUser();
-			$compte->espaceCompte();
-		}
+			if ($_GET['action'] == "Compte")
+			{
+				$compte = new ControllerUser();
+				$compte->espaceCompte();
+			}
 
-		elseif ($_GET["action"] == "Deconnexion")
-		{
-			$deconnect = new ControllerUser();
-			$deconnect->userDeconnect();
-		}
+			elseif ($_GET["action"] == "Deconnexion")
+			{
+				$deconnect = new ControllerUser();
+				$deconnect->userDeconnect();
+			}
 
-		elseif ($_GET['action'] == 'viewUpdatePost') 
-		{
-		    if (isset($_GET['id']) && $_GET['id'] > 0) 
-		    {
-		       	$viewUpdatePost = new ControllerPost();
-		        $viewUpdatePost->viewUpdatePost();
-		    }
-		    else 
-		    {
-		        throw new \Exception("Aucun identifiant de billet envoyé");
-		    }
+			elseif ($_GET['action'] == 'viewUpdatePost') 
+			{
+			    if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			       	$viewUpdatePost = new ControllerPost();
+			        $viewUpdatePost->viewUpdatePost();
+			    }
+			    else 
+			    {
+			        throw new \Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
 		}
 
 		elseif (isset($_POST)) 
