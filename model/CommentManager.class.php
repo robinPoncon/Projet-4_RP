@@ -23,6 +23,16 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    public function getComment($id)
+    {
+        $req = $this->db->prepare("SELECT id, author, comment, comment_date FROM comments WHERE id = :id");
+        $req->bindValue(":id", $id, PDO::PARAM_INT);
+        $req->execute();
+        $data = $req->fetch();
+
+        return new Comment($data);
+    }
+
     public function addComment(Comment $comment)
     {
  

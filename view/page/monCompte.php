@@ -85,6 +85,8 @@
 <section>
 
 	<h4>Commentaire à modérer</h4>
+
+	<?php echo $this->commentSignaler ?>
 	
 </section>
 

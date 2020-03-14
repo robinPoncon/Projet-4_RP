@@ -13,6 +13,7 @@ class ControllerComment
 	private $comments;
 	private $commentManager;
 	private $newCom;
+	private $commentSignaler;
 
 	public function __construct()
 	{
@@ -35,5 +36,11 @@ class ControllerComment
 	    $this->commentManager->addComment($this->newCom);
 	    
 	    header('Location: index.php?action=post&id=' . $postId);
+	}
+
+	public function signaler()
+	{
+		$this->commentSignaler = $this->commentManager->getComment($_GET["id"]);
+		header("Location: index.php?action=post&id=" . $postId);
 	} 
 }

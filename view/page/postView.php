@@ -10,7 +10,7 @@
         </h3>
             
         <p class="content">
-            <?= nl2br(htmlspecialchars($this->post->getContent())) ?>
+            <?= nl2br(htmlspecialchars_decode($this->post->getContent())) ?>
         </p>
 
     </div>
@@ -38,7 +38,8 @@
     	{
     ?>  
         <div id="commentaire">
-            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> <a href="#"><button id="signaler"> Signaler </button></a> </p>
+            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
+            <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>">Signaler</a> </p>
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
         </div>
     <?php

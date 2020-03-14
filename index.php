@@ -10,11 +10,6 @@ use \RobinP\controller\ControllerUser;
 
 $pageError = "view/page/messageErreur.php";
 
-if (!isset($_SESSION["updateButton"]))
-{
-	$_SESSION["updateButton"] = "";
-}
-
 try
 {
 	if (isset($_GET['action']))
@@ -32,6 +27,20 @@ try
 		       	$post = new ControllerComment();
 		        $post->post();
 		    }
+		    else 
+		    {
+		        throw new \Exception("Aucun identifiant de billet envoyé");
+		    }
+		}
+
+		elseif ($_GET['action'] == 'signaler')
+		{
+			if (isset($_GET['id']) && $_GET['id'] > 0) 
+		    {
+		    	$signaler = new ControllerComment();
+		       	$signaler->signaler();
+		    }
+
 		    else 
 		    {
 		        throw new \Exception("Aucun identifiant de billet envoyé");
@@ -147,6 +156,22 @@ try
 				{
 					throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
 				}
+			}
+
+			elseif (isset($_POST["addPost"]))
+			{
+				$addPost = $_POST["addPost"];
+
+				if (!empty($addPost['title']) && !empty($addPost['author']) && !empty($addPost["content"])) 
+			    {
+			        $newPost = new ControllerPost();
+			        $newPost->addPost($addPost['title'], $addPost['author'], $addPost['content']);
+			    } 
+
+			    else 
+			    {
+			        throw new Exception("Tous les champs ne sont pas remplis");
+			    } 
 			}
 
 			elseif (isset($_POST["updatePost"]))

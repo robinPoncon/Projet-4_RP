@@ -10,6 +10,7 @@ class ControllerPost
 	private $postManager;
 	private $posts;
 	private $post;
+	private $newPost;
 	private $postUpdate;
 
 	public function __construct()
@@ -21,6 +22,13 @@ class ControllerPost
 	public function listPosts()
 	{
 	    require 'view/page/listPostsView.php'; 
+	}
+
+	public function addPost($title, $author, $content)
+	{	
+		$this->newPost = new Post(["title" => $title, "author" => $author, "content" => $content]);
+		$this->post = $this->postManager->addPost($this->newPost);
+		header("Location: index.php?action=Compte");
 	}
 
 	public function viewUpdatePost()

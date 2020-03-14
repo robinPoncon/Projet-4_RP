@@ -15,7 +15,7 @@
     </h3>
             
     <p class="content">
-        <?= nl2br(strip_tags($this->post->getContent())) ?>
+        <?= nl2br(htmlspecialchars_decode($this->post->getContent())) ?>
     </p>
 
 </div>
@@ -26,10 +26,10 @@
 		<input type="hidden" name="updatePost[id]" value="<?= $this->post->getId(); ?>">
 		<p class="d-flex">
 			<label class="form-control" for="titleUpdate">Titre :</label>
-			<input id="titleUpdate" class="form-control" type="text" name="updatePost[title]" value="<?= $this->post->getTitle(); ?>"> 
+			<input id="titleUpdate" class="form-control" type="text" name="updatePost[title]" value="<?= htmlspecialchars($this->post->getTitle()); ?>"> 
 		</p>
 		<p>
-			<textarea class="form-control" name="updatePost[content]" id='mytextarea'> <?= $this->post->getContent()?> </textarea>
+			<textarea class="form-control" name="updatePost[content]" id='mytextarea'> <?= $this->post->getContent() ?> </textarea>
 		</p>
 		<input id="validationUpdatePost" class="form-control" type="submit" value="Envoyer"> 
 	</form>
