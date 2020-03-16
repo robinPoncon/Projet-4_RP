@@ -4,6 +4,7 @@ namespace RobinP\controller;
 
 use \RobinP\model\PostManager;
 use \RobinP\classes\Post;
+use \RobinP\model\CommentManager;
 
 class ControllerPost
 {
@@ -12,10 +13,12 @@ class ControllerPost
 	private $post;
 	private $newPost;
 	private $postUpdate;
+	private $deletePost;
 
 	public function __construct()
 	{
 		$this->postManager = new PostManager();
+		$this->commentManager = new CommentManager();
 		$this->posts = $this->postManager->getPosts();
 	}
 
@@ -42,6 +45,13 @@ class ControllerPost
 		$this->postUpdate = new Post(["id" => $postId, "title" => $title, "content" => $content]);
 		$this->post = $this->postManager->updatePost($this->postUpdate);
 		header("Location: index.php?action=viewUpdatePost&id=" . $postId);
+	}
+
+	public function deletePost()
+	{
+		$this->deletePost = $this->postManager->deletePost($_GET["id"]);
+		$this->deleteCommentPost = $this->commentManager->deleteCommentPost($_GET["id"]);
+		header("Location: index.php?action=listPosts");
 	}
 }
 

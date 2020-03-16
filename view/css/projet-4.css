@@ -340,10 +340,10 @@ a h1:hover
 	margin-top: 20px !important;
 }
 
-.updateButton
+#updatePost, #deletePost
 {
 	position: relative;
-	left: 50%;
+	left: 10%;
 	color: white;
 	border: 2px #25568D solid;
 	background-color: #25568D;
@@ -355,7 +355,7 @@ a h1:hover
 	font-weight: bold;
 }
 
-.updateButton:hover
+#updatePost:hover, #deletePost:hover
 {
 	color: #25568D;
 	background-color: #57a9de;

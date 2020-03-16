@@ -55,9 +55,9 @@ class PostManager extends Manager
 		$req->execute();
 	}
 
-	public function deletePost(Post $post)
+	public function deletePost($id)
 	{
-		$this->db->exec("DELETE FROM posts WHERE id = " . $post->getId());
+		$this->db->exec("DELETE FROM posts WHERE id = " . $id);
 	}
 }
 

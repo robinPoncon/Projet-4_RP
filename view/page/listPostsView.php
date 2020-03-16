@@ -34,7 +34,10 @@ foreach ($this->posts as $post)
             </a>
         </div>
         <?php if (isset($_SESSION["pseudo"]) && $_SESSION["pseudo"] == "admin"):  ?>
-        <a class='updateButton' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">modifier</a>
+
+            <a id='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
+            <a id="deletePost" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>">Supprimer</a>
+            
         <?php endif; ?>
         
     </div>

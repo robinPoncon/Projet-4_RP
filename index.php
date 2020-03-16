@@ -113,96 +113,111 @@ try
 			        throw new \Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
-		}
 
-		elseif (isset($_POST)) 
-		{
-			if (isset($_POST["changePseudo"]))
+			elseif ($_GET["action"] == "deletePost") 
 			{
-				$changePseudo = $_POST["changePseudo"];
-
-				if (!empty($changePseudo["actuelPseudo"]) && !empty($changePseudo["newPseudo"]) && !empty($changePseudo["verifNewPseudo"])) 
-				{	
-					$modifPseudo = new ControllerUser();
-					$modifPseudo->changePseudo($changePseudo["actuelPseudo"], $changePseudo["newPseudo"], $changePseudo["verifNewPseudo"]);
-				}
-				else
-				{
-					throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
-				}
-			}
-
-			elseif (isset($_POST["changeMDP"]))
-			{
-				$changeMDP = $_POST["changeMDP"];
-
-				if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
-				{
-					$modifPass = new ControllerUser();
-					$modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
-				}
-
-				else
-				{
-					throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
-				}
-			}
-
-			elseif (isset($_POST["changeEmail"]))
-			{
-				$changeEmail = $_POST["changeEmail"];
-
-				if (!empty($changeEmail["actuelEmail"]) && !empty($changeEmail["newEmail"]) && !empty($changeEmail["verifNewEmail"])) 
-				{
-					$modifMail = new ControllerUser();
-					$modifMail->changeEmail($changeEmail["actuelEmail"], $changeEmail["newEmail"], $changeEmail["verifNewEmail"]);
-				}
-
-				else
-				{
-					throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
-				}
-			}
-
-			elseif (isset($_POST["addPost"]))
-			{
-				$addPost = $_POST["addPost"];
-
-				if (!empty($addPost['title']) && !empty($addPost['author']) && !empty($addPost["content"])) 
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
 			    {
-			        $newPost = new ControllerPost();
-			        $newPost->addPost($addPost['title'], $addPost['author'], $addPost['content']);
-			    } 
-
+			       	$deletePost = new ControllerPost();
+			        $deletePost->deletePost();
+			    }
 			    else 
 			    {
-			        throw new Exception("Tous les champs ne sont pas remplis");
-			    } 
+			        throw new \Exception("Aucun identifiant de billet envoyé");
+			    }
 			}
-
-			elseif (isset($_POST["updatePost"]))
+		
+			elseif (isset($_POST)) 
 			{
-				$updatePost = $_POST["updatePost"];
+				if (isset($_POST["changePseudo"]))
+				{
+					$changePseudo = $_POST["changePseudo"];
 
-			    if (isset($updatePost['id']) && $updatePost['id'] > 0) 
-			    {
-			        if (!empty($updatePost['title']) && !empty($updatePost['content'])) 
-			        {
-			           	$updatePostUser = new ControllerPost();
-			            $updatePostUser->updatePost($updatePost['id'], $updatePost['title'], $updatePost['content']);
-			            var_dump($updatePost);
-			        } 
+					if (!empty($changePseudo["actuelPseudo"]) && !empty($changePseudo["newPseudo"]) && !empty($changePseudo["verifNewPseudo"])) 
+					{	
+						$modifPseudo = new ControllerUser();
+						$modifPseudo->changePseudo($changePseudo["actuelPseudo"], $changePseudo["newPseudo"], $changePseudo["verifNewPseudo"]);
+					}
+					else
+					{
+						throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+					}
+				}
 
-			        else 
-			        {
-			           	throw new Exception("Tous les champs ne sont pas remplis");
-			        } 
-			    }
+				elseif (isset($_POST["changeMDP"]))
+				{
+					$changeMDP = $_POST["changeMDP"];
 
-			    else 
-			    {
-			        throw new Exception('Aucun identifiant de billet envoyé');
-			    }
+					if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
+					{
+						$modifPass = new ControllerUser();
+						$modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
+					}
+
+					else
+					{
+						throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+					}
+				}
+
+				elseif (isset($_POST["changeEmail"]))
+				{
+					$changeEmail = $_POST["changeEmail"];
+
+					if (!empty($changeEmail["actuelEmail"]) && !empty($changeEmail["newEmail"]) && !empty($changeEmail["verifNewEmail"])) 
+					{
+						$modifMail = new ControllerUser();
+						$modifMail->changeEmail($changeEmail["actuelEmail"], $changeEmail["newEmail"], $changeEmail["verifNewEmail"]);
+					}
+
+					else
+					{
+						throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+					}
+				}
+
+				elseif (isset($_POST["addPost"]))
+				{
+					
+					$addPost = $_POST["addPost"];
+					var_dump($_POST);
+
+					if (!empty($addPost['title']) && !empty($addPost['author']) && !empty($addPost["content"])) 
+				    {
+				        $newPost = new ControllerPost();
+				        $newPost->addPost($addPost['title'], $addPost['author'], $addPost['content']);
+				    } 
+
+				    else 
+				    {
+				        throw new Exception("Tous les champs ne sont pas remplis");
+				    } 
+				}
+
+				elseif (isset($_POST["updatePost"]))
+				{
+					$updatePost = $_POST["updatePost"];
+
+				    if (isset($updatePost['id']) && $updatePost['id'] > 0) 
+				    {
+				        if (!empty($updatePost['title']) && !empty($updatePost['content'])) 
+				        {
+				           	$updatePostUser = new ControllerPost();
+				            $updatePostUser->updatePost($updatePost['id'], $updatePost['title'], $updatePost['content']);
+				            var_dump($updatePost);
+				        } 
+
+				        else 
+				        {
+				           	throw new Exception("Tous les champs ne sont pas remplis");
+				        } 
+				    }
+
+				    else 
+				    {
+				        throw new Exception('Aucun identifiant de billet envoyé');
+				    }
+				}
 			}
 		}
 	}
