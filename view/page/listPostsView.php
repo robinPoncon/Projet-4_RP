@@ -30,13 +30,18 @@ foreach ($this->posts as $post)
                     <p class="position-absolute" id="trait2"></p>
                     <p class="position-absolute" id="trait3"></p>
                     <p class="position-absolute" id="triangle"></p>
-                </div>
-            </a>
+                </div></a>
         </div>
-        <?php if (isset($_SESSION["pseudo"]) && $_SESSION["pseudo"] == "admin"):  ?>
+        <?php if (isset($_SESSION["pseudo"])):  ?>
 
             <a id='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
-            <a id="deletePost" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>">Supprimer</a>
+            <button id="deletePost">Supprimer</button>
+            <div id="confirm"> 
+                <p> Voulez-vous vraiment supprimer cet article ? </p>
+                <a href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
+                <a href="index.php?action=listPosts"> Non </a>
+            </div>
+            
             
         <?php endif; ?>
         

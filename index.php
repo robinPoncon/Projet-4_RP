@@ -232,8 +232,14 @@ try
 
 			    if (!empty($user["pseudo"]) && !empty($user["password"]))
 			    {
-			       	$connect = new ControllerUser();
-			        $connect->userConnectAccueil($user["pseudo"], $user["password"]);
+			    	$connect = new ControllerUser();
+
+			    	
+			    		$connect->userConnectAccueil($user["pseudo"], $user["password"]);
+			    	
+			    	
+			    	
+			    	
 			    }
 
 			    else

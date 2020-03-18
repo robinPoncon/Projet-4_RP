@@ -62,13 +62,32 @@ tinymce.init({
     height: "400px"
 });
 
+/*function validerSuppression(link){
+    if(confirm('Confirmer la suppression ?')){
+     document.location.href = link;
+    }
+} */
+
+$("h2").click(function(){
+	alert("c'est bien un titre");
+});
+
+$("#deletePost").click(function(){
+	$("#confirm").css("display", "inline-block !important");
+	alert("test");
+});
 
 
-/*tinymce.init({
-  selector: "#mytextarea",  // change this value according to your HTML
-  plugins: "preview",
-  menubar: "view",
-  toolbar: "preview"
-}); 
 
-tinymce.activeEditor.execCommand('mcePreview'); */
+
+
+
+
+
+
+
+
+
+
+
+

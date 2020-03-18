@@ -406,7 +406,10 @@ a h1:hover
 	color: white;
 }
 
-
+#confirm
+{
+	display: none;
+}
 
 
 

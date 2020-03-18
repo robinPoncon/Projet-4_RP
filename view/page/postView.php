@@ -39,7 +39,7 @@
     ?>  
         <div id="commentaire">
             <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
-            <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>">Signaler</a> </p>
+            <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>">Signaler</a> </p> 
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
         </div>
     <?php
