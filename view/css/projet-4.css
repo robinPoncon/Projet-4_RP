@@ -406,9 +406,65 @@ a h1:hover
 	color: white;
 }
 
-#confirm
+.confirm
 {
-	display: none;
+	border: 5px #25568D solid;
+	border-radius: 20px;
+	padding: 10px;
+	text-align: center;
+	background-color: white;
+	width: 50%;
+	position: relative;
+	top: -324px;
+	height: 200px;
+	margin: auto;
+	text-align: center;
+	z-index: 10;
+	visibility: hidden;
+}
+
+.confirm a:hover
+{
+	text-decoration: none;
+}
+
+.confirm p
+{
+	font-size: 1.3em;
+}
+
+#yes, #no
+{
+	background-color: #25568D;
+	border: 5px #25568D solid;
+	border-radius: 20px;
+	color: white;
+	padding: 5px;
+	font-size: 1.2em;
+	position: relative;
+	top: 35px;
+}
+
+#yes:hover, #no:hover
+{
+	background-color: #57a9de;
+	color: #25568D;
+	border: 5px #57a9de solid;
+}
+
+#yes
+{
+	right: 25px;
+}
+
+#no
+{
+	left: 25px;
+}
+
+.news
+{
+	opacity: 1;
 }
 
 

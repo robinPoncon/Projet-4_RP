@@ -35,16 +35,17 @@ foreach ($this->posts as $post)
         <?php if (isset($_SESSION["pseudo"])):  ?>
 
             <a id='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
-            <button id="deletePost">Supprimer</button>
-            <div id="confirm"> 
-                <p> Voulez-vous vraiment supprimer cet article ? </p>
-                <a href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
-                <a href="index.php?action=listPosts"> Non </a>
-            </div>
+            <button onclick="test(<?= $post->getId()?>)" id="deletePost">Supprimer</button>
+            
             
             
         <?php endif; ?>
         
+    </div>
+    <div class="confirm" id="confirm<?= $post->getId()?>"> 
+        <p> Voulez-vous vraiment supprimer cet article ? </p>
+        <a id="yes" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
+        <a id="no" href="index.php?action=listPosts">Non</a>
     </div>
 <?php
 }

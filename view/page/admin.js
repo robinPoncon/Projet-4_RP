@@ -68,14 +68,15 @@ tinymce.init({
     }
 } */
 
-$("h2").click(function(){
-	alert("c'est bien un titre");
-});
 
-$("#deletePost").click(function(){
-	$("#confirm").css("display", "inline-block !important");
-	alert("test");
-});
+
+function test(id)
+{
+	$("#confirm" + id).css("visibility", "visible");
+	$(".news").css("opacity", 0.5).css("pointer-events", "none");
+
+}
+
 
 
 
