@@ -86,7 +86,17 @@
 
 	<h4>Commentaire à modérer</h4>
 
-	<?php echo $this->commentSignaler ?>
+	<?php
+        foreach ($this->comments as $comment)
+    	{
+    ?>  
+        <div id="commentaire">
+            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
+            <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
+        </div>
+    <?php
+        }
+    ?>
 	
 </section>
 

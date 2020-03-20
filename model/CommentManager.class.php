@@ -23,6 +23,22 @@ class CommentManager extends Manager
         return $comments;
     }
 
+    public function getCommentSignaler()
+    {
+        $comments = [];
+
+        $req = $this->db->prepare("SELECT id, post_id, author, comment, comment_date FROM comments WHERE status = :status ORDER BY comment_date DESC");
+        $req->bindValue(":status", 0, PDO::PARAM_INT);
+        $req->execute();
+
+        while ($data = $req->fetch()) 
+        {
+            $comments[] = new Comment($data);
+        }
+        return $comments;
+    }
+
+
     public function getComment($id)
     {
         $req = $this->db->prepare("SELECT id, author, comment, comment_date FROM comments WHERE id = :id");

@@ -2,6 +2,7 @@
 
 namespace RobinP\controller;
 
+use \RobinP\model\CommentManager;
 use \RobinP\model\PostManager;
 use \RobinP\classes\Post;
 use \RobinP\model\UserManager;
@@ -19,6 +20,7 @@ class ControllerUser
     private $newEmailUser;
     private $pageError = "view/page/messageErreur.php";
     private $listPosts;
+    private $commentSignaler;
 
     public function __construct()
     {
@@ -58,6 +60,9 @@ class ControllerUser
 
     public function espaceCompte()
     {
+        $this->commentManager = new CommentManager();
+        $this->comments = $this->commentManager->getCommentSignaler();
+
         require "view/page/monCompte.php";
     }
 
