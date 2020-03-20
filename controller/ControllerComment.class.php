@@ -40,7 +40,10 @@ class ControllerComment
 
 	public function signaler()
 	{
-		$this->commentSignaler = $this->commentManager->getComment($_GET["id"]);
-		header("Location: index.php?action=post&id=" . $postId);
+		$test = 0;
+		$this->commentSignaler = new Comment(["id" => $_GET["id"], "status" => $test]);
+		$this->commentManager->updateComment($this->commentSignaler);
+		var_dump($this->commentSignaler);
+		//header("Location: index.php?action=listPosts");
 	} 
 }

@@ -10,6 +10,7 @@ class Comment extends Entity
 	private $author;
 	private $comment;
 	private $comment_date;
+	private $status;
 
 	// Les getters
 
@@ -38,6 +39,11 @@ class Comment extends Entity
 		$time = strtotime($this->comment_date);
 		$myFormatForView = date("d/m/Y à H:i:s", $time);
 		return $myFormatForView;
+	}
+
+	public function getStatus()
+	{
+		return $this->status;
 	}
 
 	// Les setters
@@ -81,6 +87,18 @@ class Comment extends Entity
 	public function setCommentDate($comment_date)
 	{
 		return $this->comment_date = $comment_date;
+	}
+
+	public function setStatus($status)
+	{
+		 
+		if ($status === 0 || $status === 1)
+		{
+			return $this->status = $status;
+		}
+		
+		
+	
 	}
 }
 

@@ -54,7 +54,7 @@ h2
 	border-radius: 18px;
 	border: 5px #25568D solid;
 	margin-top: 50px;
-	margin-bottom: 50px;
+	margin-bottom: -100px;
 	background-color: white;
 }
 
@@ -166,6 +166,11 @@ header
 	z-index: 2;
 }
 
+#authorView
+{
+	text-align: right;
+}
+
 #commentaire
 {
 	margin-left: 10%;
@@ -215,6 +220,7 @@ a h1:hover
 
 #ajouterComment
 {
+	margin-top: 150px !important;
 	width: 50%;
 	margin: auto;
 	border: 5px #25568D solid;

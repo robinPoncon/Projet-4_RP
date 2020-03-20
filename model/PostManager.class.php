@@ -15,7 +15,7 @@ class PostManager extends Manager
 		$datefr = $this->db->query("SET lc_time_names = 'fr_FR'");
 		$datefr->execute();
 
-		$req = $this->db->query("SELECT id, title, content, DATE_FORMAT(creation_date, '%d %M %Y à %Hh%imin%ss') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 10");
+		$req = $this->db->query("SELECT id, title, author, content, DATE_FORMAT(creation_date, '%d %M %Y à %Hh%imin%ss') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 10");
 		while ($data = $req->fetch())
 		{
 			$posts[] = new Post($data);
@@ -25,7 +25,7 @@ class PostManager extends Manager
 
 	public function getPost($id)
 	{
-		$req = $this->db->prepare("SELECT id, title, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts WHERE id = :id");
+		$req = $this->db->prepare("SELECT id, title, author, content, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS creation_date FROM posts WHERE id = :id");
 		$req->bindValue(":id", $id, PDO::PARAM_INT);
 		$req->execute();
 		$data = $req->fetch();

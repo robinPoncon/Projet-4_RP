@@ -23,6 +23,10 @@ foreach ($this->posts as $post)
             <?= substr(htmlspecialchars_decode($post->getContent()), 0, 500) . " ... " . "<a id='contentArticle' href=" . "index.php?action=post&amp;id=" . $post->getId() . "> Lire la suite </a>" ?>
         </p>
 
+        <p id="authorView">
+            <?= htmlspecialchars($post->getAuthor()) ?>    
+        </p>
+
         <div class="iconeComment">
             <a class="test" href="index.php?action=post&amp;id=<?= $post->getId() ?>">
                 <div class="position-relative" id="icone">
@@ -47,6 +51,7 @@ foreach ($this->posts as $post)
         <a id="yes" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
         <a id="no" href="index.php?action=listPosts">Non</a>
     </div>
+
 <?php
 }
 

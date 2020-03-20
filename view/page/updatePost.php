@@ -18,6 +18,10 @@
         <?= nl2br(htmlspecialchars_decode($this->post->getContent())) ?>
     </p>
 
+    <p id="authorView">
+     	<?= htmlspecialchars($this->post->getAuthor()) ?>
+    </p>
+
 </div>
 
 <h4 class="h4Update">Modification de l'article</h4>

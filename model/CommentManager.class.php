@@ -36,7 +36,7 @@ class CommentManager extends Manager
     public function addComment(Comment $comment)
     {
  
-        $req = $this->db->prepare("INSERT INTO comments(post_id, author, comment, comment_date) VALUES(:post_id, :author, :comment, NOW())");
+        $req = $this->db->prepare("INSERT INTO comments(post_id, author, comment, comment_date, status) VALUES(:post_id, :author, :comment, NOW(), 1)");
 
         $req->bindValue(":post_id", $comment->getPostId(), PDO::PARAM_INT);
         $req->bindValue(":author", $comment->getAuthor(), PDO::PARAM_STR);
@@ -48,9 +48,9 @@ class CommentManager extends Manager
 
     public function updateComment(Comment $comment)
     {   
-        $req = $this->db->prepare("UPDATE comments SET comment = :comment WHERE id = :id");
+        $req = $this->db->prepare("UPDATE comments SET status = :status WHERE id = :id");
 
-        $req->bindValue(":comment", $comment->getTitle(), PDO::PARAM_STR);
+        $req->bindValue(":status", $comment->getStatus(), PDO::PARAM_STR);
         $req->bindValue(":id", $comment->getId(), PDO::PARAM_INT);
 
         $req->execute();
