@@ -7,7 +7,7 @@
  ?>
 
 <h4 class="h4Update">Article en cours</h4>
-<div class="news">
+<div class="newsUpdate">
 		
 	<h3>
 		<?= htmlspecialchars($this->post->getTitle()); ?>
@@ -24,12 +24,12 @@
 
 </div>
 
-<h4 class="h4Update">Modification de l'article</h4>
+<h4 class="h4Update" >Modification de l'article</h4>
 <div id="updateDiv">
 	<form action="index.php?action=updatePost" method="post">
 		<input type="hidden" name="updatePost[id]" value="<?= $this->post->getId(); ?>">
 		<p class="d-flex">
-			<label class="form-control" for="titleUpdate">Titre :</label>
+			<label id="labelTitleUpdate" class="form-control" for="titleUpdate">Titre :</label>
 			<input id="titleUpdate" class="form-control" type="text" name="updatePost[title]" value="<?= htmlspecialchars($this->post->getTitle()); ?>"> 
 		</p>
 		<p>

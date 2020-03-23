@@ -39,7 +39,7 @@ foreach ($this->posts as $post)
         <?php if (isset($_SESSION["pseudo"])):  ?>
 
             <a id='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
-            <button onclick="test(<?= $post->getId()?>)" id="deletePost">Supprimer</button>
+            <button onclick="deletePost(<?= $post->getId()?>)" id="deletePost">Supprimer</button>
             
             
             
@@ -49,7 +49,7 @@ foreach ($this->posts as $post)
     <div class="confirm" id="confirm<?= $post->getId()?>"> 
         <p> Voulez-vous vraiment supprimer cet article ? </p>
         <a id="yes" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
-        <a id="no" href="index.php?action=listPosts">Non</a>
+        <button onclick="cancelPost(<?= $post->getId() ?>)" id="no" >Non</button>
     </div>
 
 <?php

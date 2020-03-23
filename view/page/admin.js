@@ -70,13 +70,29 @@ tinymce.init({
 
 
 
-function test(id)
+function deletePost(id)
 {
 	$("#confirm" + id).css("visibility", "visible");
 	$(".news").css("opacity", 0.5).css("pointer-events", "none");
-
 }
 
+function deleteComment(id)
+{
+	$("#confirm" + id).css("visibility", "visible");
+	$(".commentaire, #perso, #newPost").css("opacity", 0.5).css("pointer-events", "none");
+}
+
+function cancelComment(id)
+{
+	$("#confirm" + id).css("visibility", "hidden");
+	$(".commentaire, #perso, #newPost").css("opacity", 1).css("pointer-events", "auto");
+}
+
+function cancelPost(id)
+{
+	$("#confirm" + id).css("visibility", "hidden");
+	$(".news").css("opacity", 1).css("pointer-events", "auto");
+}
 
 
 

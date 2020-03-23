@@ -90,31 +90,41 @@
         foreach ($this->comments as $comment)
     	{
     ?>  
-        <div id="commentaire">
+        <div class="commentaire">
             <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
+            <a href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
+            <button onclick="deleteComment(<?= $comment->getId()?>)" id="deleteComment">Supprimer</button>
         </div>
+
+        <div class="confirmComment" id="confirm<?= $comment->getId()?>"> 
+	        <p> Voulez-vous vraiment supprimer ce commentaire ? </p>
+	        <a id="yesComment" href="index.php?action=deleteComment&amp;id=<?= $comment->getId() ?>"> Oui </a>
+	        <button onclick="cancelComment(<?= $comment->getId() ?>)" id="noComment">Non</button>
+    	</div>
     <?php
         }
     ?>
 	
 </section>
 
-<div>
+<div id="newPost">
 	<h4>Ajouter un nouvel Article</h4>
 
 	<form action="index.php?action=addPost" method="post">
-		<p>
-			<input class="form-control" type="text" name="addPost[title]" placeholder="Titre de l'article">
+		<p class="d-flex">
+			<label id="labelTitleCrea" class="form-control" for="titleCrea"> Titre :</label>
+			<input id="titleCrea" class="form-control" type="text" name="addPost[title]" placeholder="Nom de l'article">
+		</p>
+		<p class="d-flex">
+			<label id="labelAuthorCrea" class="form-control" for="authorCrea"> Auteur : </label>
+			<input id="authorCrea" class="form-control" type="text" name="addPost[author]" placeholder="Nom de l'auteur">
 		</p>
 		<p>
-			<input class="form-control" type="text" name="addPost[author]" placeholder="Nom de l'auteur">
+			<textarea class="form-control" id="mytextarea" type="text" name="addPost[content]" placeholder="Contenu de l'article"></textarea>
 		</p>
 		<p>
-			<textarea id="mytextarea" type="text" name="addPost[content]" placeholder="Contenu de l'article"></textarea>
-		</p>
-		<p>
-			<input class="form-control" type="submit" value="Envoyer">
+			<input id="validationCreationPost" class="form-control" type="submit" value="Envoyer">
 		</p>
 		
 	</form>

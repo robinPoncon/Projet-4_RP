@@ -40,10 +40,16 @@ class ControllerComment
 
 	public function signaler()
 	{
-		$test = 0;
-		$this->commentSignaler = new Comment(["id" => $_GET["id"], "status" => $test]);
+		$this->commentSignaler = new Comment(["id" => $_GET["id"], "status" => 0]);
 		$this->commentManager->updateComment($this->commentSignaler);
-		var_dump($this->commentSignaler);
-		//header("Location: index.php?action=listPosts");
+		//var_dump($this->commentSignaler);
+		header("Location: index.php?action=listPosts");
 	} 
+
+	public function approveComment()
+	{
+		$this->approveComment = new Comment(["id" => $_GET["id"], "status" => 1]);
+		$this->commentManager->updateComment($this->approveComment);
+		header("Location: index.php?action=Compte");
+	}
 }

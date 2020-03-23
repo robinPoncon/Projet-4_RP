@@ -58,7 +58,18 @@ h2
 	background-color: white;
 }
 
-.news p 
+.newsUpdate
+{
+	text-align: justify;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 18px;
+	border: 5px #25568D solid;
+	margin-top: 50px;
+	background-color: white;
+}
+
+.news p, .newsUpdate p
 {
 	font-family: latoregular, sans-sérif;
 	font-size: 1.2em;
@@ -171,7 +182,7 @@ header
 	text-align: right;
 }
 
-#commentaire
+.commentaire
 {
 	margin-left: 10%;
 	margin-right: 10%;
@@ -188,6 +199,9 @@ h4
 	text-align: center;
 	color: white;
 	padding: 10px;
+	margin-top: 150px;
+	margin: auto;
+	border-radius: 20px;
 }
 
 #titleComment
@@ -253,8 +267,9 @@ a h1:hover
 {
 	color: #25568D;
 	background-color: white;
-	border-radius: 10px;
+	border-radius: 15px;
 	margin-left: 20px;
+	padding: 5px;
 	border: 2px #25568D solid;
 }
 
@@ -262,6 +277,7 @@ a h1:hover
 {
 	color: white;
 	background-color: #57a9de;
+	text-decoration: none;
 }
 
 #admin 
@@ -369,23 +385,39 @@ a h1:hover
 	border: 2px #57a9de solid;
 }
 
-#updateDiv
+#updateDiv, #newPost
 {
 	width: 80% !important;
 	margin: auto;
 }
 
-#updateDiv label
+#labelTitleCrea, #labelTitleUpdate
+{
+	margin-top: 40px !important;
+}
+
+#labelTitleUpdate
+{
+	margin-bottom: 20px !important;
+}
+
+#labelAuthorCrea
+{
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+}
+
+#updateDiv label, #newPost label
 {
 	width: 10% !important;
 	margin-right: 20px !important;
-	margin-top: 40px !important;
+	margin-top: 40px;
 	background-color: #25568D;
 	border: 1px #25568D solid;
 	color: white;
 }
 
-#titleUpdate
+#titleUpdate, #titleCrea
 {
 	margin-top: 40px !important;
 }
@@ -395,22 +427,23 @@ a h1:hover
 	width: 80%;
 	border-radius: 20px;
 	margin: auto;
-	margin-top: 100px;
+	margin-top: 50px;
 }
 
-#validationUpdatePost
+#validationUpdatePost, #validationCreationPost
 {
 	width: 20% !important;
 	margin-bottom: 50px !important;
 	border: 1px white solid;
 }
 
-#validationUpdatePost:hover
+#validationUpdatePost:hover, #validationCreationPost:hover
 {
 	background-color: #25568D;
 	border: 1px #25568D solid;
 	color: white;
 }
+
 
 .confirm
 {
@@ -421,7 +454,7 @@ a h1:hover
 	background-color: white;
 	width: 50%;
 	position: relative;
-	top: -324px;
+	top: -260px;
 	height: 200px;
 	margin: auto;
 	text-align: center;
@@ -429,17 +462,34 @@ a h1:hover
 	visibility: hidden;
 }
 
-.confirm a:hover
+.confirmComment
+{
+	border: 5px #25568D solid;
+	border-radius: 20px;
+	padding: 10px;
+	text-align: center;
+	background-color: white;
+	width: 50%;
+	position: relative;
+	top: -189px;
+	height: 200px;
+	margin: auto;
+	text-align: center;
+	z-index: 10;
+	visibility: hidden;
+}
+
+.confirm a:hover, .confirmComment a:hover
 {
 	text-decoration: none;
 }
 
-.confirm p
+.confirm p, .confirmComment p
 {
 	font-size: 1.3em;
 }
 
-#yes, #no
+#yes, #no, #yesComment, #noComment
 {
 	background-color: #25568D;
 	border: 5px #25568D solid;
@@ -451,19 +501,19 @@ a h1:hover
 	top: 35px;
 }
 
-#yes:hover, #no:hover
+#yes:hover, #no:hover, #yesComment:hover, #noComment:hover
 {
 	background-color: #57a9de;
 	color: #25568D;
 	border: 5px #57a9de solid;
 }
 
-#yes
+#yes, #yesComment
 {
 	right: 25px;
 }
 
-#no
+#no, #noComment
 {
 	left: 25px;
 }
@@ -472,6 +522,7 @@ a h1:hover
 {
 	opacity: 1;
 }
+
 
 
 

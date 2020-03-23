@@ -126,6 +126,19 @@ try
 			        throw new \Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
+
+			elseif ($_GET["action"] == "approve") 
+			{
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			       	$approveComment = new ControllerComment();
+			        $approveComment->approveComment();
+			    }
+			    else 
+			    {
+			        throw new \Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
 		
 			elseif (isset($_POST)) 
 			{
