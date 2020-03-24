@@ -36,19 +36,23 @@ class ControllerUser
         $this->userManager->addUser($this->newUser);
     }
 
-    public function userConnectAccueil($pseudo, $password)
+    public function userConnectAccueil($pseudo, $password, $connect)
     {
-        $this->isPasswordCorrect = password_verify($password, $this->user->getPassword());
-
-        if ($this->isPasswordCorrect && $pseudo === $this->user->getPseudo())
+        $this->isPasswordCorrect = strcmp($password, $this->user->getPassword());
+        
+        if ($this->isPasswordCorrect == 0 && strcmp($pseudo, $this->user->getPseudo()) == 0)
         {
-            setcookie('cookie[pseudo]', $this->user->getPseudo(), time() + 365*24*3600, null, null, false, true);
-            setcookie('cookie[password]', $this->user->getPassword(), time() + 365*24*3600, null, null, false, true);
+            if ($connect)
+            {
+                setcookie('cookie[pseudo]', $this->user->getPseudo(), time() + 365*24*3600, "/", null, false, true);
+                setcookie('cookie[password]', $this->user->getPassword(), time() + 365*24*3600, "/", null, false, true);
+            }
+            
             $_SESSION['pseudo'] = $this->user->getPseudo();
             $_SESSION["id"] = $this->user->getId();
             $_SESSION["header"] = "template-page-back.php";
 
-            header("Location: index.php?action=listPosts");
+           header("Location: index.php?action=listPosts");
 
         }
 

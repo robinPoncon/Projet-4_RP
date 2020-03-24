@@ -13,15 +13,22 @@
 	    <a href="index.php?action=listPosts" class="text-decoration-none"><h1>Billet simple pour l'Alaska</h1></a>
 
 	    <form action="index.php?action=user" method="post" class="d-flex align-items-center">
-	        <div>
+	        <p>
 	            <input class="connect" type="text" id="user" name="user[pseudo]" placeholder=" Utilisateur">
-	        </div>
-	        <div>
+	        </p>
+
+	        <p>
 	            <input class="connect" type="password" name="user[password]" placeholder=" Mot de passe">
-	        </div>
-	        <div>
+	        </p>
+
+	        <p id="connectAuto">
+	        	<input type="checkbox" name="user[auto]" value="connect">
+	        	Connexion automatique
+	        </p>
+
+	        <p>
 	            <input id="connexion" class="connect" type="submit" value="Connexion">
-	        </div>
+	        </p>
 	    </form>
 	</header>
 	<?= $content ?>

@@ -10,6 +10,14 @@ body
 	filter: brightness(85%);
 }
 
+#connectAuto
+{
+	color: white;
+	position: relative;
+	top: 15px;
+	margin-right: 20px;
+}
+
 .connect
 {
 	margin-right: 20px;
@@ -17,6 +25,8 @@ body
 	border: 2px #25568D solid;
 	background-color: white;
 	color: black;
+	position: relative;
+	top: 15px;
 }
 
 #connexion:hover
@@ -188,6 +198,17 @@ header
 	margin-right: 10%;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	background-color: white;
+}
+
+#commentaireSignaler
+{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 100px;
+	margin-bottom: -250px;
 	border: 5px #25568D solid;
 	border-radius: 10px;
 	background-color: white;
@@ -391,6 +412,11 @@ a h1:hover
 	margin: auto;
 }
 
+#newPost
+{
+	margin-top: 150px;
+}
+
 #labelTitleCrea, #labelTitleUpdate
 {
 	margin-top: 40px !important;
@@ -523,7 +549,41 @@ a h1:hover
 	opacity: 1;
 }
 
+#approve
+{
+	color: white;
+	padding: 10px;
+	background-color: #25568D;
+	border: 2px #25568D solid;
+	border-radius: 20px;
+	margin-left: -150px;
+	position: relative;
+	left: 50%;
+}
 
+#deleteComment
+{
+	color: white;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-right: 10px;
+	padding-left: 10px;
+	background-color: #25568D;
+	border: 2px #25568D solid;
+	border-radius: 20px;
+	position: relative;
+	left: 50%;
+	margin-left: 100px;
+	margin-bottom: 20px;
+}
+
+#approve:hover, #deleteComment:hover
+{
+	color: #25568D;
+	background-color: #57a9de;
+	border: 2px #57a9de solid;
+	text-decoration: none;
+}
 
 
 

@@ -77,15 +77,22 @@ try
 
 	else
 	{
-		if (!isset($_SESSION["header"])) {
+		if (isset($_COOKIE["cookie"]["pseudo"])) 
+		{
+			$connect = new ControllerUser();
+			$connect->userConnectAccueil($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"], true);
+		}
+
+		else
+		{
 			$_SESSION["header"] = "template-page-front.php";
 		}
 		
 		$listPosts = new ControllerPost();
-		$listPosts->listPosts();
+		$listPosts->listPosts(); 
 	}
 		   
-	if (isset($_SESSION["pseudo"]))
+	if (isset($_SESSION["pseudo"]) || isset($_COOKIE["cookie"]["pseudo"]))
 	{
 		if (isset($_GET['action']))
 		{
@@ -246,13 +253,7 @@ try
 			    if (!empty($user["pseudo"]) && !empty($user["password"]))
 			    {
 			    	$connect = new ControllerUser();
-
-			    	
-			    		$connect->userConnectAccueil($user["pseudo"], $user["password"]);
-			    	
-			    	
-			    	
-			    	
+			    	$connect->userConnectAccueil($user["pseudo"], $user["password"], $user["auto"]);
 			    }
 
 			    else
@@ -266,6 +267,7 @@ try
 
 catch(Exception $e)
 {
+	$_SESSION["header"] = "template-page-front.php";
 	$msg_error = "Erreur : " . $e->getMessage();
 	require "view/page/messageErreur.php";
 }

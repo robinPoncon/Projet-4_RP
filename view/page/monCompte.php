@@ -84,16 +84,16 @@
 
 <section>
 
-	<h4>Commentaire à modérer</h4>
+	<h4 class="h4Update">Commentaire à modérer</h4>
 
 	<?php
         foreach ($this->comments as $comment)
     	{
     ?>  
-        <div class="commentaire">
+        <div id="commentaireSignaler">
             <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
-            <a href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
+            <a id="approve" href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
             <button onclick="deleteComment(<?= $comment->getId()?>)" id="deleteComment">Supprimer</button>
         </div>
 
