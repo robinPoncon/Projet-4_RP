@@ -108,8 +108,13 @@ class ControllerUser
             $this->userManager->updateInfoUser($this->pseudoUser);
 
             $_SESSION["pseudo"] = $this->pseudoUser->getPseudo();
-            $this->listPosts->listPosts();
+            setcookie('cookie[pseudo]', $this->pseudoUser->getPseudo(), time() + 365*24*3600, "/", null, false, true);
+
+            $msg_confirmation = "Le pseudo a bien été modifié !";
+            $url = "Compte";
+            require "view/page/messageConfirmation.php";
         }
+
         else
         {
             throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
@@ -118,7 +123,7 @@ class ControllerUser
 
     public function changePassword($actualPassword, $newPassword, $verifNewPassword)
     {
-        $this->newMDPUser = new User(["pseudo" => $this->user->getPseudo(), "password" => password_hash($newPassword, PASSWORD_DEFAULT), "email" => $this->user->getEmail()]);
+        $this->newMDPUser = new User(["id" => $_SESSION["id"], "pseudo" => $this->user->getPseudo(), "password" => password_hash($newPassword, PASSWORD_DEFAULT), "email" => $this->user->getEmail()]);
 
         $this->isPasswordCorrect = password_verify($actualPassword, $this->user->getPassword());
 
@@ -126,8 +131,13 @@ class ControllerUser
         {
             $this->userManager->updateInfoUser($this->newMDPUser);
 
-            $this->listPosts->listPosts();
+            setcookie('cookie[password]', $this->newMDPUser->getPassword(), time() + 365*24*3600, "/", null, false, true);
+
+            $msg_confirmation = "Le mot de passe a bien été modifié !";
+            $url = "Compte";
+            require "view/page/messageConfirmation.php";
         }
+
         else
         {
             throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
@@ -142,8 +152,11 @@ class ControllerUser
         {
             $this->userManager->updateInfoUser($this->newEmailUser);
 
-            $this->listPosts->listPosts();
+            $msg_confirmation = "L'email a bien été modifié !";
+            $url = "Compte";
+            require "view/page/messageConfirmation.php";
         }
+
         else
         {
             throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");

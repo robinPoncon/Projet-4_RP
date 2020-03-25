@@ -32,7 +32,9 @@ class ControllerPost
 	{	
 		$this->newPost = new Post(["title" => $title, "author" => $author, "content" => $content]);
 		$this->post = $this->postManager->addPost($this->newPost);
-		header("Location: index.php?action=Compte");
+		$msg_confirmation = "L'article a bien été ajouté !";
+	    $url = "Compte";
+	    require "view/page/messageConfirmation.php";
 	}
 
 	public function viewUpdatePost()
@@ -45,14 +47,20 @@ class ControllerPost
 	{
 		$this->postUpdate = new Post(["id" => $postId, "title" => $title, "content" => $content]);
 		$this->post = $this->postManager->updatePost($this->postUpdate);
-		header("Location: index.php?action=viewUpdatePost&id=" . $postId);
+
+		$msg_confirmation = "L'article a bien été modifié !";
+	    $url = "viewUpdatePost&id=" . $postId;
+	    require "view/page/messageConfirmation.php";
 	}
 
 	public function deletePost()
 	{
 		$this->deletePost = $this->postManager->deletePost($_GET["id"]);
 		$this->deleteCommentPost = $this->commentManager->deleteCommentPost($_GET["id"]);
-		header("Location: index.php?action=listPosts");
+
+		$msg_confirmation = "L'article a bien été supprimé !";
+	    $url = "listPosts";
+	    require "view/page/messageConfirmation.php";
 	}
 }
 

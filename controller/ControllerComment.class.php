@@ -14,6 +14,7 @@ class ControllerComment
 	private $commentManager;
 	private $newCom;
 	private $commentSignaler;
+	private $deleteComment;
 
 	public function __construct()
 	{
@@ -35,21 +36,36 @@ class ControllerComment
 	    
 	    $this->commentManager->addComment($this->newCom);
 	    
-	    header('Location: index.php?action=post&id=' . $postId);
+	    $msg_confirmation = "Le commentaire a bien été ajouté !";
+	    $url = "post&id=" . $postId;
+	    require "view/page/messageConfirmation.php";
 	}
 
 	public function signaler()
 	{
 		$this->commentSignaler = new Comment(["id" => $_GET["id"], "status" => 0]);
 		$this->commentManager->updateComment($this->commentSignaler);
-		//var_dump($this->commentSignaler);
-		header("Location: index.php?action=listPosts");
+		
+		$msg_confirmation = "Le commentaire a bien été signalé !";
+	    $url = "post&id=" . $_GET["postId"];
+	    require "view/page/messageConfirmation.php";
 	} 
 
 	public function approveComment()
 	{
 		$this->approveComment = new Comment(["id" => $_GET["id"], "status" => 1]);
 		$this->commentManager->updateComment($this->approveComment);
-		header("Location: index.php?action=Compte");
+
+		$msg_confirmation = "Le commentaire a bien été approuvé !";
+	    $url = "Compte";
+	    require "view/page/messageConfirmation.php";
+	}
+
+	public function deleteComment()
+	{
+		$this->deleteComment = $this->commentManager->deleteComment($_GET["id"]);
+		$msg_confirmation = "Le commentaire a bien été supprimé !";
+	    $url = "Compte";
+	    require "view/page/messageConfirmation.php";
 	}
 }

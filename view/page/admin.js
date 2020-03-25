@@ -94,6 +94,10 @@ function cancelPost(id)
 	$(".news").css("opacity", 1).css("pointer-events", "auto");
 }
 
+function confirmationAddComment()
+{
+	$("#confirmationAddComment").show();
+}
 
 
 

@@ -32,9 +32,13 @@
                 <textarea class="form-control" id="comment" name="addComment[comment]" placeholder="Votre commentaire"></textarea>
             </div>
             
-            <button class="form-control" id="envoyer" type="submit">Envoyer</button> 
+            <button onclick="confirmationAddComment()" class="form-control" id="envoyer" type="submit">Envoyer</button> 
             
         </form>
+    </div>
+
+    <div>
+        <p id="confirmationAddComment">Le commentaire a bien été ajouté !</p>
     </div>
 
     <?php
@@ -43,7 +47,7 @@
     ?>  
         <div class="commentaire">
             <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
-            <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>">Signaler</a> </p> 
+            <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>&amp;postId=<?= $this->post->getId()?>">Signaler</a> </p> 
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
         </div>
     <?php

@@ -372,7 +372,7 @@ a h1:hover
 	color: white;
 }
 
-#erreur p
+#erreur p, #confirmation p
 {
 	background-color: white;
 	border: 5px #25568D solid;
@@ -586,7 +586,20 @@ a h1:hover
 	text-decoration: none;
 }
 
-
+#confirmationAddComment
+{
+	color: #25568D;
+	border: 3px #25568D solid;
+	font-weight: bold;
+	background-color: white;
+	margin: auto;
+	text-align: center;
+	border-radius: 20px;
+	width: 60%;
+	padding: 10px;
+	margin-bottom: 50px !important;
+	display: none;
+}
 
 
 

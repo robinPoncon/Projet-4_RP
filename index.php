@@ -16,6 +16,8 @@ try
 	{
 		if ($_GET['action'] == 'listPosts') 
 		{
+			//setcookie('cookie[pseudo]', "", time() - 3600, "/");
+        	//setcookie('cookie[password]', "", time() - 3600, "/");
 		    $listPosts = new ControllerPost();
 		    $listPosts->listPosts();
 		}
@@ -87,6 +89,8 @@ try
 		{
 			$_SESSION["header"] = "template-page-front.php";
 		}
+
+		//$_SESSION["header"] = "template-page-front.php";
 		
 		$listPosts = new ControllerPost();
 		$listPosts->listPosts(); 
@@ -140,6 +144,19 @@ try
 			    {
 			       	$approveComment = new ControllerComment();
 			        $approveComment->approveComment();
+			    }
+			    else 
+			    {
+			        throw new \Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
+
+			elseif ($_GET["action"] == "deleteComment") 
+			{
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			       	$deleteComment = new ControllerComment();
+			        $deleteComment->deleteComment();
 			    }
 			    else 
 			    {
@@ -200,7 +217,6 @@ try
 				{
 					
 					$addPost = $_POST["addPost"];
-					var_dump($_POST);
 
 					if (!empty($addPost['title']) && !empty($addPost['author']) && !empty($addPost["content"])) 
 				    {
@@ -224,7 +240,6 @@ try
 				        {
 				           	$updatePostUser = new ControllerPost();
 				            $updatePostUser->updatePost($updatePost['id'], $updatePost['title'], $updatePost['content']);
-				            var_dump($updatePost);
 				        } 
 
 				        else 
@@ -267,7 +282,6 @@ try
 
 catch(Exception $e)
 {
-	$_SESSION["header"] = "template-page-front.php";
 	$msg_error = "Erreur : " . $e->getMessage();
 	require "view/page/messageErreur.php";
 }
