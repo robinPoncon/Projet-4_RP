@@ -79,13 +79,13 @@ function deletePost(id)
 function deleteComment(id)
 {
 	$("#confirm" + id).css("visibility", "visible");
-	$(".commentaire, #perso, #newPost").css("opacity", 0.5).css("pointer-events", "none");
+	$(".commentaire, #perso, #newPost, .commentaireSignaler, h4").css("opacity", 0.5).css("pointer-events", "none");
 }
 
 function cancelComment(id)
 {
 	$("#confirm" + id).css("visibility", "hidden");
-	$(".commentaire, #perso, #newPost").css("opacity", 1).css("pointer-events", "auto");
+	$(".commentaire, #perso, #newPost, .commentaireSignaler, h4").css("opacity", 1).css("pointer-events", "auto");
 }
 
 function cancelPost(id)

@@ -38,11 +38,11 @@ class ControllerUser
 
     public function userConnectAccueil($pseudo, $password, $connect)
     {
-        $this->isPasswordCorrect = strcmp($password, $this->user->getPassword());
-        
-        if ($this->isPasswordCorrect == 0 && strcmp($pseudo, $this->user->getPseudo()) == 0)
+        $this->isPasswordCorrect = password_verify($password, $this->user->getPassword());
+
+        if ($this->isPasswordCorrect && strcmp($pseudo, $this->user->getPseudo()) == 0)
         {
-            if ($connect)
+            if ($connect == "true")
             {
                 setcookie('cookie[pseudo]', $this->user->getPseudo(), time() + 365*24*3600, "/", null, false, true);
                 setcookie('cookie[password]', $this->user->getPassword(), time() + 365*24*3600, "/", null, false, true);
@@ -52,13 +52,27 @@ class ControllerUser
             $_SESSION["id"] = $this->user->getId();
             $_SESSION["header"] = "template-page-back.php";
 
-           header("Location: index.php?action=listPosts");
+            header("Location: index.php?action=listPosts");
 
         }
 
         else
         {
             throw new \Exception("Login ou mot de passe incorrect, veuillez réessayer");
+        }
+    }
+
+    public function userConnectAuto($pseudo, $password)
+    {
+        $this->isPasswordCorrect = strcmp($password, $this->user->getPassword());
+
+        if ($this->isPasswordCorrect == 0 && strcmp($pseudo, $this->user->getPseudo()) == 0)
+        {
+            $_SESSION['pseudo'] = $this->user->getPseudo();
+            $_SESSION["id"] = $this->user->getId();
+            $_SESSION["header"] = "template-page-back.php";
+
+            header("Location: index.php?action=listPosts");
         }
     }
 
@@ -74,8 +88,10 @@ class ControllerUser
     {
         $_SESSION = array();
         session_destroy();
-        setcookie("cookie[pseudo]", "");
-        setcookie("cookie[password]", "");
+
+        setcookie('cookie[pseudo]', "", time() - 3600, "/");
+        setcookie('cookie[password]', "", time() - 3600, "/");
+
         session_start();
         $_SESSION["header"] = "template-page-front.php";
         header("Location: index.php?action=listPosts");

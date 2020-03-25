@@ -27,7 +27,7 @@ class CommentManager extends Manager
     {
         $comments = [];
 
-        $req = $this->db->prepare("SELECT id, post_id, author, comment, comment_date FROM comments WHERE status = :status ORDER BY comment_date DESC");
+        $req = $this->db->prepare("SELECT id, post_id, author, comment, comment_date FROM comments WHERE status = :status ORDER BY id DESC");
         $req->bindValue(":status", 0, PDO::PARAM_INT);
         $req->execute();
 

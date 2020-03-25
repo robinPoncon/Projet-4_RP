@@ -22,7 +22,7 @@
 	        </p>
 
 	        <p id="connectAuto">
-	        	<input type="checkbox" name="user[auto]" value="connect">
+	        	<input type="checkbox" name="user[auto]" value="true">
 	        	Connexion automatique
 	        </p>
 

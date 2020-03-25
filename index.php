@@ -80,7 +80,7 @@ try
 		if (isset($_COOKIE["cookie"]["pseudo"])) 
 		{
 			$connect = new ControllerUser();
-			$connect->userConnectAccueil($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"], true);
+			$connect->userConnectAuto($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"]);
 		}
 
 		else

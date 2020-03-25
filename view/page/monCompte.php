@@ -90,14 +90,14 @@
         foreach ($this->comments as $comment)
     	{
     ?>  
-        <div id="commentaireSignaler">
+        <div class="commentaireSignaler">
             <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
             <a id="approve" href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
             <button onclick="deleteComment(<?= $comment->getId()?>)" id="deleteComment">Supprimer</button>
         </div>
 
-        <div class="confirmComment" id="confirm<?= $comment->getId()?>"> 
+        <div class="confirmComment" id="confirm<?= $comment->getId() ?>"> 
 	        <p> Voulez-vous vraiment supprimer ce commentaire ? </p>
 	        <a id="yesComment" href="index.php?action=deleteComment&amp;id=<?= $comment->getId() ?>"> Oui </a>
 	        <button onclick="cancelComment(<?= $comment->getId() ?>)" id="noComment">Non</button>
