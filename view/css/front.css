@@ -29,6 +29,11 @@ body
 	top: 8px;
 }
 
+#connexion
+{
+	margin-left: 50px !important;
+}
+
 #connexion:hover
 {
 	background-color: #57a9de;
@@ -37,16 +42,31 @@ body
 
 h1
 {
+	margin-top: 15px !important;
 	color: white;
 	margin-left: 10px;
 	font-family: dancing_script_otregular, arial, sans-sérif;
+}
+
+#connexionPart1
+{
+	display: flex;
+	flex-direction: column;
+	margin-right: 65px !important;
+}
+
+#connexionPart2
+{
+	display: flex;
+	flex-direction: column;
+	margin-right: 10px !important;
 }
 
 h2
 {
 	top: 301px;
 	left: 50%;
-	margin-left: -314px;
+	margin-left: -315px;
 	z-index: 1000;
 	padding: 20px;
 	border-radius: 20px;
@@ -66,6 +86,7 @@ h2
 	margin-top: 50px;
 	margin-bottom: -100px;
 	background-color: white;
+	position: relative;
 }
 
 .newsUpdate
@@ -116,7 +137,7 @@ header
 	height: 50px;
 	border-radius: 20px;
 	top: -50px;
-	left: 100px;
+	left: 85px;
 	background-color: #25568D;
 	margin-top: 50px;
 	margin-bottom: 25px;
@@ -245,7 +266,7 @@ a
 
 a h1:hover
 {
-	font-weight: bold;
+	color: black;
 }
 
 .iconeComment
@@ -384,19 +405,34 @@ a h1:hover
 	margin-top: 20px !important;
 }
 
+#buttons
+{
+	display: flex;
+	align-items: center;
+}
+
 #updatePost, #deletePost
 {
 	position: relative;
-	left: 10%;
+	width: 100px;
+	margin: auto;
 	color: white;
 	border: 2px #25568D solid;
 	background-color: #25568D;
 	padding: 15px;
 	border-radius: 30px;
-	top: -90px;
-	margin-left: 280px;
+	top: -18px;
 	text-decoration: none;
 	font-weight: bold;
+	display: block;
+}
+
+#deletePost
+{
+	top: -76px;
+	left: 94%;
+	width: 120px;
+	margin-left: -117px !important;
 }
 
 #updatePost:hover, #deletePost:hover
@@ -604,8 +640,59 @@ a h1:hover
 }
 
 
+/* Responsive Grand Ecrans */
+
+@media all and (min-device-width: 1280px)
+{
+	#connexionPart1, #connexionPart2
+	{
+		flex-direction: row;
+	}
+}
 
 
+
+/* Responsive Tablette */
+
+@media all and (max-device-width: 992px)
+{
+	#connexion
+	{
+		margin-left: 0px !important;
+	}
+}
+
+/* Responsive Mobile */
+
+@media all and (max-device-width: 768px)
+{
+	h1
+	{
+		text-align: center;
+	}
+	header
+	{
+		flex-direction: column;
+	}
+
+	#connexionFront
+	{
+		display: flex;
+		flex-direction: column;
+	}
+
+	#connexionPart1, #connexionPart2
+	{
+		margin-right: 0px !important;
+		margin-left: 25px !important;
+	}
+
+	#connexion
+	{
+		margin-left: 48px !important;
+		margin-bottom: 20px;
+	}
+}
 
 
 
@@ -634,15 +721,3 @@ a h1:hover
     font-style: normal;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-

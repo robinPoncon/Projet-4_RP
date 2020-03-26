@@ -28,7 +28,7 @@ foreach ($this->posts as $post)
         </p>
 
         <div class="iconeComment">
-            <a class="test" href="index.php?action=post&amp;id=<?= $post->getId() ?>">
+            <a href="index.php?action=post&amp;id=<?= $post->getId() ?>">
                 <div class="position-relative" id="icone">
                     <p class="position-absolute" id="trait1"></p>
                     <p class="position-absolute" id="trait2"></p>
