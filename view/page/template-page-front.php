@@ -22,6 +22,7 @@
 	        </p>
 
 	        <p id="connectAuto">
+	        	<input type="hidden" name="user[auto]" value="false">
 	        	<input type="checkbox" name="user[auto]" value="true">
 	        	Connexion automatique
 	        </p>

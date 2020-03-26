@@ -32,13 +32,9 @@
                 <textarea class="form-control" id="comment" name="addComment[comment]" placeholder="Votre commentaire"></textarea>
             </div>
             
-            <button onclick="confirmationAddComment()" class="form-control" id="envoyer" type="submit">Envoyer</button> 
+            <button class="form-control" id="envoyer" type="submit">Envoyer</button> 
             
         </form>
-    </div>
-
-    <div>
-        <p id="confirmationAddComment">Le commentaire a bien été ajouté !</p>
     </div>
 
     <?php

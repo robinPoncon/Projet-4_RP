@@ -58,6 +58,7 @@ class ControllerUser
 
         else
         {
+            $_SESSION["url"] = "listPosts";
             throw new \Exception("Login ou mot de passe incorrect, veuillez réessayer");
         }
     }
@@ -117,7 +118,8 @@ class ControllerUser
 
         else
         {
-            throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+            $_SESSION["url"] = "Compte";
+            throw new \Exception("Vérifier les pseudos saisis !");
         }
     }
 
@@ -140,7 +142,8 @@ class ControllerUser
 
         else
         {
-            throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+            $_SESSION["url"] = "Compte";
+            throw new \Exception("Vérifier les mots de passe saisis !");
         }
     }
 
@@ -159,7 +162,8 @@ class ControllerUser
 
         else
         {
-            throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+            $_SESSION["url"] = "Compte";
+            throw new \Exception("Vérifier les emails saisis !");
         }
     }
 }

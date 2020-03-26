@@ -31,6 +31,7 @@ try
 		    }
 		    else 
 		    {
+		    	$_SESSION["url"] = "listPosts";
 		        throw new \Exception("Aucun identifiant de billet envoyé");
 		    }
 		}
@@ -45,6 +46,7 @@ try
 
 		    else 
 		    {
+		    	$_SESSION["url"] = "post&id=" . $_GET["id"];
 		        throw new \Exception("Aucun identifiant de billet envoyé");
 		    }
 		}
@@ -65,12 +67,14 @@ try
 
 			        else 
 			        {
+			        	$_SESSION["url"] = "post&id=" . $comment["id"];
 			           	throw new Exception("Tous les champs ne sont pas remplis");
 			        } 
 			    }
 
 			    else 
 			    {
+			    	$_SESSION["url"] = "post&id=" . $comment["id"];
 			        throw new Exception('Aucun identifiant de billet envoyé');
 			    }
 			}
@@ -89,8 +93,6 @@ try
 		{
 			$_SESSION["header"] = "template-page-front.php";
 		}
-
-		//$_SESSION["header"] = "template-page-front.php";
 		
 		$listPosts = new ControllerPost();
 		$listPosts->listPosts(); 
@@ -119,8 +121,10 @@ try
 			       	$viewUpdatePost = new ControllerPost();
 			        $viewUpdatePost->viewUpdatePost();
 			    }
+
 			    else 
 			    {
+			    	$_SESSION["url"] = "listPosts";
 			        throw new \Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
@@ -132,8 +136,10 @@ try
 			       	$deletePost = new ControllerPost();
 			        $deletePost->deletePost();
 			    }
+
 			    else 
 			    {
+			    	$_SESSION["url"] = "listPosts";
 			        throw new \Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
@@ -145,8 +151,10 @@ try
 			       	$approveComment = new ControllerComment();
 			        $approveComment->approveComment();
 			    }
+
 			    else 
 			    {
+			    	$_SESSION["url"] = "Compte";
 			        throw new \Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
@@ -158,8 +166,10 @@ try
 			       	$deleteComment = new ControllerComment();
 			        $deleteComment->deleteComment();
 			    }
+
 			    else 
 			    {
+			    	$_SESSION["url"] = "Compte";
 			        throw new \Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
@@ -175,9 +185,11 @@ try
 						$modifPseudo = new ControllerUser();
 						$modifPseudo->changePseudo($changePseudo["actuelPseudo"], $changePseudo["newPseudo"], $changePseudo["verifNewPseudo"]);
 					}
+
 					else
 					{
-						throw new \Exception("Vérifier les pseudos saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+						$_SESSION["url"] = "Compte";
+						throw new \Exception("Vérifier les pseudos saisis !");
 					}
 				}
 
@@ -193,7 +205,8 @@ try
 
 					else
 					{
-						throw new \Exception("Vérifier les mots de passe saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+						$_SESSION["url"] = "Compte";
+						throw new \Exception("Vérifier les mots de passe saisis !");
 					}
 				}
 
@@ -209,7 +222,8 @@ try
 
 					else
 					{
-						throw new \Exception("Vérifier les emails saisis ! " . " Retour à l'espace perso -> " . "<a href='index.php?action=Compte'>Mon compte</a>");
+						$_SESSION["url"] = "Compte";
+						throw new \Exception("Vérifier les emails saisis !");
 					}
 				}
 
@@ -226,6 +240,7 @@ try
 
 				    else 
 				    {
+				    	$_SESSION["url"] = "Compte";
 				        throw new Exception("Tous les champs ne sont pas remplis");
 				    } 
 				}
@@ -244,12 +259,14 @@ try
 
 				        else 
 				        {
+				        	$_SESSION["url"] = "viewUpdatePost&id=" . $updatePost["id"];
 				           	throw new Exception("Tous les champs ne sont pas remplis");
 				        } 
 				    }
 
 				    else 
 				    {
+				    	$_SESSION["url"] = "viewUpdatePost&id=" . $updatePost["id"];
 				        throw new Exception('Aucun identifiant de billet envoyé');
 				    }
 				}
@@ -273,6 +290,7 @@ try
 
 			    else
 			    {
+			    	$_SESSION["url"] = "listPosts";
 			       	throw new \Exception("Login ou mot de passe non remplis. Veuillez réessayer !");
 			    }
 			}
