@@ -198,7 +198,7 @@ header
 	margin-left: 10%;
 	margin-right: 10%;
 	margin-top: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 	border: 5px #25568D solid;
 	border-radius: 10px;
 	background-color: white;
@@ -246,7 +246,7 @@ a
 
 a h1:hover
 {
-	font-weight: bold;
+	color: black;
 }
 
 .iconeComment
@@ -290,15 +290,26 @@ a h1:hover
 	color: #25568D;
 	background-color: white;
 	border-radius: 15px;
-	margin-left: 20px;
+	width: 72px;
+	margin: auto;
 	padding: 5px;
 	border: 2px #25568D solid;
+	display: block;
+}
+
+#divSignaler
+{
+	background-color: #25568D;
+	margin: auto;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }
 
 #signaler:hover
 {
 	color: white;
 	background-color: #57a9de;
+	border: 2px #57a9de solid;
 	text-decoration: none;
 }
 
@@ -405,6 +416,11 @@ a h1:hover
 	text-decoration: none;
 	font-weight: bold;
 	display: block;
+}
+
+#updatePost
+{
+	left: -10px;
 }
 
 #deletePost
