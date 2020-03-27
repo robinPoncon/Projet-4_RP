@@ -277,7 +277,7 @@ a h1:hover
 #ajouterComment
 {
 	margin-top: 150px !important;
-	width: 50%;
+	width: 80%;
 	margin: auto;
 	border: 5px #25568D solid;
 	border-radius: 10px;
@@ -662,6 +662,9 @@ a h1:hover
 	}
 }
 
+
+
+
 /* Responsive Mobile */
 
 @media all and (max-device-width: 768px)
@@ -670,6 +673,17 @@ a h1:hover
 	{
 		text-align: center;
 	}
+
+	h2
+	{
+		
+		text-align: center;
+		top: 500px;
+		left: 10%;
+		right: 10%;
+		margin-left: 0px;
+	}
+
 	header
 	{
 		flex-direction: column;
@@ -691,6 +705,11 @@ a h1:hover
 	{
 		margin-left: 48px !important;
 		margin-bottom: 20px;
+	}
+
+	#envoyer
+	{
+		width: 50% !important;
 	}
 }
 
