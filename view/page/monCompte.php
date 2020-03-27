@@ -113,11 +113,11 @@
 
 	<form action="index.php?action=addPost" method="post">
 		<p class="d-flex">
-			<label id="labelTitleCrea" class="form-control" for="titleCrea"> Titre :</label>
+			<label id="labelTitleCrea" class="form-control" for="titleCrea">Titre :</label>
 			<input id="titleCrea" class="form-control" type="text" name="addPost[title]" placeholder="Nom de l'article">
 		</p>
 		<p class="d-flex">
-			<label id="labelAuthorCrea" class="form-control" for="authorCrea"> Auteur : </label>
+			<label id="labelAuthorCrea" class="form-control" for="authorCrea">Auteur : </label>
 			<input id="authorCrea" class="form-control" type="text" name="addPost[author]" placeholder="Nom de l'auteur">
 		</p>
 		<p>
