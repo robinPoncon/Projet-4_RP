@@ -357,8 +357,8 @@ a h1:hover
 	background-color: white;
 	border: 4px #25568D solid;
 	border-radius: 20px;
-	width: 300px;
-	margin-left: -150px;
+	width: 280px;
+	margin-left: -143px;
 	position: relative;
 	left: 50%;
 	padding: 10px;
@@ -374,6 +374,7 @@ a h1:hover
 
 #buttonMDP, #buttonPseudo, #buttonEmail
 {
+	margin-left: 12px !important;
 	width: 100% !important;
 }
 
@@ -491,6 +492,7 @@ a h1:hover
 
 #validationUpdatePost, #validationCreationPost
 {
+	margin-top: 30px !important;
 	width: 20% !important;
 	margin-bottom: 50px !important;
 	border: 1px white solid;
@@ -513,7 +515,7 @@ a h1:hover
 	background-color: white;
 	width: 50%;
 	position: relative;
-	top: -260px;
+	top: -290px;
 	height: 200px;
 	margin: auto;
 	text-align: center;
@@ -656,6 +658,22 @@ a h1:hover
 		padding-bottom: 10px;
 		flex-direction: row;
 	}
+
+	#changeMDP, #changePseudo, #changeEmail
+	{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	#changeMDP input, #changePseudo input, #changeEmail input
+	{
+		margin-right: 0px;
+	}
+
+	#buttonMDP, #buttonPseudo, #buttonEmail
+	{
+		margin-left: 0px !important;
+	}
 }
 
 /* Responsive Mobile */
@@ -745,6 +763,33 @@ a h1:hover
 	#updateDiv label, #newPost label
 	{
 		width: 33% !important;
+	}
+
+	.confirm, .confirmComment
+	{
+		width: 80% !important;
+	}
+
+	.confirmComment
+	{
+		top: 51px;
+	}
+
+	#deleteComment
+	{
+		left: 94%;
+		margin-left: -200px
+	}
+
+	#approve
+	{
+		left: 6%;
+		margin-left: 0px;
+	}
+
+	#yesComment, #noComment
+	{
+		top: 10px;
 	}
 }
 
