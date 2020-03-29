@@ -1,3 +1,54 @@
+
+					/* HEADER */ 
+
+
+
+
+h1
+{
+	color: white;
+	margin-left: 10px;
+	font-family: dancing_script_otregular, arial, sans-sérif;
+}
+
+#admin 
+{
+	color: white;
+	font-size: 1.5em;
+	position: relative;
+	top: 6px;
+}
+
+#admin p 
+{
+	margin-right: 20px;
+}
+
+#admin a
+{
+	color: white;
+	margin-top: -16px;
+	margin-right: 20px;
+	text-decoration: none;
+}
+
+#admin a:hover
+{
+	border-bottom: 2px white solid;
+	margin-top: -14px;
+}
+
+
+
+
+
+
+					/* BODY */
+
+
+
+
+
 body
 {
 	background-color: #57a9de !important;
@@ -8,38 +59,6 @@ body
 	width: 100%;
 	height: 600px;
 	filter: brightness(85%);
-}
-
-#connectAuto
-{
-	color: white;
-	position: relative;
-	top: 8px;
-	margin-right: 20px;
-}
-
-.connect
-{
-	margin-right: 20px;
-	border-radius: 8px;
-	border: 2px #25568D solid;
-	background-color: white;
-	color: black;
-	position: relative;
-	top: 8px;
-}
-
-#connexion:hover
-{
-	background-color: #57a9de;
-	color: white;
-}
-
-h1
-{
-	color: white;
-	margin-left: 10px;
-	font-family: dancing_script_otregular, arial, sans-sérif;
 }
 
 h2
@@ -313,32 +332,7 @@ a h1:hover
 	text-decoration: none;
 }
 
-#admin 
-{
-	color: white;
-	font-size: 1.5em;
-	position: relative;
-	top: 6px;
-}
 
-#admin p 
-{
-	margin-right: 20px;
-}
-
-#admin a
-{
-	color: white;
-	margin-top: -16px;
-	margin-right: 20px;
-	text-decoration: none;
-}
-
-#admin a:hover
-{
-	border-bottom: 2px white solid;
-	margin-top: -14px;
-}
 
 #changeMDP, #changePseudo, #changeEmail
 {

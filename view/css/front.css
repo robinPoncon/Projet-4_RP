@@ -1,43 +1,23 @@
-body
+
+					/* HEADER */ 
+
+
+
+
+
+header
 {
-	background-color: #57a9de !important;
+	background-image: linear-gradient(#25568D, #57a9de);
 }
 
-#img-alaska
-{
-	width: 100%;
-	height: 600px;
-	filter: brightness(85%);
-}
-
-#connectAuto
+a
 {
 	color: white;
-	position: relative;
-	top: 8px;
-	margin-right: 20px;
 }
 
-.connect
+a h1:hover
 {
-	margin-right: 20px;
-	border-radius: 8px;
-	border: 2px #25568D solid;
-	background-color: white;
 	color: black;
-	position: relative;
-	top: 8px;
-}
-
-#connexion
-{
-	margin-left: 50px !important;
-}
-
-#connexion:hover
-{
-	background-color: #57a9de;
-	color: white;
 }
 
 h1
@@ -60,6 +40,58 @@ h1
 	display: flex;
 	flex-direction: column;
 	margin-right: 10px !important;
+}
+
+.connect
+{
+	margin-right: 20px;
+	border-radius: 8px;
+	border: 2px #25568D solid;
+	background-color: white;
+	color: black;
+	position: relative;
+	top: 8px;
+}
+
+#connectAuto
+{
+	color: white;
+	position: relative;
+	top: 8px;
+	margin-right: 20px;
+}
+
+#connexion
+{
+	margin-left: 50px !important;
+}
+
+#connexion:hover
+{
+	background-color: #57a9de;
+	color: white;
+}
+
+
+
+
+
+				/* PAGE D'ACCUEIL */
+
+
+
+
+
+body
+{
+	background-color: #57a9de !important;
+}
+
+#img-alaska
+{
+	width: 100%;
+	height: 600px;
+	filter: brightness(85%);
 }
 
 h2
@@ -87,32 +119,16 @@ h2
 	margin-bottom: -100px;
 	background-color: white;
 	position: relative;
+	opacity: 1;
 }
 
-.newsUpdate
-{
-	text-align: justify;
-	margin-left: 10%;
-	margin-right: 10%;
-	border-radius: 18px;
-	border: 5px #25568D solid;
-	margin-top: 50px;
-	background-color: white;
-}
-
-.news p, .newsUpdate p
+.news p
 {
 	font-family: latoregular, sans-sérif;
 	font-size: 1.2em;
 	font-style: italic;
 	padding-left: 5%;
 	padding-right: 5%;
-	margin-bottom: 50px;
-}
-
-.content
-{
-	margin-top: 50px;
 	margin-bottom: 50px;
 }
 
@@ -126,9 +142,20 @@ h3
 	font-weight: bold !important;
 }
 
-header
+.content
 {
-	background-image: linear-gradient(#25568D, #57a9de);
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#authorView
+{
+	text-align: right;
+}
+
+.iconeComment
+{
+	display: inline;
 }
 
 #icone
@@ -208,31 +235,41 @@ header
 	z-index: 2;
 }
 
-#authorView
+.confirm
 {
-	text-align: right;
+	border: 5px #25568D solid;
+	border-radius: 20px;
+	padding: 10px;
+	text-align: center;
+	background-color: white;
+	width: 50%;
+	position: relative;
+	top: -290px;
+	height: 200px;
+	margin: auto;
+	text-align: center;
+	z-index: 10;
+	visibility: hidden;
 }
 
-.commentaire
+
+
+					/* PAGE COMMENTAIRE */
+
+
+
+
+
+
+#ajouterComment
 {
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 20px;
+	margin-top: 150px !important;
+	width: 80%;
+	margin: auto;
+	border: 5px #25568D solid;
+	border-radius: 10px;
 	margin-bottom: 50px;
-	border: 5px #25568D solid;
-	border-radius: 10px;
-	background-color: white;
-}
-
-.commentaireSignaler
-{
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 100px;
-	margin-bottom: -250px;
-	border: 5px #25568D solid;
-	border-radius: 10px;
-	background-color: white;
+	background-color: #25568D;
 }
 
 h4
@@ -246,44 +283,10 @@ h4
 	border-radius: 20px;
 }
 
-#titleComment
+.form-control
 {
-	background-color: #25568D;
-	text-align: center;
-	color: white;
-	padding: 10px;
-}
-
-#contentComment
-{
-	padding: 10px;
-	text-align: center;
-}
-
-a
-{
-	color: white;
-}
-
-a h1:hover
-{
-	color: black;
-}
-
-.iconeComment
-{
-	display: inline;
-}
-
-#ajouterComment
-{
-	margin-top: 150px !important;
-	width: 80%;
-	margin: auto;
-	border: 5px #25568D solid;
-	border-radius: 10px;
-	margin-bottom: 50px;
-	background-color: #25568D;
+	width: 90% !important;
+	margin: auto !important;
 }
 
 #envoyer
@@ -300,10 +303,37 @@ a h1:hover
 	color: white;
 }
 
-.form-control
+.commentaire
 {
-	width: 90% !important;
-	margin: auto !important;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	background-color: white;
+}
+
+#titleComment
+{
+	background-color: #25568D;
+	text-align: center;
+	color: white;
+	padding: 10px;
+}
+
+#contentComment
+{
+	padding: 10px;
+	text-align: center;
+}
+
+#divSignaler
+{
+	background-color: #25568D;
+	margin: auto;
+	padding-top: 15px;
+	padding-bottom: 10px;
 }
 
 #signaler
@@ -318,14 +348,6 @@ a h1:hover
 	display: block;
 }
 
-#divSignaler
-{
-	background-color: #25568D;
-	margin: auto;
-	padding-top: 15px;
-	padding-bottom: 10px;
-}
-
 #signaler:hover
 {
 	color: white;
@@ -334,76 +356,15 @@ a h1:hover
 	text-decoration: none;
 }
 
-#admin 
-{
-	color: white;
-	font-size: 1.5em;
-	position: relative;
-	top: 6px;
-}
 
-#admin p 
-{
-	margin-right: 20px;
-}
 
-#admin a
-{
-	color: white;
-	margin-top: -16px;
-	margin-right: 20px;
-	text-decoration: none;
-}
 
-#admin a:hover
-{
-	border-bottom: 2px white solid;
-	margin-top: -14px;
-}
 
-#changeMDP, #changePseudo, #changeEmail
-{
-	padding-top: 20px;
-	display: flex;
-	justify-content: center;
-}
+					/* PAGE ERREUR / CONFIRMATION */
 
-#changeMDP input, #changePseudo input, #changeEmail input
-{
-	margin-right: 20px;
-}
 
-#modifMDP, #modifPseudo, #modifEmail
-{
-	background-color: white;
-	border: 4px #25568D solid;
-	border-radius: 20px;
-	width: 300px;
-	margin-left: -150px;
-	position: relative;
-	left: 50%;
-	padding: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
 
-#modifMDP:hover, #modifPseudo:hover, #modifEmail:hover
-{
-	background-color: #25568D;
-	color: white;
-}
 
-#buttonMDP, #buttonPseudo, #buttonEmail
-{
-	width: 100% !important;
-}
-
-#buttonMDP:hover, #buttonPseudo:hover, #buttonEmail:hover
-{
-	background-color: #25568D;
-	border: 1px #25568D solid;
-	color: white;
-}
 
 #erreur p, #confirmation p
 {
@@ -417,242 +378,25 @@ a h1:hover
 	margin-top: 20px !important;
 }
 
-#buttons
-{
-	display: flex;
-	align-items: center;
-}
-
-#updatePost, #deletePost
-{
-	position: relative;
-	width: 100px;
-	margin: auto;
-	color: white;
-	border: 2px #25568D solid;
-	background-color: #25568D;
-	padding: 15px;
-	border-radius: 30px;
-	top: -18px;
-	text-decoration: none;
-	font-weight: bold;
-	display: block;
-}
-
-#deletePost
-{
-	top: -76px;
-	left: 94%;
-	width: 120px;
-	margin-left: -117px !important;
-}
-
-#updatePost:hover, #deletePost:hover
-{
-	color: #25568D;
-	background-color: #57a9de;
-	text-decoration: none;
-	border: 2px #57a9de solid;
-}
-
-#updateDiv, #newPost
-{
-	width: 80% !important;
-	margin: auto;
-}
-
-#newPost
-{
-	margin-top: 150px;
-}
-
-#labelTitleCrea, #labelTitleUpdate
-{
-	margin-top: 40px !important;
-}
-
-#labelTitleUpdate
-{
-	margin-bottom: 20px !important;
-}
-
-#labelAuthorCrea
-{
-	margin-top: 20px !important;
-	margin-bottom: 20px !important;
-}
-
-#updateDiv label, #newPost label
-{
-	width: 10% !important;
-	margin-right: 20px !important;
-	margin-top: 40px;
-	background-color: #25568D;
-	border: 1px #25568D solid;
-	color: white;
-}
-
-#titleUpdate, #titleCrea
-{
-	margin-top: 40px !important;
-}
-
-.h4Update
-{
-	width: 80%;
-	border-radius: 20px;
-	margin: auto;
-	margin-top: 50px;
-}
-
-#validationUpdatePost, #validationCreationPost
-{
-	width: 20% !important;
-	margin-bottom: 50px !important;
-	border: 1px white solid;
-}
-
-#validationUpdatePost:hover, #validationCreationPost:hover
-{
-	background-color: #25568D;
-	border: 1px #25568D solid;
-	color: white;
-}
 
 
-.confirm
-{
-	border: 5px #25568D solid;
-	border-radius: 20px;
-	padding: 10px;
-	text-align: center;
-	background-color: white;
-	width: 50%;
-	position: relative;
-	top: -260px;
-	height: 200px;
-	margin: auto;
-	text-align: center;
-	z-index: 10;
-	visibility: hidden;
-}
-
-.confirmComment
-{
-	border: 5px #25568D solid;
-	border-radius: 20px;
-	padding: 10px;
-	text-align: center;
-	background-color: white;
-	width: 50%;
-	position: relative;
-	top: 64px;
-	height: 200px;
-	margin: auto;
-	text-align: center;
-	z-index: 10;
-	visibility: hidden;
-}
-
-.confirm a:hover, .confirmComment a:hover
-{
-	text-decoration: none;
-}
-
-.confirm p, .confirmComment p
-{
-	font-size: 1.3em;
-}
-
-#yes, #no, #yesComment, #noComment
-{
-	background-color: #25568D;
-	border: 5px #25568D solid;
-	border-radius: 20px;
-	color: white;
-	padding: 5px;
-	font-size: 1.2em;
-	position: relative;
-	top: 35px;
-}
-
-#yes:hover, #no:hover, #yesComment:hover, #noComment:hover
-{
-	background-color: #57a9de;
-	color: #25568D;
-	border: 5px #57a9de solid;
-}
-
-#yes, #yesComment
-{
-	right: 25px;
-}
-
-#no, #noComment
-{
-	left: 25px;
-	padding-top: 2px;
-	padding-bottom: 2px;
-}
-
-.news
-{
-	opacity: 1;
-}
-
-#approve
-{
-	color: white;
-	padding: 10px;
-	background-color: #25568D;
-	border: 2px #25568D solid;
-	border-radius: 20px;
-	margin-left: -150px;
-	position: relative;
-	left: 50%;
-}
-
-#deleteComment
-{
-	color: white;
-	padding-top: 8px;
-	padding-bottom: 8px;
-	padding-right: 10px;
-	padding-left: 10px;
-	background-color: #25568D;
-	border: 2px #25568D solid;
-	border-radius: 20px;
-	position: relative;
-	left: 50%;
-	margin-left: 100px;
-	margin-bottom: 20px;
-}
-
-#approve:hover, #deleteComment:hover
-{
-	color: #25568D;
-	background-color: #57a9de;
-	border: 2px #57a9de solid;
-	text-decoration: none;
-}
-
-#confirmationAddComment
-{
-	color: #25568D;
-	border: 3px #25568D solid;
-	font-weight: bold;
-	background-color: white;
-	margin: auto;
-	text-align: center;
-	border-radius: 20px;
-	width: 60%;
-	padding: 10px;
-	margin-bottom: 50px !important;
-	display: none;
-}
 
 
-/* Responsive Grand Ecrans */
+
+
+
+
+
+
+
+
+
+
+					/* RESPONSIVE GRANDS ECRANS */
+
+
+
+
 
 @media all and (min-device-width: 1280px)
 {
@@ -664,7 +408,13 @@ a h1:hover
 
 
 
-/* Responsive Tablette */
+
+
+					/* RESPONSIVE TABLETTE */
+
+
+
+
 
 @media all and (max-device-width: 992px)
 {
@@ -677,27 +427,19 @@ a h1:hover
 
 
 
-/* Responsive Mobile */
+
+					/* RESPONSIVE MOBILE */
 
 @media all and (max-device-width: 768px)
 {
-	h1
-	{
-		text-align: center;
-	}
-
-	h2
-	{
-		text-align: center;
-		top: 500px;
-		left: 10%;
-		right: 10%;
-		margin-left: 0px;
-	}
-
 	header
 	{
 		flex-direction: column;
+	}
+
+	h1
+	{
+		text-align: center;
 	}
 
 	#connexionFront
@@ -716,6 +458,15 @@ a h1:hover
 	{
 		margin-left: 48px !important;
 		margin-bottom: 20px;
+	}
+
+	h2
+	{
+		text-align: center;
+		top: 500px;
+		left: 10%;
+		right: 10%;
+		margin-left: 0px;
 	}
 
 	#envoyer

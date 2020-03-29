@@ -44,7 +44,9 @@
         <div class="commentaire">
             <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> </p>
             <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
-            <p id="divSignaler"> <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>&amp;postId=<?= $this->post->getId()?>">Signaler</a> </p>
+            <p id="divSignaler"> 
+                <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>&amp;postId=<?= $this->post->getId()?>">Signaler</a> 
+            </p>
         </div>
     <?php
         }
