@@ -398,7 +398,7 @@ h4
 
 
 
-@media all and (min-device-width: 1280px)
+@media all and (min-width: 1280px)
 {
 	#connexionPart1, #connexionPart2
 	{
@@ -416,7 +416,7 @@ h4
 
 
 
-@media all and (max-device-width: 992px)
+@media all and (max-width: 992px)
 {
 	#connexion
 	{
@@ -430,7 +430,7 @@ h4
 
 					/* RESPONSIVE MOBILE */
 
-@media all and (max-device-width: 768px)
+@media all and (max-width: 768px)
 {
 	header
 	{
@@ -474,6 +474,13 @@ h4
 		width: 50% !important;
 	}
 }
+
+
+
+
+
+					/* POLICES */
+
 
 
 

@@ -4,6 +4,21 @@
 
 
 
+header
+{
+	background-image: linear-gradient(#25568D, #57a9de);
+}
+
+a
+{
+	color: white;
+}
+
+a h1:hover
+{
+	color: black;
+}
+
 h1
 {
 	color: white;
@@ -43,7 +58,7 @@ h1
 
 
 
-					/* BODY */
+					/* PAGE D'ACCUEIL */
 
 
 
@@ -86,17 +101,7 @@ h2
 	margin-bottom: -100px;
 	background-color: white;
 	position: relative;
-}
-
-.newsUpdate
-{
-	text-align: justify;
-	margin-left: 10%;
-	margin-right: 10%;
-	border-radius: 18px;
-	border: 5px #25568D solid;
-	margin-top: 50px;
-	background-color: white;
+	opacity: 1;
 }
 
 .news p, .newsUpdate p
@@ -106,12 +111,6 @@ h2
 	font-style: italic;
 	padding-left: 5%;
 	padding-right: 5%;
-	margin-bottom: 50px;
-}
-
-.content
-{
-	margin-top: 50px;
 	margin-bottom: 50px;
 }
 
@@ -125,9 +124,20 @@ h3
 	font-weight: bold !important;
 }
 
-header
+.content
 {
-	background-image: linear-gradient(#25568D, #57a9de);
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+#authorView
+{
+	text-align: right;
+}
+
+.iconeComment
+{
+	display: inline;
 }
 
 #icone
@@ -207,196 +217,6 @@ header
 	z-index: 2;
 }
 
-#authorView
-{
-	text-align: right;
-}
-
-.commentaire
-{
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 20px;
-	margin-bottom: 50px;
-	border: 5px #25568D solid;
-	border-radius: 10px;
-	background-color: white;
-}
-
-.commentaireSignaler
-{
-	margin-left: 10%;
-	margin-right: 10%;
-	margin-top: 100px;
-	margin-bottom: -250px;
-	border: 5px #25568D solid;
-	border-radius: 10px;
-	background-color: white;
-}
-
-h4
-{
-	background-color: #25568D;
-	text-align: center;
-	color: white;
-	padding: 10px;
-	margin-top: 150px;
-	margin: auto;
-	border-radius: 20px;
-}
-
-#titleComment
-{
-	background-color: #25568D;
-	text-align: center;
-	color: white;
-	padding: 10px;
-}
-
-#contentComment
-{
-	text-align: center;
-}
-
-a
-{
-	color: white;
-}
-
-a h1:hover
-{
-	color: black;
-}
-
-.iconeComment
-{
-	display: inline;
-}
-
-#ajouterComment
-{
-	margin-top: 150px !important;
-	width: 80%;
-	margin: auto;
-	border: 5px #25568D solid;
-	border-radius: 10px;
-	margin-bottom: 50px;
-	background-color: #25568D;
-}
-
-#envoyer
-{
-	background-color: white;
-	border: 2px white solid;
-	color: #25568D;
-	width: 30% !important;
-}
-
-#envoyer:hover
-{
-	background-color: #25568D;
-	color: white;
-}
-
-.form-control
-{
-	width: 90% !important;
-	margin: auto !important;
-}
-
-#signaler
-{
-	color: #25568D;
-	background-color: white;
-	border-radius: 15px;
-	width: 72px;
-	margin: auto;
-	padding: 5px;
-	border: 2px #25568D solid;
-	display: block;
-}
-
-#divSignaler
-{
-	background-color: #25568D;
-	margin: auto;
-	padding-top: 15px;
-	padding-bottom: 10px;
-}
-
-#signaler:hover
-{
-	color: white;
-	background-color: #57a9de;
-	border: 2px #57a9de solid;
-	text-decoration: none;
-}
-
-
-
-#changeMDP, #changePseudo, #changeEmail
-{
-	padding-top: 20px;
-	display: flex;
-	justify-content: center;
-}
-
-#changeMDP input, #changePseudo input, #changeEmail input
-{
-	margin-right: 20px;
-}
-
-#modifMDP, #modifPseudo, #modifEmail
-{
-	background-color: white;
-	border: 4px #25568D solid;
-	border-radius: 20px;
-	width: 280px;
-	margin-left: -143px;
-	position: relative;
-	left: 50%;
-	padding: 10px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-#modifMDP:hover, #modifPseudo:hover, #modifEmail:hover
-{
-	background-color: #25568D;
-	color: white;
-}
-
-#buttonMDP, #buttonPseudo, #buttonEmail
-{
-	margin-left: 12px !important;
-	width: 100% !important;
-}
-
-#buttonMDP:hover, #buttonPseudo:hover, #buttonEmail:hover
-{
-	background-color: #25568D;
-	border: 1px #25568D solid;
-	color: white;
-}
-
-#erreur p, #confirmation p
-{
-	background-color: white;
-	border: 5px #25568D solid;
-	border-radius: 20px;
-	text-align: center;
-	width: 70%;
-	margin: auto;
-	padding: 10px;
-	margin-top: 20px !important;
-}
-
-#buttons
-{
-	display: flex;
-	align-items: center;
-}
-
 #updatePost, #deletePost
 {
 	position: relative;
@@ -433,72 +253,6 @@ a h1:hover
 	text-decoration: none;
 	border: 2px #57a9de solid;
 }
-
-#updateDiv, #newPost
-{
-	width: 80% !important;
-	margin: auto;
-}
-
-#newPost
-{
-	margin-top: 150px;
-}
-
-#labelTitleCrea, #labelTitleUpdate
-{
-	margin-top: 40px !important;
-}
-
-#labelTitleUpdate
-{
-	margin-bottom: 20px !important;
-}
-
-#labelAuthorCrea
-{
-	margin-top: 20px !important;
-	margin-bottom: 20px !important;
-}
-
-#updateDiv label, #newPost label
-{
-	width: 15% !important;
-	margin-right: 20px !important;
-	margin-top: 40px;
-	background-color: #25568D;
-	border: 1px #25568D solid;
-	color: white;
-}
-
-#titleUpdate, #titleCrea
-{
-	margin-top: 40px !important;
-}
-
-.h4Update
-{
-	width: 80%;
-	border-radius: 20px;
-	margin: auto;
-	margin-top: 50px;
-}
-
-#validationUpdatePost, #validationCreationPost
-{
-	margin-top: 30px !important;
-	width: 20% !important;
-	margin-bottom: 50px !important;
-	border: 1px white solid;
-}
-
-#validationUpdatePost:hover, #validationCreationPost:hover
-{
-	background-color: #25568D;
-	border: 1px #25568D solid;
-	color: white;
-}
-
 
 .confirm
 {
@@ -575,9 +329,249 @@ a h1:hover
 	padding-bottom: 2px;
 }
 
-.news
+
+
+
+
+					/* PAGE COMMENTAIRE */
+
+
+
+
+
+#ajouterComment
 {
-	opacity: 1;
+	margin-top: 150px !important;
+	width: 80%;
+	margin: auto;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	margin-bottom: 50px;
+	background-color: #25568D;
+}
+
+h4
+{
+	background-color: #25568D;
+	text-align: center;
+	color: white;
+	padding: 10px;
+	margin-top: 150px;
+	margin: auto;
+	border-radius: 20px;
+}
+
+.form-control
+{
+	width: 90% !important;
+	margin: auto !important;
+}
+
+#envoyer
+{
+	background-color: white;
+	border: 2px white solid;
+	color: #25568D;
+	width: 30% !important;
+}
+
+#envoyer:hover
+{
+	background-color: #25568D;
+	color: white;
+}
+
+.commentaire
+{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 20px;
+	margin-bottom: 50px;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	background-color: white;
+}
+
+#titleComment
+{
+	background-color: #25568D;
+	text-align: center;
+	color: white;
+	padding: 10px;
+}
+
+#contentComment
+{
+	text-align: center;
+}
+
+#divSignaler
+{
+	background-color: #25568D;
+	margin: auto;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+
+#signaler
+{
+	color: #25568D;
+	background-color: white;
+	border-radius: 15px;
+	width: 72px;
+	margin: auto;
+	padding: 5px;
+	border: 2px #25568D solid;
+	display: block;
+}
+
+#signaler:hover
+{
+	color: white;
+	background-color: #57a9de;
+	border: 2px #57a9de solid;
+	text-decoration: none;
+}
+
+
+
+
+
+					/* PAGE UPDATE POST */
+
+
+
+
+
+.newsUpdate
+{
+	text-align: justify;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 18px;
+	border: 5px #25568D solid;
+	margin-top: 50px;
+	background-color: white;
+}
+
+#updateDiv, #newPost
+{
+	width: 80% !important;
+	margin: auto;
+}
+
+#updateDiv label, #newPost label
+{
+	width: 15% !important;
+	margin-right: 20px !important;
+	margin-top: 40px;
+	background-color: #25568D;
+	border: 1px #25568D solid;
+	color: white;
+}
+
+.h4Update
+{
+	width: 80%;
+	border-radius: 20px;
+	margin: auto;
+	margin-top: 50px;
+}
+
+#titleUpdate, #titleCrea
+{
+	margin-top: 40px !important;
+}
+
+#labelTitleCrea, #labelTitleUpdate
+{
+	margin-top: 40px !important;
+}
+
+#labelTitleUpdate
+{
+	margin-bottom: 20px !important;
+}
+
+#validationUpdatePost, #validationCreationPost
+{
+	margin-top: 30px !important;
+	width: 20% !important;
+	margin-bottom: 50px !important;
+	border: 1px white solid;
+}
+
+#validationUpdatePost:hover, #validationCreationPost:hover
+{
+	background-color: #25568D;
+	border: 1px #25568D solid;
+	color: white;
+}
+
+
+
+
+
+					/* PAGE MON COMPTE */
+
+
+
+
+
+#changeMDP, #changePseudo, #changeEmail
+{
+	padding-top: 20px;
+	display: flex;
+	justify-content: center;
+}
+
+#changeMDP input, #changePseudo input, #changeEmail input
+{
+	margin-right: 20px;
+}
+
+#modifMDP, #modifPseudo, #modifEmail
+{
+	background-color: white;
+	border: 4px #25568D solid;
+	border-radius: 20px;
+	width: 280px;
+	margin-left: -143px;
+	position: relative;
+	left: 50%;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#modifMDP:hover, #modifPseudo:hover, #modifEmail:hover
+{
+	background-color: #25568D;
+	color: white;
+}
+
+#buttonMDP, #buttonPseudo, #buttonEmail
+{
+	margin-left: 12px !important;
+	width: 100% !important;
+}
+
+#buttonMDP:hover, #buttonPseudo:hover, #buttonEmail:hover
+{
+	background-color: #25568D;
+	border: 1px #25568D solid;
+	color: white;
+}
+
+.commentaireSignaler
+{
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 100px;
+	margin-bottom: -250px;
+	border: 5px #25568D solid;
+	border-radius: 10px;
+	background-color: white;
 }
 
 #approve
@@ -616,25 +610,59 @@ a h1:hover
 	text-decoration: none;
 }
 
-#confirmationAddComment
+#newPost
 {
-	color: #25568D;
-	border: 3px #25568D solid;
-	font-weight: bold;
-	background-color: white;
-	margin: auto;
-	text-align: center;
-	border-radius: 20px;
-	width: 60%;
-	padding: 10px;
-	margin-bottom: 50px !important;
-	display: none;
+	margin-top: 150px;
+}
+
+#labelAuthorCrea
+{
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
 }
 
 
-/* Responsive Tablette */
 
-@media all and (max-device-width: 992px)
+
+
+
+					/* PAGE ERREUR / CONFIRMATION */
+
+
+
+
+
+
+#erreur p, #confirmation p
+{
+	background-color: white;
+	border: 5px #25568D solid;
+	border-radius: 20px;
+	text-align: center;
+	width: 70%;
+	margin: auto;
+	padding: 10px;
+	margin-top: 20px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+					/* RESPONSIVE TABLETTE */
+
+
+
+
+
+
+@media all and (max-width: 992px)
 {
 	header
 	{
@@ -670,29 +698,20 @@ a h1:hover
 	}
 }
 
-/* Responsive Mobile */
 
-@media all and (max-device-width: 768px)
+
+
+
+
+					/* RESPONSIVE MOBILE */
+
+
+
+
+
+
+@media all and (max-width: 768px)
 {
-	h2
-	{
-		text-align: center;
-		top: 450px;
-		left: 10%;
-		right: 10%;
-		margin-left: 0px;
-	}
-
-	#monCompteBack
-	{
-		top: 43px;
-	}
-
-	#deconnexionBack
-	{
-		top: 93px;
-	}
-
 	#admin
 	{
 		flex-direction: column;
@@ -717,6 +736,25 @@ a h1:hover
 		margin-right: 0px;
 		margin-bottom: 15px;
 		margin-top: 5px;
+	}
+
+	#monCompteBack
+	{
+		top: 43px;
+	}
+
+	#deconnexionBack
+	{
+		top: 93px;
+	}
+
+	h2
+	{
+		text-align: center;
+		top: 450px;
+		left: 10%;
+		right: 10%;
+		margin-left: 0px;
 	}
 
 	#icone
@@ -786,6 +824,13 @@ a h1:hover
 		top: 10px;
 	}
 }
+
+
+
+
+
+						/* POLICES */
+
 
 
 
