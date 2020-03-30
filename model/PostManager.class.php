@@ -6,8 +6,18 @@ use \RobinP\model\Manager;
 use \RobinP\classes\Post;
 use \PDO;
 
+/**
+* La classe PostManager permet de récupérer, ajouter, modifier et supprimer des articles de la BDD.
+* @Author Robin Ponçon
+*/
+
 class PostManager extends Manager
 {	
+	/**
+	* Permet de récupérer l'ensemble des articles (10max)
+	* @return ARRAY d'object $posts : Retourne un tableau d'objets de l'ensemble des articles où chaque article est une classe objet Post
+	*/
+
 	public function getPosts()
 	{
 		$posts = [];
@@ -23,6 +33,12 @@ class PostManager extends Manager
 		return $posts;
 	}
 
+	/**
+	* Permet de récupérer un article à partir de son id 
+	* @param INT $id : id venant d'une variable GET 
+	* @return OBJECT : Retourne un objet Post avec les données de son id correspondant
+	*/
+
 	public function getPost($id)
 	{
 		$datefr = $this->db->query("SET lc_time_names = 'fr_FR'");
@@ -36,6 +52,11 @@ class PostManager extends Manager
 		return new Post($data);
 	}
 
+	/**
+	* Permet d'ajouter un nouvel article dans la BDD.
+	* @param OBJECT ARRAY $post : nouvelle classe article avec un tableau de données  
+	*/
+
 	public function addPost(Post $post)
 	{
 		$req = $this->db->prepare("INSERT INTO posts(title, content, creation_date, author) VALUES(:title, :content, NOW(), :author)");
@@ -47,6 +68,11 @@ class PostManager extends Manager
 		$req->execute();
 	}
 
+	/**
+	* Permet de modifier un article de la BDD en spécifiant son id
+	* @param OBJECT ARRAY $post : nouvelle classe article avec un tableau de données qui écraseront les données de la BDD 
+	*/
+
 	public function updatePost(Post $post)
 	{	
 		$req = $this->db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :id");
@@ -57,6 +83,11 @@ class PostManager extends Manager
 
 		$req->execute();
 	}
+
+	/**
+	* Permet de supprimer un article de la BDD en spécifiant son id
+	* @param INT $id : id de l'article à supprimer
+	*/
 
 	public function deletePost($id)
 	{

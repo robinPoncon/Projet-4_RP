@@ -2,6 +2,11 @@
 
 namespace RobinP\model;
 
+/**
+* La classe Manager permet de se connecter automatiquement à la base de donnée
+* @Author Robin Ponçon
+*/
+
 Class Manager
 {
 	protected $db;
