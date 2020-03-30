@@ -49,11 +49,8 @@ class User extends Entity
 	}
 
 	public function setPassword($password)
-	{
-		
+	{	
 		return $this->password = $password;
-		
-		
 	}
 
 	public function setEmail($email)

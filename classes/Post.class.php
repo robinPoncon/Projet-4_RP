@@ -2,10 +2,10 @@
 
 namespace RobinP\classes;
 use \RobinP\classes\Entity;
-use \DateTime;
+//use \DateTime;
 
 /**
-* La classe Post permet de créer un objet Post(article) qui va récupérer en entrée les données de BDD
+* La classe Post permet de créer un objet Post(article) qui va récupérer en entrée les données de la BDD
 * @Author Robin Ponçon
 */
 
@@ -16,6 +16,10 @@ class Post extends Entity
 	private $content;
 	private $author;
 	private $creation_date;
+
+
+
+
 
 					// Les getters
 
@@ -61,7 +65,7 @@ class Post extends Entity
 
 	/**
 	* Permet de récupérer la date d'un article
-	* @return timestamp $creation_date : Retourne la date de l'article
+	* @return Timestamp $creation_date : Retourne la date de l'article
 	*/
 
 	public function getCreationDate()
@@ -70,12 +74,15 @@ class Post extends Entity
 	}
 
 
+
+
+
 					// Les setters
 
 	/**
-	* Permet de définir la valeur de l'id qu'on récupère via la BDD si il est supérieur à 0.
-	* @param int $id : id venant de la BDD
-	* @return int $id : on récupère l'id que l'on affecte à notre propriété de classe $id;
+	* Permet de définir la valeur de l'id qu'on récupère via la BDD si elle est supérieur à 0.
+	* @param Int $id : id venant de la BDD
+	* @return Int $id : on récupère l'id que l'on affecte à notre propriété de classe $id;
 	*/
 
 	public function setId($id)
@@ -89,9 +96,9 @@ class Post extends Entity
 	}
 
 	/**
-	* Permet de définir la valeur du titre qu'on récupère via la BDD si il est de type string.
-	* @param string $title : titre venant de la BDD
-	* @return string $title : on récupère le titre que l'on affecte à notre propriété de classe $title;
+	* Permet de définir la valeur du titre qu'on récupère via la BDD si elle est de type string.
+	* @param String $title : titre venant de la BDD
+	* @return String $title : on récupère le titre que l'on affecte à notre propriété de classe $title;
 	*/
 
 	public function setTitle($title)
@@ -103,9 +110,9 @@ class Post extends Entity
 	}
 
 	/**
-	* Permet de définir la valeur du contenu qu'on récupère via la BDD si il est de type string.
-	* @param string $content : contenu venant de la BDD
-	* @return string $content : on récupère le contenu que l'on affecte à notre propriété de classe $contenu;
+	* Permet de définir la valeur du contenu qu'on récupère via la BDD si elle est de type string.
+	* @param String $content : contenu venant de la BDD
+	* @return String $content : on récupère le contenu que l'on affecte à notre propriété de classe $contenu;
 	*/
 
 	public function setContent($content)
@@ -117,9 +124,9 @@ class Post extends Entity
 	}
 
 	/**
-	* Permet de définir la valeur de l'auteur qu'on récupère via la BDD si il est de type string.
-	* @param string $author : auteur venant de la BDD
-	* @return string $author : on récupère l'auteur que l'on affecte à notre propriété de classe $author;
+	* Permet de définir la valeur de l'auteur qu'on récupère via la BDD si elle est de type string.
+	* @param String $author : auteur venant de la BDD
+	* @return String $author : on récupère l'auteur que l'on affecte à notre propriété de classe $author;
 	*/
 
 	public function setAuthor($author)
@@ -130,15 +137,14 @@ class Post extends Entity
 		}
 	}
 
+	/**
+	* Permet de définir la valeur de la date qu'on récupère via la BDD si elle est de type timestamp.
+	* @param Timestamp $creation_date : date venant de la BDD
+	* @return Timestamp $creation_date : on récupère la date que l'on affecte à notre propriété de classe $creation_date;
+	*/
+
 	public function setCreationDate($creation_date)
 	{
 		return $this->creation_date = $creation_date;
-	}
-
-
-	public function test()
-	{
-		echo $this->title . " - " . $this->content . " - " . $this->author;
-	}
-		
+	}	
 }

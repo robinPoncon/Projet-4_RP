@@ -6,7 +6,7 @@
 		
 		<h3>
 			<?= htmlspecialchars($this->post->getTitle()); ?>
-			<em>le <?= $this->post->getCreationDAte() ?></em>
+			<em> - Le <?= $this->post->getCreationDate() ?></em>
         </h3>
             
         <p class="content">
