@@ -14,7 +14,7 @@ use \PDO;
 class PostManager extends Manager
 {	
 	/**
-	* Permet de récupérer l'ensemble des articles (10max)
+	* Permet de récupérer l'ensemble des articles (10max) de la BDD.
 	* @return ARRAY d'object $posts : Retourne un tableau d'objets de l'ensemble des articles où chaque article est une classe objet Post
 	*/
 
@@ -34,7 +34,7 @@ class PostManager extends Manager
 	}
 
 	/**
-	* Permet de récupérer un article à partir de son id 
+	* Permet de récupérer un article à partir de son id de la BDD.
 	* @param INT $id : id venant d'une variable GET 
 	* @return OBJECT : Retourne un objet Post avec les données de son id correspondant
 	*/
@@ -54,7 +54,7 @@ class PostManager extends Manager
 
 	/**
 	* Permet d'ajouter un nouvel article dans la BDD.
-	* @param OBJECT ARRAY $post : nouvelle classe article avec un tableau de données  
+	* @param OBJECT ARRAY $post : nouvel objet de la classe Post avec un tableau de données  
 	*/
 
 	public function addPost(Post $post)
@@ -70,7 +70,7 @@ class PostManager extends Manager
 
 	/**
 	* Permet de modifier un article de la BDD en spécifiant son id
-	* @param OBJECT ARRAY $post : nouvelle classe article avec un tableau de données qui écraseront les données de la BDD 
+	* @param OBJECT ARRAY $post : nouvel objet de la classe Post avec un tableau de données qui écraseront les données de la BDD 
 	*/
 
 	public function updatePost(Post $post)

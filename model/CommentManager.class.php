@@ -6,13 +6,24 @@ use \RobinP\model\Manager;
 use \RobinP\classes\Comment;
 use \PDO;
 
+/**
+* La classe CommentManager permet de récupérer, ajouter, modifier et supprimer des commentaires de la BDD.
+* @Author Robin Ponçon
+*/
+
 class CommentManager extends Manager
 {
+    /**
+    * Permet de récupérer l'ensemble des commentaires de la BDD correspondant à l'id de l'article et avec le status = 1 (approuvé)
+    * @return ARRAY d'object $comments : Retourne un tableau d'objets de l'ensemble des commentaires (avec le status = 1) 
+              où chaque commentaire est une classe objet Comment
+    */
+
     public function getComments($postId)
     {
         $comments = [];
 
-        $req = $this->db->prepare("SELECT id, post_id, author, comment, comment_date FROM comments WHERE post_id = :post_id ORDER BY comment_date DESC");
+        $req = $this->db->prepare("SELECT id, post_id, author, comment, comment_date FROM comments WHERE post_id = :post_id AND status = 1 ORDER BY comment_date DESC");
         $req->bindValue(":post_id", $postId, PDO::PARAM_INT);
         $req->execute();
 
@@ -22,6 +33,12 @@ class CommentManager extends Manager
         }
         return $comments;
     }
+
+    /**
+    * Permet de récupérer les commentaires signalés.
+    * @return ARRAY d'object $comments : Retourne un tableau d'objets de l'ensemble des commentaires (avec le status = 0) 
+              où chaque commentaire est une classe objet Comment
+    */
 
     public function getCommentSignaler()
     {
@@ -38,16 +55,10 @@ class CommentManager extends Manager
         return $comments;
     }
 
-
-    public function getComment($id)
-    {
-        $req = $this->db->prepare("SELECT id, author, comment, comment_date FROM comments WHERE id = :id");
-        $req->bindValue(":id", $id, PDO::PARAM_INT);
-        $req->execute();
-        $data = $req->fetch();
-
-        return new Comment($data);
-    }
+    /**
+    * Permet d'ajouter un nouveau commentaire dans la BDD.
+    * @param OBJECT ARRAY $comment : nouvel objet de la classe Comment avec un tableau de données 
+    */
 
     public function addComment(Comment $comment)
     {
@@ -58,24 +69,39 @@ class CommentManager extends Manager
         $req->bindValue(":author", $comment->getAuthor(), PDO::PARAM_STR);
         $req->bindValue(":comment", $comment->getComment(), PDO::PARAM_STR);
 
-        return $req->execute();
+        $req->execute();
         
     }
+
+    /**
+    * Permet de modifier un commentaire de la BDD en spécifiant son id
+    * @param OBJECT ARRAY $comment : nouvel objet de la classe Comment avec un tableau de données qui écraseront les données de la BDD.
+    */
 
     public function updateComment(Comment $comment)
     {   
         $req = $this->db->prepare("UPDATE comments SET status = :status WHERE id = :id");
 
-        $req->bindValue(":status", $comment->getStatus(), PDO::PARAM_STR);
+        $req->bindValue(":status", $comment->getStatus(), PDO::PARAM_INT);
         $req->bindValue(":id", $comment->getId(), PDO::PARAM_INT);
 
         $req->execute();
     }
 
+    /**
+    * Permet de supprimer un commentaire de la BDD en spécifiant son id
+    * @param INT $id : id du commentaire à supprimer
+    */
+
     public function deleteComment($id)
     {
         $this->db->exec("DELETE FROM comments WHERE id = " . $id);
     }
+
+    /**
+    * Permet de supprimer les commentaires de la BDD liés à un article en spécifiant l'id de l'article
+    * @param INT $post_id : id de l'article correspondant aux commentaires à supprimer.
+    */
 
     public function deleteCommentPost($post_id)
     {
