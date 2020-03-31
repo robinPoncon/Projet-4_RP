@@ -7,7 +7,7 @@ use \RobinP\classes\Post;
 use \RobinP\model\CommentManager;
 
 /**
-* La classe ControllerPost fait appel aux classes manager, afin d'afficher, ajouter, modifier, supprimer des articles.
+* La classe ControllerPost fait appel aux classes manager, afin d'afficher, ajouter, modifier et supprimer des articles.
 * @Author Robin Ponçon
 */
 
@@ -21,7 +21,7 @@ class ControllerPost
 	private $deletePost;
 
 	/**
-	* Permet de créer automatiquement des nouveaux objets Postmanager, CommentManager ainsi que de faire appel à la méthode getPosts
+	* Permet de créer automatiquement des nouveaux objets Postmanager, CommentManager ainsi que de faire appel à la méthode getPosts à chaque appel de la classe.
 	*/
 
 	public function __construct()
@@ -43,7 +43,7 @@ class ControllerPost
 	}
 
 	/**
-	* Permet d'ajouter un article en récupérant le titre, l'auteur et le contenu provenant d'une variable POST.
+	* Permet d'ajouter un article en faisant appel au postManager et en récupérant le titre, l'auteur et le contenu.
 	* @param STRING $title : title venant d'une variable POST
 	* @param STRING $author : auteur venant d'une variable POST
 	* @param STRING $content : contenu venant d'une variable POST
@@ -70,7 +70,7 @@ class ControllerPost
 	}
 
 	/**
-	* Permet de modifier un article en récupérant son id afin de modifier le titre et le contenu provenant d'une variable POST.
+	* Permet de modifier un article en faisant appel au postManager et en récupérant son id afin de modifier le titre et le contenu.
 	* @param INT $postId : id de l'article venant d'une variable POST (elle même venant de la variable GET avec la méthode au dessus)
 	* @param STRING $title : title venant d'une variable POST
 	* @param STRING $content : contenu venant d'une variable POST
@@ -87,7 +87,7 @@ class ControllerPost
 	}
 
 	/**
-	* Permet de supprimer un article en faisant appel au Manager et en récupérant son id provenant d'une variable GET
+	* Permet de supprimer un article en faisant appel au postManager et en récupérant son id provenant d'une variable GET
 	*/
 
 	public function deletePost()
