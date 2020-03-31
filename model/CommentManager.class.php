@@ -7,7 +7,7 @@ use \RobinP\classes\Comment;
 use \PDO;
 
 /**
-* La classe CommentManager permet de récupérer, ajouter, modifier et supprimer des commentaires de la BDD.
+* La classe CommentManager fait appel à la BDD pour permettre de récupérer, ajouter, modifier et supprimer les données des commentaires.
 * @Author Robin Ponçon
 */
 

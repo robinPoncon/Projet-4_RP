@@ -7,7 +7,7 @@ use \RobinP\classes\Post;
 use \PDO;
 
 /**
-* La classe PostManager permet de récupérer, ajouter, modifier et supprimer des articles de la BDD.
+* La classe PostManager fait appel à la BDD pour permettre de récupérer, ajouter, modifier et supprimer les données des articles.
 * @Author Robin Ponçon
 */
 

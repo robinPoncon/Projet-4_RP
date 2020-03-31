@@ -7,7 +7,7 @@ use \RobinP\classes\User;
 use \PDO;
 
 /**
-* La classe UserManager permet de récupérer, ajouter, modifier et supprimer des utilisateurs de la BDD.
+* La classe UserManager fait appel à la BDD pour permettre de récupérer, ajouter, modifier et supprimer les données des utilisateurs.
 * @Author Robin Ponçon
 */
 
