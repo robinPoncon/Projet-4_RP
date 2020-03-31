@@ -22,7 +22,7 @@ class ControllerComment
 	private $deleteComment;
 
 	/**
-	* Permet de créer automatiquement des nouveaux objets Postmanager, CommentManager à chaque appel de la classe
+	* Permet de créer automatiquement des nouveaux objets PostManager, CommentManager à chaque appel de la classe
 	*/
 
 	public function __construct()

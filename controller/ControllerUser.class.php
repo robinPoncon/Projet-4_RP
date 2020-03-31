@@ -3,11 +3,15 @@
 namespace RobinP\controller;
 
 use \RobinP\model\CommentManager;
-use \RobinP\model\PostManager;
-use \RobinP\classes\Post;
 use \RobinP\model\UserManager;
 use \RobinP\classes\User;
 use \RobinP\controller\ControllerPost;
+
+/**
+* La classe ControllerUser fait appel aux classes manager, afin d'afficher, ajouter, modifier des utilisateurs. Afficher l'espace compte.
+  Ainsi que gérer la connexion et la déconnexion de la partie back-end du site.
+* @Author Robin Ponçon
+*/
 
 class ControllerUser
 {
@@ -22,6 +26,11 @@ class ControllerUser
     private $listPosts;
     private $commentSignaler;
 
+    /**
+    * Permet de créer automatiquement des nouveaux objets UserManager, CommentManager, ainsi que de faire appel à la méthode getUser à chaque appel de la classe
+    * @param STRING $pseudo : pseudo venant d'une variable SESSION
+    */
+
     public function __construct($pseudo)
     {
         $this->userManager = new UserManager();
@@ -29,12 +38,26 @@ class ControllerUser
         $this->listPosts = new ControllerPost();
     }
 
+    /**
+    * Permet d'ajouter un utilisateur en faisant appel à l'userManager en récupérant son pseudo, son mot de passe, et son email.
+    * @param STRING $pseudo : pseudo venant d'une variable POST
+    * @param STRING $password : mot de passe venant d'une variable POST
+    * @param STRING $email : email venant d'une variable POST
+    */
+
     public function addUser($pseudo, $password, $email)
     {
         $this->newUser = new User(["pseudo" => $pseudo, "password" => $password, "email" => $email]);
 
         $this->userManager->addUser($this->newUser);
     }
+
+    /**
+    * Permet de connecter un utilisateur à la partie back-end du site ainsi que de créer des cookies 
+    * @param STRING $pseudo : pseudo venant d'une variable POST
+    * @param STRING $password : mot de passe venant d'une variable POST
+    * @param STRING $connect : email venant d'une variable POST
+    */
 
     public function userConnectAccueil($pseudo, $password, $connect)
     {
@@ -62,6 +85,11 @@ class ControllerUser
         }
     }
 
+    /**
+    * Permet de faire appel à la page monCompte qui affiche les paramètres du compte utilisateur 
+      (modif pseuod, mdp, email, commentaires signalés, création article, etc)
+    */
+
     public function espaceCompte()
     {
         $this->commentManager = new CommentManager();
@@ -69,6 +97,10 @@ class ControllerUser
 
         require "view/page/monCompte.php";
     }
+
+    /**
+    * Permet de déconnecter un utilisateur et de supprimer ses cookies 
+    */
 
     public function userDeconnect()
     {
@@ -83,7 +115,13 @@ class ControllerUser
         header("Location: index.php?action=listPosts");
     }
 
-        
+    /**
+    * Permet de modifier le pseudo de l'utilisateur en faisant appel à l'UserManager en récupérant le pseudo actuel,
+    * le nouveau pseudo, et la confirmation du nouveau pseudo
+    * @param STRING $actualPseudo : pseudo actuel venant d'une variable POST
+    * @param STRING $newPseudo : nouveau pseudo venant d'une variable POST
+    * @param STRING $verifNewPseudo : vérification nouveau pseudo venant d'une variable POST
+    */
 
     public function changePseudo($actualPseudo, $newPseudo, $verifNewPseudo)
     {
@@ -108,6 +146,14 @@ class ControllerUser
         }
     }
 
+    /**
+    * Permet de modifier le mot de passe de l'utilisateur en faisant appel à l'UserManager en récupérant le mot de passe actuel,
+    * le nouveau mot de passe, et la confirmation du nouveau mot de passe
+    * @param STRING $actualPassword : mot de passe actuel venant d'une variable POST
+    * @param STRING $newPassword : nouveau mot de passe venant d'une variable POST
+    * @param STRING $verifNewPassword : vérification nouveau mot de passe venant d'une variable POST
+    */
+
     public function changePassword($actualPassword, $newPassword, $verifNewPassword)
     {
         $this->newMDPUser = new User(["id" => $_SESSION["id"], "pseudo" => $this->user->getPseudo(), "password" => password_hash($newPassword, PASSWORD_DEFAULT), "email" => $this->user->getEmail()]);
@@ -131,6 +177,14 @@ class ControllerUser
             throw new \Exception("Vérifier les mots de passe saisis !");
         }
     }
+
+    /**
+    * Permet de modifier l'email de l'utilisateur en faisant appel à l'UserManager en récupérant l'email actuel,
+    * le nouvel email, et la confirmation du nouvel email
+    * @param STRING $actualEmail : email actuel venant d'une variable POST
+    * @param STRING $newEmail : nouvel email venant d'une variable POST
+    * @param STRING $verifNewEmail : vérification nouvel email venant d'une variable POST
+    */
 
     public function changeEmail($actualEmail, $newEmail, $verifNewEmail)
     {
