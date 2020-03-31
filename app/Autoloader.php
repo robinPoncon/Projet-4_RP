@@ -6,11 +6,9 @@
 
 	class Autoloader
 	{
-		/*
-
+		/**
 		* Fonction qui sert à charger automatiquement les classes de la méthode autoload,
 		  pour éviter de mettre require à chaque classe que l'on souhaite utiliser
-
 		*/
 
 		static function register()
@@ -18,10 +16,9 @@
 			spl_autoload_register(array(__CLASS__, "autoload"));
 		}
 
-		/*
-
-		* @param $class_name String - Fonction qui sert à appeler n'importe quelle classe du projet
-
+		/**
+		* Fonction qui sert à appeler n'importe quelle classe et n'importe quel namespace du projet
+		* @param STRING $class_name : Nom de la classe
 		*/
 
 		static function autoload($class_name)
