@@ -14,9 +14,9 @@ use \PDO;
 class UserManager extends Manager
 {
 	/**
-	* Permet de récupérer un article à partir de son id de la BDD.
-	* @param INT $id : id venant d'une variable GET 
-	* @return OBJECT : Retourne un objet Post avec les données de son id correspondant
+	* Permet de récupérer un utilisateur à partir de son pseudo de la BDD.
+	* @param STRING $pseudo : pseudo venant d'une variable SESSION 
+	* @return OBJECT : Retourne un objet utilisateur avec les données de son pseudo correspondant
 	*/
 
 	public function getUser($pseudo)
@@ -25,20 +25,14 @@ class UserManager extends Manager
 		$req->bindValue(":pseudo", $pseudo, PDO::PARAM_STR);
 		$req->execute();
 		$data = $req->fetch();
+
 		return new User($data);
 	}
 
-	public function getUsers()
-	{
-		$users = [];
-
-		$req = $this->db->query("SELECT id, pseudo, password, email FROM users WHERE id > 0");
-		while ($data = $req->fetch())
-		{
-			$users[] = new User($data);
-		}
-		return $users;
-	}
+	/**
+	* Permet d'ajouter un nouvel utilisateur dans la BDD.
+	* @param OBJECT ARRAY $user : nouvel objet de la classe User avec un tableau de données  
+	*/
 
 	public function addUser(User $user)
     {
@@ -49,9 +43,13 @@ class UserManager extends Manager
         $req->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
         $req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
 
-        return $req->execute();
-        
+        $req->execute();
     }
+
+    /**
+	* Permet de modifier un utilisateur de la BDD en spécifiant son id
+	* @param OBJECT ARRAY $user : nouvel objet de la classe User avec un tableau de données qui écraseront les données de la BDD 
+	*/
 
     public function updateInfoUser(User $user)
 	{	
@@ -62,6 +60,6 @@ class UserManager extends Manager
 		$req->bindValue(":password", $user->getPassword(), PDO::PARAM_STR);
 		$req->bindValue(":email", $user->getEmail(), PDO::PARAM_STR);
 
-		return $req->execute();
+		$req->execute();
 	}
 }
