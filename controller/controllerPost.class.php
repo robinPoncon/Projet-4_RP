@@ -25,6 +25,7 @@ class ControllerPost
 	public function listPosts()
 	{
 		//var_dump($_COOKIE["cookie"]["pseudo"]);
+		//var_dump($_COOKIE["cookie"]["password"]);
 	    require 'view/page/listPostsView.php'; 
 	}
 

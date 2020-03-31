@@ -85,8 +85,8 @@ try
 	{
 		if (isset($_COOKIE["cookie"]["pseudo"])) 
 		{
-			$connect = new ControllerUser();
-			$connect->userConnectAuto($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"]);
+			$connect = new ControllerUser($_COOKIE["cookie"]["pseudo"]);
+			$connect->userConnectAccueil($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"], "");
 		}
 
 		else
@@ -104,13 +104,13 @@ try
 		{
 			if ($_GET['action'] == "Compte")
 			{
-				$compte = new ControllerUser();
+				$compte = new ControllerUser($_SESSION["pseudo"]);
 				$compte->espaceCompte();
 			}
 
 			elseif ($_GET["action"] == "Deconnexion")
 			{
-				$deconnect = new ControllerUser();
+				$deconnect = new ControllerUser($_SESSION["pseudo"]);
 				$deconnect->userDeconnect();
 			}
 
@@ -182,7 +182,7 @@ try
 
 					if (!empty($changePseudo["actuelPseudo"]) && !empty($changePseudo["newPseudo"]) && !empty($changePseudo["verifNewPseudo"])) 
 					{	
-						$modifPseudo = new ControllerUser();
+						$modifPseudo = new ControllerUser($_SESSION["pseudo"]);
 						$modifPseudo->changePseudo($changePseudo["actuelPseudo"], $changePseudo["newPseudo"], $changePseudo["verifNewPseudo"]);
 					}
 
@@ -199,7 +199,7 @@ try
 
 					if (!empty($changeMDP["actuelMDP"]) && !empty($changeMDP["newMDP"]) && !empty($changeMDP["verifNewMDP"])) 
 					{
-						$modifPass = new ControllerUser();
+						$modifPass = new ControllerUser($_SESSION["pseudo"]);
 						$modifPass->changePassword($changeMDP["actuelMDP"], $changeMDP["newMDP"], $changeMDP["verifNewMDP"]);
 					}
 
@@ -216,7 +216,7 @@ try
 
 					if (!empty($changeEmail["actuelEmail"]) && !empty($changeEmail["newEmail"]) && !empty($changeEmail["verifNewEmail"])) 
 					{
-						$modifMail = new ControllerUser();
+						$modifMail = new ControllerUser($_SESSION["pseudo"]);
 						$modifMail->changeEmail($changeEmail["actuelEmail"], $changeEmail["newEmail"], $changeEmail["verifNewEmail"]);
 					}
 
@@ -284,7 +284,7 @@ try
 
 			    if (!empty($user["pseudo"]) && !empty($user["password"]))
 			    {
-			    	$connect = new ControllerUser();
+			    	$connect = new ControllerUser($user["pseudo"]);
 			    	$connect->userConnectAccueil($user["pseudo"], $user["password"], $user["auto"]);
 			    }
 

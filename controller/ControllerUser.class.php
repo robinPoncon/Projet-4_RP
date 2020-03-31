@@ -22,10 +22,10 @@ class ControllerUser
     private $listPosts;
     private $commentSignaler;
 
-    public function __construct()
+    public function __construct($pseudo)
     {
         $this->userManager = new UserManager();
-        $this->user = $this->userManager->getUser();
+        $this->user = $this->userManager->getUser($pseudo);
         $this->listPosts = new ControllerPost();
     }
 
@@ -45,7 +45,7 @@ class ControllerUser
             if ($connect == "true")
             {
                 setcookie('cookie[pseudo]', $this->user->getPseudo(), time() + 365*24*3600, "/", null, false, true);
-                setcookie('cookie[password]', $this->user->getPassword(), time() + 365*24*3600, "/", null, false, true);
+                setcookie('cookie[password]', $password, time() + 365*24*3600, "/", null, false, true);
             }
             
             $_SESSION['pseudo'] = $this->user->getPseudo();
@@ -53,27 +53,12 @@ class ControllerUser
             $_SESSION["header"] = "template-page-back.php";
 
             header("Location: index.php?action=listPosts");
-
         }
 
         else
         {
             $_SESSION["url"] = "listPosts";
             throw new \Exception("Login ou mot de passe incorrect, veuillez réessayer");
-        }
-    }
-
-    public function userConnectAuto($pseudo, $password)
-    {
-        $this->isPasswordCorrect = strcmp($password, $this->user->getPassword());
-
-        if ($this->isPasswordCorrect == 0 && strcmp($pseudo, $this->user->getPseudo()) == 0)
-        {
-            $_SESSION['pseudo'] = $this->user->getPseudo();
-            $_SESSION["id"] = $this->user->getId();
-            $_SESSION["header"] = "template-page-back.php";
-
-            header("Location: index.php?action=listPosts");
         }
     }
 

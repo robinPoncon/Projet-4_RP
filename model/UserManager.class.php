@@ -6,15 +6,38 @@ use \RobinP\model\Manager;
 use \RobinP\classes\User;
 use \PDO;
 
+/**
+* La classe UserManager permet de récupérer, ajouter, modifier et supprimer des utilisateurs de la BDD.
+* @Author Robin Ponçon
+*/
+
 class UserManager extends Manager
 {
-	public function getUser()
+	/**
+	* Permet de récupérer un article à partir de son id de la BDD.
+	* @param INT $id : id venant d'une variable GET 
+	* @return OBJECT : Retourne un objet Post avec les données de son id correspondant
+	*/
+
+	public function getUser($pseudo)
 	{
-		$req = $this->db->prepare("SELECT id, pseudo, password, email FROM users");
+		$req = $this->db->prepare("SELECT id, pseudo, password, email FROM users WHERE id > 0 AND pseudo = :pseudo");
+		$req->bindValue(":pseudo", $pseudo, PDO::PARAM_STR);
 		$req->execute();
 		$data = $req->fetch();
-
 		return new User($data);
+	}
+
+	public function getUsers()
+	{
+		$users = [];
+
+		$req = $this->db->query("SELECT id, pseudo, password, email FROM users WHERE id > 0");
+		while ($data = $req->fetch())
+		{
+			$users[] = new User($data);
+		}
+		return $users;
 	}
 
 	public function addUser(User $user)
