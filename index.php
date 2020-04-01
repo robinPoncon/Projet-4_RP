@@ -12,6 +12,8 @@ $pageError = "view/page/messageErreur.php";
 
 try
 {
+	// On test si GET de action existe, si c'est le cas on peut exécuté les différents controllers liés au front ou back
+
 	if (isset($_GET['action']))
 	{
 		if ($_GET['action'] == 'listPosts') 
@@ -49,6 +51,8 @@ try
 		    }
 		}
 
+		// On test si POST existe, si c'est le cas on peut exécuté les différents controllers liés au front ou back
+
 		elseif (isset($_POST))
 		{
 		    if (isset($_POST["addComment"]))
@@ -81,6 +85,8 @@ try
 
 	else
 	{
+		// Si le cookie existe on se connecte automatiquement, sinon on créé une nouvelle session en affichant la page front
+
 		if (isset($_COOKIE["cookie"]["pseudo"])) 
 		{
 			$connect = new ControllerUser($_COOKIE["cookie"]["pseudo"]);
@@ -96,6 +102,8 @@ try
 		$listPosts->listPosts(); 
 	}
 		   
+	// Si la session de pseudo ou le cookie de pseudo existe, alors on peut utiliser les différents controllers lié au back-end
+
 	if (isset($_SESSION["pseudo"]) || isset($_COOKIE["cookie"]["pseudo"]))
 	{
 		if (isset($_GET['action']))
