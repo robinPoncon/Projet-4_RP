@@ -5,30 +5,7 @@
 
 <div id="perso">
 
-	<div>
-		<button id="modifMDP">Modifier votre mot de passe</button> <br>
-
-		<form action="index.php?action=changeMDP" method="post" id="changeMDP">
-		
-			<p>
-				<input class="d-none" type="password" name="changeMDP[actuelMDP]" placeholder="Mot de passe actuel">
-			</p>
-
-			<p>
-				<input class="d-none" type="password" name="changeMDP[newMDP]" placeholder="Nouveau mot de passe"> 
-			</p>
-
-			<p>
-				<input class="d-none" type="password" name="changeMDP[verifNewMDP]" placeholder="Valider le nouveau mot de passe"> 
-			</p>
-
-			<p>
-				<input id="buttonMDP" class="d-none" type="submit" value="Envoyer">
-			</p>
-
-		</form>
-
-	</div>
+	<!-- Formulaire pour modifier son pseudo -->
 
 	<div>
 		<button id="modifPseudo">Modifier votre Pseudo</button> <br>
@@ -54,6 +31,35 @@
 		</form>
 
 	</div>
+
+	<!-- Formulaire pour modifier son mot de passe -->
+
+	<div>
+		<button id="modifMDP">Modifier votre mot de passe</button> <br>
+
+		<form action="index.php?action=changeMDP" method="post" id="changeMDP">
+		
+			<p>
+				<input class="d-none" type="password" name="changeMDP[actuelMDP]" placeholder="Mot de passe actuel">
+			</p>
+
+			<p>
+				<input class="d-none" type="password" name="changeMDP[newMDP]" placeholder="Nouveau mot de passe"> 
+			</p>
+
+			<p>
+				<input class="d-none" type="password" name="changeMDP[verifNewMDP]" placeholder="Valider le nouveau mot de passe"> 
+			</p>
+
+			<p>
+				<input id="buttonMDP" class="d-none" type="submit" value="Envoyer">
+			</p>
+
+		</form>
+
+	</div>
+
+	<!-- Formulaire pour modifier son email -->
 
 	<div>
 		<button id="modifEmail">Modifier votre Email</button> <br>
@@ -87,6 +93,9 @@
 	<h4 class="h4Update">Commentaire à modérer</h4>
 
 	<?php
+
+	// Affichage des commentaires signalés 
+
         foreach ($this->comments as $comment)
     	{
     ?>  
@@ -96,6 +105,8 @@
             <a id="approve" href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
             <button onclick="deleteComment(<?= $comment->getId()?>)" id="deleteComment">Supprimer</button>
         </div>
+
+        <!-- Div de confirmation de la suppression des commentaires -->
 
         <div class="confirmComment" id="confirm<?= $comment->getId() ?>"> 
 	        <p> Voulez-vous vraiment supprimer ce commentaire ? </p>
@@ -107,6 +118,8 @@
     ?>
 	
 </section>
+
+<!-- Formulaire d'ajout d'article -->
 
 <div id="newPost">
 	<h4>Ajouter un nouvel Article</h4>
