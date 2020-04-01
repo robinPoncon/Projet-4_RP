@@ -16,8 +16,6 @@ try
 	{
 		if ($_GET['action'] == 'listPosts') 
 		{
-			//setcookie('cookie[pseudo]', "", time() - 3600, "/");
-        	//setcookie('cookie[password]', "", time() - 3600, "/");
 		    $listPosts = new ControllerPost();
 		    $listPosts->listPosts();
 		}
