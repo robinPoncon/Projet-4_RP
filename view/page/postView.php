@@ -3,6 +3,8 @@
     ob_start(); 
 ?>
     <div class="news">
+
+        <!-- On affiche l'article avec l'idée récupéré dans la variable GET -->
 		
 		<h3>
 			<?= htmlspecialchars($this->post->getTitle()); ?>
@@ -18,6 +20,8 @@
         </p>
 
     </div>
+
+    <!-- div formulaire servant à l'ajout de commentaire -->
 
     <div id="ajouterComment">
         
@@ -38,6 +42,9 @@
     </div>
 
     <?php
+
+    // Affichage de tous les commentaires liés à l'article et non signalés
+    
         foreach ($this->comments as $comment)
     	{
     ?>  
