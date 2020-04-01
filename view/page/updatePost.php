@@ -8,6 +8,8 @@
 
 <h4 class="h4Update">Article en cours</h4>
 <div class="newsUpdate">
+
+<!-- On affiche l'article correspondant à l'id récupérer avec la variable GET -->
 		
 	<h3>
 		<?= htmlspecialchars($this->post->getTitle()); ?>
@@ -25,6 +27,9 @@
 </div>
 
 <h4 class="h4Update" >Modification de l'article</h4>
+
+<!-- Formulaire pour la modification de l'article -->
+
 <div id="updateDiv">
 	<form action="index.php?action=updatePost" method="post">
 		<input type="hidden" name="updatePost[id]" value="<?= $this->post->getId(); ?>">

@@ -1,7 +1,9 @@
 <?php 
 
     $title = "Billet simple pour l'Alaska";
+
     // ob_start() sert à ajouter le code qui suit dans la page (dans notre page template-front ou template-back) il est délimité par ob_get_clean() à la fin
+    
     ob_start(); 
 ?>  
 
