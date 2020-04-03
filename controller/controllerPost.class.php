@@ -37,8 +37,6 @@ class ControllerPost
 
 	public function listPosts()
 	{
-		//var_dump($_COOKIE["cookie"]["pseudo"]);
-		//var_dump($_COOKIE["cookie"]["password"]);
 	    require 'view/page/listPostsView.php'; 
 	}
 
@@ -51,12 +49,22 @@ class ControllerPost
 
 	public function addPost($title, $author, $content)
 	{	
-		$this->newPost = new Post(["title" => $title, "author" => $author, "content" => $content]);
-		$this->post = $this->postManager->addPost($this->newPost);
+		if(preg_match("/script/i", $content))
+		{
+			$_SESSION["url"] = "monCompte";
+			throw new \Exception("Vous avez utilisé un mot interdit, veuillez réessayer");
+		}
 
-		$msg_confirmation = "L'article a bien été ajouté !";
-	    $url = "Compte";
-	    require "view/page/messageConfirmation.php";
+  		else
+  		{
+  			$this->newPost = new Post(["title" => $title, "author" => $author, "content" => $content]);
+			$this->post = $this->postManager->addPost($this->newPost);
+
+			$msg_confirmation = "L'article a bien été ajouté !";
+		    $url = "Compte";
+		    require "view/page/messageConfirmation.php";
+  		}
+		
 	}
 
 	/**
@@ -78,12 +86,21 @@ class ControllerPost
 
 	public function updatePost($postId, $title, $content)
 	{
-		$this->postUpdate = new Post(["id" => $postId, "title" => $title, "content" => $content]);
-		$this->post = $this->postManager->updatePost($this->postUpdate);
+		if(preg_match("/script/i", $content))
+		{
+			$_SESSION["url"] = "viewUpdatePost&id=" . $postId;
+			throw new \Exception("Vous avez utilisé un mot interdit, veuillez réessayer");
+		}
 
-		$msg_confirmation = "L'article a bien été modifié !";
-	    $url = "viewUpdatePost&id=" . $postId;
-	    require "view/page/messageConfirmation.php";
+  		else
+  		{
+			$this->postUpdate = new Post(["id" => $postId, "title" => $title, "content" => $content]);
+			$this->post = $this->postManager->updatePost($this->postUpdate);
+
+			$msg_confirmation = "L'article a bien été modifié !";
+		    $url = "viewUpdatePost&id=" . $postId;
+		    require "view/page/messageConfirmation.php";
+		}
 	}
 
 	/**

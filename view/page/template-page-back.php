@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="view/css/back.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 	<script src="https://cdn.tiny.cloud/1/sxq7wlppdsn7uq2723od67ynsomvawaa8ezwg78ylypihzoj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!-- Convertis en utf-8 la sortie tinymce -->
 	<meta name="viewport" content="width=device-width">
 	
 </head>

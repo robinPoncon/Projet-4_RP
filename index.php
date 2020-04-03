@@ -8,8 +8,6 @@ use \RobinP\controller\ControllerPost;
 use \RobinP\controller\ControllerComment;
 use \RobinP\controller\ControllerUser;
 
-$pageError = "view/page/messageErreur.php";
-
 try
 {
 	// On test si GET de action existe, si c'est le cas on peut exécuté les différents controllers liés au front ou back

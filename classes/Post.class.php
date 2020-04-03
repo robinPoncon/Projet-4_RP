@@ -117,9 +117,17 @@ class Post extends Entity
 
 	public function setContent($content)
 	{
-		if(is_string($content))
+		if(strpos($content, "<script>") !== false)
 		{
-			return $this->content = $content;
+    		throw new Exception("Il y a des caractères non tolérés, veuillez réessayer");
+  		}
+
+		else
+		{
+			if(is_string($content))
+			{
+				return $this->content = $content;
+			}
 		}
 	}
 

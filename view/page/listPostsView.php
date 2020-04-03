@@ -19,7 +19,6 @@ foreach ($this->posts as $post)
 ?>
     <div class="news">
         <h3>
-            <!-- le htmlspecialchars permet d'afficher du code avec les balises html convertis -->
             <?= htmlspecialchars($post->getTitle()) ?>
             <em> - Le <?= $post->getCreationDate() ?></em>
         </h3>
@@ -53,8 +52,6 @@ foreach ($this->posts as $post)
 
             <a id='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
             <button onclick="deletePost(<?= $post->getId()?>)" id="deletePost">Supprimer</button>
-            
-            
             
         <?php endif; ?>
         

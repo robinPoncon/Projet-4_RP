@@ -25,7 +25,8 @@ class PostManager extends Manager
 		$datefr = $this->db->query("SET lc_time_names = 'fr_FR'");
 		$datefr->execute();
 
-		$req = $this->db->query("SELECT id, title, author, content, DATE_FORMAT(creation_date, '%d %M %Y à %Hh%m') AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 10");
+		$req = $this->db->query("SELECT id, title, author, content, DATE_FORMAT(creation_date, '%d %M %Y à %Hh%m') 
+			AS creation_date FROM posts ORDER BY creation_date DESC LIMIT 0, 10");
 		while ($data = $req->fetch())
 		{
 			$posts[] = new Post($data);
@@ -59,6 +60,8 @@ class PostManager extends Manager
 
 	public function addPost(Post $post)
 	{
+		$this->db->query('SET NAMES "UTF8"'); // Encode le text récupérer avec tinymce
+
 		$req = $this->db->prepare("INSERT INTO posts(title, content, creation_date, author) VALUES(:title, :content, NOW(), :author)");
 
 		$req->bindValue(":title", $post->getTitle(), PDO::PARAM_STR);
@@ -75,6 +78,7 @@ class PostManager extends Manager
 
 	public function updatePost(Post $post)
 	{	
+		$this->db->query('SET NAMES "UTF8"'); // Encode le text récupérer avec tinymce
 		$req = $this->db->prepare("UPDATE posts SET title = :title, content = :content WHERE id = :id");
 
 		$req->bindValue(":title", $post->getTitle(), PDO::PARAM_STR);

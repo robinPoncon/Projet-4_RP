@@ -55,7 +55,9 @@ $("#modifEmail").click(function(){
 
 tinymce.init({
     selector: '#mytextarea',
-    height: "400px"
+    height: "400px",
+    entity_encoding : "raw", 
+    encoding: "UTF-8"
 });
 
 
