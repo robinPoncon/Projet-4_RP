@@ -27,6 +27,7 @@ try
 		       	$post = new ControllerComment();
 		        $post->post();
 		    }
+		    
 		    else 
 		    {
 		    	$_SESSION["url"] = "listPosts";

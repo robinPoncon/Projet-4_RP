@@ -83,6 +83,10 @@ class ControllerUser
             $_SESSION["url"] = "listPosts";
             throw new \Exception("Login ou mot de passe incorrect, veuillez réessayer");
         }
+
+        $test = $this->userManager->getUsers();
+        $testList = $test->getPseudo();
+        var_dump($testList);
     }
 
     /**

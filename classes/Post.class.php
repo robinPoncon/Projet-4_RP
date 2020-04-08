@@ -103,7 +103,7 @@ class Post extends Entity
 
 	public function setTitle($title)
 	{
-		if(is_string($title))
+		if (is_string($title))
 		{
 			return $this->title = $title;
 		}
@@ -117,17 +117,9 @@ class Post extends Entity
 
 	public function setContent($content)
 	{
-		if(strpos($content, "<script>") !== false)
+		if (is_string($content))
 		{
-    		throw new Exception("Il y a des caractères non tolérés, veuillez réessayer");
-  		}
-
-		else
-		{
-			if(is_string($content))
-			{
-				return $this->content = $content;
-			}
+			return $this->content = $content;
 		}
 	}
 

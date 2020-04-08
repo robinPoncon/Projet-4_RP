@@ -26,8 +26,18 @@ class UserManager extends Manager
 		$req->execute();
 		$data = $req->fetch();
 
-		return new User($data);
+		if ($data == false)
+		{
+			$_SESSION["url"] = "listPosts";
+			throw new \Exception("Login ou mot de passe incorrect, veuillez réessayer.");
+		}
+
+		else
+		{
+			return new User($data);
+		}		
 	}
+	
 
 	/**
 	* Permet d'ajouter un nouvel utilisateur dans la BDD.

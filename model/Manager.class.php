@@ -19,7 +19,7 @@ Class Manager
 	protected function dbConnect()
 	{	
 		$this->db = new \PDO("mysql:host=localhost;dbname=Projet-4;charset=utf8", "root", "root");
-		$this->db->query('SET NAMES "UTF8"');
+		$this->db->query('SET NAMES "UTF8"'); // Permet d'envoyer les données en UTF-8 afin d'afficher les caractères spéciaux 
 		return $this->db;
 	}
 }

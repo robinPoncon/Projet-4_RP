@@ -5,7 +5,7 @@
 	<p><?php echo $msg_error; 
 		header("refresh:10;url=index.php?action=" . $_SESSION["url"]);
 		?> 
-	Vous allez être automatiquement redirigé vers la page précédente.
+	<br>Vous allez être automatiquement redirigé vers la page précédente.
 	</p>
 	<p>
 		Sinon, cliquer <a href="index.php?action=<?= $_SESSION['url'] ?>"> Ici </a>

@@ -49,9 +49,9 @@ class ControllerPost
 
 	public function addPost($title, $author, $content)
 	{	
-		if(preg_match("/script/i", $content))
+		if(preg_match("/&lt;script&gt;/i", $content))
 		{
-			$_SESSION["url"] = "monCompte";
+			$_SESSION["url"] = "Compte";
 			throw new \Exception("Vous avez utilisé un mot interdit, veuillez réessayer");
 		}
 
@@ -86,7 +86,7 @@ class ControllerPost
 
 	public function updatePost($postId, $title, $content)
 	{
-		if(preg_match("/script/i", $content))
+		if(preg_match("/&lt;script&gt;/i", $content))
 		{
 			$_SESSION["url"] = "viewUpdatePost&id=" . $postId;
 			throw new \Exception("Vous avez utilisé un mot interdit, veuillez réessayer");
