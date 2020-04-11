@@ -100,18 +100,18 @@
     	{
     ?>  
         <div class="commentaireSignaler">
-            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
-            <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
-            <a id="approve" href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
-            <button onclick="deleteComment(<?= $comment->getId()?>)" id="deleteComment">Supprimer</button>
+            <p class="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> 
+            <p class="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
+            <a class="approve" href="index.php?action=approve&amp;id=<?= $comment->getId() ?>"> Approuver</a>
+            <button onclick="deleteComment(<?= $comment->getId()?>)" class="deleteComment">Supprimer</button>
         </div>
 
         <!-- Div de confirmation de la suppression des commentaires -->
 
         <div class="confirmComment" id="confirm<?= $comment->getId() ?>"> 
 	        <p> Voulez-vous vraiment supprimer ce commentaire ? </p>
-	        <a id="yesComment" href="index.php?action=deleteComment&amp;id=<?= $comment->getId() ?>"> Oui </a>
-	        <button onclick="cancelComment(<?= $comment->getId() ?>)" id="noComment">Non</button>
+	        <a class="yesComment" href="index.php?action=deleteComment&amp;id=<?= $comment->getId() ?>"> Oui </a>
+	        <button onclick="cancelComment(<?= $comment->getId() ?>)" class="noComment">Non</button>
     	</div>
     <?php
         }
@@ -134,7 +134,7 @@
 			<input id="authorCrea" class="form-control" type="text" name="addPost[author]" placeholder="Nom de l'auteur">
 		</p>
 		<p>
-			<textarea class="form-control" id="mytextarea" type="text" name="addPost[content]" placeholder="Contenu de l'article"></textarea>
+			<textarea class="form-control" id="mytextarea" name="addPost[content]" placeholder="Contenu de l'article"></textarea>
 		</p>
 		<p>
 			<input id="validationCreationPost" class="form-control" type="submit" value="Envoyer">

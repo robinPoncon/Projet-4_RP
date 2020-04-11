@@ -281,23 +281,26 @@ try
 
 	else
 	{
-		if (isset($_POST)) 
+		if (isset($_GET["action"]))
 		{
-			if (isset($_POST["user"]))
+			if (isset($_POST)) 
 			{
-			    $user = $_POST["user"];
+				if (isset($_POST["user"]))
+				{
+				    $user = $_POST["user"];
 
-			    if (!empty($user["pseudo"]) && !empty($user["password"]))
-			    {
-			    	$connect = new ControllerUser($user["pseudo"]);
-			    	$connect->userConnectAccueil($user["pseudo"], $user["password"], $user["auto"]);
-			    }
+				    if (!empty($user["pseudo"]) && !empty($user["password"]))
+				    {
+				    	$connect = new ControllerUser($user["pseudo"]);
+				    	$connect->userConnectAccueil($user["pseudo"], $user["password"], $user["auto"]);
+				    }
 
-			    else
-			    {
-			    	$_SESSION["url"] = "listPosts";
-			       	throw new \Exception("Login ou mot de passe non remplis. Veuillez réessayer !");
-			    }
+				    else
+				    {
+				    	$_SESSION["url"] = "listPosts";
+				       	throw new \Exception("Login ou mot de passe non remplis. Veuillez réessayer !");
+				    }
+				}
 			}
 		}
 	}		

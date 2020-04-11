@@ -7,8 +7,8 @@
     ob_start(); 
 ?>  
 
-<h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h1>
-<img id="img-alaska" src="view/img/alaska.jpg">
+<h2 class="position-absolute">Jean Forteroche vous présente son dernier roman !</h2>
+<img id="img-alaska" src="view/img/alaska.jpg" alt="image décor Alaska">
 
 <!-- On affiche tous les articles, et pour chaque article on affiche le titre, date, contenu, auteur. -->
 
@@ -29,20 +29,20 @@ foreach ($this->posts as $post)
                 substr() permet d'afficher qu'un certain nombre de caractère
             -->
 
-            <?= substr(htmlspecialchars_decode($post->getContent()), 0, 500) . " ... " . "<a id='contentArticle' href=" . "index.php?action=post&amp;id=" . $post->getId() . "> Lire la suite </a>" ?>
+            <?= substr(htmlspecialchars_decode($post->getContent()), 0, 500) . " ... " . "<a href='index.php?action=post&amp;id=" . $post->getId() . "'> Lire la suite </a>" ?>
         </p>
 
-        <p id="authorView">
+        <p class="authorView">
             <?= htmlspecialchars($post->getAuthor()) ?>    
         </p>
 
         <div class="iconeComment">
             <a href="index.php?action=post&amp;id=<?= $post->getId() ?>">
-                <div class="position-relative" id="icone">
-                    <p class="position-absolute" id="trait1"></p>
-                    <p class="position-absolute" id="trait2"></p>
-                    <p class="position-absolute" id="trait3"></p>
-                    <p class="position-absolute" id="triangle"></p>
+                <div class="icone">
+                    <p class="trait1 position-absolute"></p>
+                    <p class="trait2 position-absolute"></p>
+                    <p class="trait3 position-absolute"></p>
+                    <p class="triangle position-absolute"></p>
                 </div></a>
         </div>
 
@@ -50,8 +50,8 @@ foreach ($this->posts as $post)
 
         <?php if (isset($_SESSION["pseudo"])):  ?>
 
-            <a id='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
-            <button onclick="deletePost(<?= $post->getId()?>)" id="deletePost">Supprimer</button>
+            <a class='updatePost' href="index.php?action=viewUpdatePost&amp;id=<?= $post->getId() ?>">Modifier</a>
+            <button onclick="deletePost(<?= $post->getId()?>)" class="deletePost">Supprimer</button>
             
         <?php endif; ?>
         
@@ -61,8 +61,8 @@ foreach ($this->posts as $post)
 
     <div class="confirm" id="confirm<?= $post->getId()?>"> 
         <p> Voulez-vous vraiment supprimer cet article ? </p>
-        <a id="yes" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
-        <button onclick="cancelPost(<?= $post->getId() ?>)" id="no" >Non</button>
+        <a class="yes" href="index.php?action=deletePost&amp;id=<?= $post->getId() ?>"> Oui </a>
+        <button onclick="cancelPost(<?= $post->getId() ?>)" class="no" >Non</button>
     </div>
 
 <?php

@@ -13,14 +13,14 @@
 		
 	<h3>
 		<?= htmlspecialchars($this->post->getTitle()); ?>
-		<em>le <?= $this->post->getCreationDAte() ?></em>
+		<em> - le <?= $this->post->getCreationDAte() ?></em>
     </h3>
             
-    <p class="content">
+    <div class="content">
         <?= nl2br(htmlspecialchars_decode($this->post->getContent())) ?>
-    </p>
+    </div>
 
-    <p id="authorView">
+    <p class="authorView">
      	<?= htmlspecialchars($this->post->getAuthor()) ?>
     </p>
 

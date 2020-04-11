@@ -11,11 +11,11 @@
 			<em> - Le <?= $this->post->getCreationDate() ?></em>
         </h3>
             
-        <p class="content">
+        <div class="content">
             <?= nl2br(htmlspecialchars_decode($this->post->getContent())) ?>
-        </p>
+        </div>
 
-        <p id="authorView">
+        <p class="authorView">
             <?= htmlspecialchars($this->post->getAuthor()) ?>    
         </p>
 
@@ -49,11 +49,11 @@
     	{
     ?>  
         <div class="commentaire">
-            <p id="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> </p>
-            <p id="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
-            <p id="divSignaler"> 
-                <a id="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>&amp;postId=<?= $this->post->getId()?>">Signaler</a> 
-            </p>
+            <p class="titleComment"><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getCommentDate() ?> </p>
+            <p class="contentComment"><?= nl2br(htmlspecialchars($comment->getComment())) ?> </p>
+            <div class="divSignaler"> 
+                <a class="signaler" href="index.php?action=signaler&amp;id=<?= $comment->getId() ?>&amp;postId=<?= $this->post->getId()?>">Signaler</a> 
+            </div>
         </div>
     <?php
         }
