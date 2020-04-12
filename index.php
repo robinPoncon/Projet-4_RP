@@ -10,104 +10,47 @@ use \RobinP\controller\ControllerUser;
 
 try
 {
-	// On test si GET de action existe, si c'est le cas on peut exécuté les différents controllers liés au front ou back
-
-	if (isset($_GET['action']))
-	{
-		if ($_GET['action'] == 'listPosts') 
-		{
-		    $listPosts = new ControllerPost();
-		    $listPosts->listPosts();
-		}
-
-		elseif ($_GET['action'] == 'post') 
-		{
-		    if (isset($_GET['id']) && $_GET['id'] > 0) 
-		    {
-		       	$post = new ControllerComment();
-		        $post->post();
-		    }
-		    
-		    else 
-		    {
-		    	$_SESSION["url"] = "listPosts";
-		        throw new \Exception("Aucun identifiant de billet envoyé");
-		    }
-		}
-
-		elseif ($_GET['action'] == 'signaler')
-		{
-			if (isset($_GET['id']) && $_GET['id'] > 0) 
-		    {
-		    	$signaler = new ControllerComment();
-		       	$signaler->signaler();
-		    }
-
-		    else 
-		    {
-		    	$_SESSION["url"] = "post&id=" . $_GET["id"];
-		        throw new \Exception("Aucun identifiant de billet envoyé");
-		    }
-		}
-
-		// On test si POST existe, si c'est le cas on peut exécuté les différents controllers liés au front ou back
-
-		elseif (isset($_POST))
-		{
-		    if (isset($_POST["addComment"]))
-		    {
-			    $comment = $_POST["addComment"];
-
-			    if (isset($comment['id']) && $comment['id'] > 0) 
-			    {
-			        if (!empty($comment['author']) && !empty($comment['comment'])) 
-			        {
-			           	$addComment = new ControllerComment();
-			            $addComment->addComment($comment['id'], $comment['author'], $comment['comment']);
-			        } 
-
-			        else 
-			        {
-			        	$_SESSION["url"] = "post&id=" . $comment["id"];
-			           	throw new Exception("Tous les champs ne sont pas remplis");
-			        } 
-			    }
-
-			    else 
-			    {
-			    	$_SESSION["url"] = "post&id=" . $comment["id"];
-			        throw new Exception('Aucun identifiant de billet envoyé');
-			    }
-			}
-		}
-	}
-
-	else
-	{
-		// Si le cookie existe on se connecte automatiquement, sinon on créé une nouvelle session en affichant la page front
-
-		if (isset($_COOKIE["cookie"]["pseudo"])) 
-		{
-			$connect = new ControllerUser($_COOKIE["cookie"]["pseudo"]);
-			$connect->userConnectAccueil($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"], "");
-		}
-
-		else
-		{
-			$_SESSION["header"] = "template-page-front.php";
-		}
-		
-		$listPosts = new ControllerPost();
-		$listPosts->listPosts(); 
-	}
-		   
-	// Si la session de pseudo ou le cookie de pseudo existe, alors on peut utiliser les différents controllers lié au back-end
-
 	if (isset($_SESSION["pseudo"]) || isset($_COOKIE["cookie"]["pseudo"]))
 	{
 		if (isset($_GET['action']))
 		{
-			if ($_GET['action'] == "Compte")
+			if ($_GET['action'] == 'listPosts') 
+			{
+			    $listPosts = new ControllerPost();
+			    $listPosts->listPosts();
+			}
+
+			elseif ($_GET['action'] == 'post') 
+			{
+			    if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			       	$post = new ControllerComment();
+			        $post->post();
+			    }
+			    
+			    else 
+			    {
+			    	$_SESSION["url"] = "listPosts";
+			        throw new Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
+
+			elseif ($_GET['action'] == 'signaler')
+			{
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			    	$signaler = new ControllerComment();
+			       	$signaler->signaler();
+			    }
+
+			    else 
+			    {
+			    	$_SESSION["url"] = "post&id=" . $_GET["id"];
+			        throw new Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
+
+			elseif ($_GET['action'] == "Compte")
 			{
 				$compte = new ControllerUser($_SESSION["pseudo"]);
 				$compte->espaceCompte();
@@ -130,7 +73,7 @@ try
 			    else 
 			    {
 			    	$_SESSION["url"] = "listPosts";
-			        throw new \Exception("Aucun identifiant de billet envoyé");
+			        throw new Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
 
@@ -145,7 +88,7 @@ try
 			    else 
 			    {
 			    	$_SESSION["url"] = "listPosts";
-			        throw new \Exception("Aucun identifiant de billet envoyé");
+			        throw new Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
 
@@ -160,7 +103,7 @@ try
 			    else 
 			    {
 			    	$_SESSION["url"] = "Compte";
-			        throw new \Exception("Aucun identifiant de billet envoyé");
+			        throw new Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
 
@@ -175,13 +118,39 @@ try
 			    else 
 			    {
 			    	$_SESSION["url"] = "Compte";
-			        throw new \Exception("Aucun identifiant de billet envoyé");
+			        throw new Exception("Aucun identifiant de billet envoyé");
 			    }
 			}
 		
 			elseif (isset($_POST)) 
 			{
-				if (isset($_POST["changePseudo"]))
+				if (isset($_POST["addComment"]))
+				{
+					$comment = $_POST["addComment"];
+
+					if (isset($comment['id']) && $comment['id'] > 0) 
+					{
+						if (!empty($comment['author']) && !empty($comment['comment'])) 
+						{
+							$addComment = new ControllerComment();
+							$addComment->addComment($comment['id'], $comment['author'], $comment['comment']);
+						} 
+
+						else 
+						{
+							$_SESSION["url"] = "post&id=" . $comment["id"];
+							throw new Exception("Tous les champs ne sont pas remplis");
+						} 
+					}
+
+					else 
+					{
+						$_SESSION["url"] = "post&id=" . $comment["id"];
+						throw new Exception('Aucun identifiant de billet envoyé');
+					}
+				}
+
+				elseif (isset($_POST["changePseudo"]))
 				{
 					$changePseudo = $_POST["changePseudo"];
 
@@ -194,7 +163,7 @@ try
 					else
 					{
 						$_SESSION["url"] = "Compte";
-						throw new \Exception("Vérifier les pseudos saisis !");
+						throw new Exception("Vérifier les pseudos saisis !");
 					}
 				}
 
@@ -211,7 +180,7 @@ try
 					else
 					{
 						$_SESSION["url"] = "Compte";
-						throw new \Exception("Vérifier les mots de passe saisis !");
+						throw new Exception("Vérifier les mots de passe saisis !");
 					}
 				}
 
@@ -228,7 +197,7 @@ try
 					else
 					{
 						$_SESSION["url"] = "Compte";
-						throw new \Exception("Vérifier les emails saisis !");
+						throw new Exception("Vérifier les emails saisis !");
 					}
 				}
 
@@ -275,35 +244,129 @@ try
 				        throw new Exception('Aucun identifiant de billet envoyé');
 				    }
 				}
-			}
-		}
-	}
 
-	else
-	{
-		if (isset($_GET["action"]))
-		{
-			if (isset($_POST)) 
-			{
-				if (isset($_POST["user"]))
+				else
 				{
-				    $user = $_POST["user"];
-
-				    if (!empty($user["pseudo"]) && !empty($user["password"]))
-				    {
-				    	$connect = new ControllerUser($user["pseudo"]);
-				    	$connect->userConnectAccueil($user["pseudo"], $user["password"], $user["auto"]);
-				    }
-
-				    else
-				    {
-				    	$_SESSION["url"] = "listPosts";
-				       	throw new \Exception("Login ou mot de passe non remplis. Veuillez réessayer !");
-				    }
+					$_SESSION["url"] = "listPosts";
+				    throw new Exception("Valeur de action non correct");
 				}
 			}
 		}
+
+		else
+		{
+			$connect = new ControllerUser($_COOKIE["cookie"]["pseudo"]);
+			$connect->userConnectAccueil($_COOKIE["cookie"]["pseudo"], $_COOKIE["cookie"]["password"], "");
+		}
 	}		
+
+	// S'il n'y a pas de SESSION ou de COOKIE alors on exécute le code Front
+
+	else
+	{
+		if (isset($_GET['action']))
+		{
+			if ($_GET['action'] == 'listPosts') 
+			{
+			    $listPosts = new ControllerPost();
+			    $listPosts->listPosts();
+			}
+
+			elseif ($_GET['action'] == 'post') 
+			{
+			    if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			       	$post = new ControllerComment();
+			        $post->post();
+			    }
+			    
+			    else 
+			    {
+			    	$_SESSION["url"] = "listPosts";
+			        throw new Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
+
+			elseif ($_GET['action'] == 'signaler')
+			{
+				if (isset($_GET['id']) && $_GET['id'] > 0) 
+			    {
+			    	$signaler = new ControllerComment();
+			       	$signaler->signaler();
+			    }
+
+			    else 
+			    {
+			    	$_SESSION["url"] = "post&id=" . $_GET["id"];
+			        throw new Exception("Aucun identifiant de billet envoyé");
+			    }
+			}
+
+			elseif (isset($_POST))
+			{
+				if (isset($_POST["user"]))
+				{
+					$user = $_POST["user"];
+
+					if (!empty($user["pseudo"]) && !empty($user["password"]))
+					{
+						$connect = new ControllerUser($user["pseudo"]);
+						$connect->userConnectAccueil($user["pseudo"], $user["password"], $user["auto"]);
+					}
+
+					else
+					{
+						$_SESSION["url"] = "listPosts";
+						throw new Exception("Login ou mot de passe non remplis. Veuillez réessayer !");
+					}
+				}
+
+				elseif (isset($_POST["addComment"]))
+				{
+					$comment = $_POST["addComment"];
+
+					if (isset($comment['id']) && $comment['id'] > 0) 
+					{
+						if (!empty($comment['author']) && !empty($comment['comment'])) 
+						{
+							$addComment = new ControllerComment();
+							$addComment->addComment($comment['id'], $comment['author'], $comment['comment']);
+						} 
+
+						else 
+						{
+							$_SESSION["url"] = "post&id=" . $comment["id"];
+							throw new Exception("Tous les champs ne sont pas remplis");
+						} 
+					}
+
+					else 
+					{
+						$_SESSION["url"] = "post&id=" . $comment["id"];
+						throw new Exception('Aucun identifiant de billet envoyé');
+					}
+				}
+
+				else
+				{
+					$_SESSION["url"] = "listPosts";
+					throw new Exception("Valeur de action non attendue");
+				}
+			}
+		}
+
+		else
+		{
+			$_SESSION["header"] = "template-page-front.php";
+			$listPosts = new ControllerPost();
+			$listPosts->listPosts(); 
+		}
+	}
+
+			// Si le cookie existe on se connecte automatiquement, sinon on créé une nouvelle session en affichant la page front
+
+ 
+
 }
 
 catch(Exception $e)
